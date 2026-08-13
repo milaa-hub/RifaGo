@@ -136,12 +136,12 @@ echo "Conexion a RifaGo exitosa";
                 <div class="raffles">
 
 
-                
+
                     <article class="raffle-card">
 
                         <div class="raffle-image">
                             <img
-                                src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=300&q=80"
+                                src=""
                                 alt="iPhone 15 Pro Max"
                             >
                         </div>
@@ -177,7 +177,7 @@ echo "Conexion a RifaGo exitosa";
 
                         <div class="raffle-image">
                             <img
-                                src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=300&q=80"
+                                src="assets/img/ps5.webp"
                                 alt="PlayStation 5"
                             >
                         </div>
@@ -213,7 +213,7 @@ echo "Conexion a RifaGo exitosa";
 
                         <div class="raffle-image">
                             <img
-                                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=300&q=80"
+                                src="assets/img/cancun.webp"
                                 alt="Cancún"
                             >
                         </div>
