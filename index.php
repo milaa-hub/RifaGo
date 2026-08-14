@@ -141,7 +141,7 @@ echo "Conexion a RifaGo exitosa";
 
                         <div class="raffle-image">
                             <img
-                                src=""
+                                src="assets/img/iphone15promax.webp"
                                 alt="iPhone 15 Pro Max"
                             >
                         </div>
@@ -213,7 +213,7 @@ echo "Conexion a RifaGo exitosa";
 
                         <div class="raffle-image">
                             <img
-                                src="assets/img/cancun.webp"
+                                src="assets/img/cancun.jpg"
                                 alt="Cancún"
                             >
                         </div>
