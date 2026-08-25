@@ -2,8 +2,9 @@
 
 require_once "conexion.php";
 
-echo "Conexion a RifaGo exitosa";
+session_start();
 
+$usuario_logueado = isset($_SESSION['id_usuario']);
 ?>
 
 
@@ -33,7 +34,11 @@ echo "Conexion a RifaGo exitosa";
             </div>
 
             <div class="user-icon">
-                <span>SM</span>
+                <?php if ($usuario_logueado): ?>
+                    <span>SM</span>
+                <?php else: ?>
+                    <span>?</span>
+                <?php endif; ?>
             </div>
 
         </header>
@@ -263,7 +268,7 @@ echo "Conexion a RifaGo exitosa";
             </a>
 
 
-            <a href="mis-rifas.php" class="nav-item">
+            <a href="mis_rifas.php" class="nav-item">
 
                 <span class="nav-icon">▤</span>
 
@@ -300,6 +305,6 @@ echo "Conexion a RifaGo exitosa";
 
     </div>
 
-    <script src="assets/js/crear_rifa.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

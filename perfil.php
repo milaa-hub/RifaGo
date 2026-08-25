@@ -1,6 +1,9 @@
 <?php
 
 require_once "conexion.php";
+session_start();
+
+$usuario_logueado = isset($_SESSION['id_usuario']);
 
 ?>
 
@@ -39,7 +42,11 @@ require_once "conexion.php";
         </div>
 
         <div class="user-icon">
-            <span>SM</span>
+            <?php if ($usuario_logueado): ?>
+                <span>SM</span>
+            <?php else: ?>
+                <span>?</span>
+            <?php endif; ?>
         </div>
 
     </header>
@@ -47,133 +54,184 @@ require_once "conexion.php";
 
     <main class="main-content">
 
+        <?php if ($usuario_logueado): ?>
 
-        <!-- PERFIL -->
+            <!-- PERFIL CON SESIÓN -->
 
-        <section class="profile-header">
+            <section class="profile-header">
 
-            <div class="profile-avatar">
-                SM
-            </div>
+                <div class="profile-avatar">
+                    SM
+                </div>
+
+                <div class="profile-name">
+
+                    <h1>Sofía Martínez</h1>
+
+                    <button class="edit-profile">
+                        Ver perfil
+                    </button>
+
+                </div>
+
+            </section>
 
 
-            <div class="profile-name">
+            <!-- OPCIONES -->
 
-                <h1>Sofía Martínez</h1>
+            <section class="profile-menu">
 
-                <button class="edit-profile">
-                    Ver perfil
+                <button class="profile-option">
+
+                    <span class="option-icon">
+                        ♙
+                    </span>
+
+                    <span class="option-text">
+                        Mis datos
+                    </span>
+
+                    <span class="option-arrow">
+                        ›
+                    </span>
+
                 </button>
 
-            </div>
 
-        </section>
+                <button class="profile-option">
+
+                    <span class="option-icon">
+                        ▣
+                    </span>
+
+                    <span class="option-text">
+                        Métodos de pago
+                    </span>
+
+                    <span class="option-arrow">
+                        ›
+                    </span>
+
+                </button>
 
 
-        <!-- OPCIONES -->
+                <button class="profile-option">
 
-        <section class="profile-menu">
+                    <span class="option-icon">
+                        ◷
+                    </span>
+
+                    <span class="option-text">
+                        Historial de transacciones
+                    </span>
+
+                    <span class="option-arrow">
+                        ›
+                    </span>
+
+                </button>
 
 
-            <button class="profile-option">
+                <button class="profile-option">
 
-                <span class="option-icon">
-                    ♙
+                    <span class="option-icon">
+                        ◉
+                    </span>
+
+                    <span class="option-text">
+                        Seguridad
+                    </span>
+
+                    <span class="option-arrow">
+                        ›
+                    </span>
+
+                </button>
+
+
+                <button class="profile-option">
+
+                    <span class="option-icon">
+                        ⚙
+                    </span>
+
+                    <span class="option-text">
+                        Configuración
+                    </span>
+
+                    <span class="option-arrow">
+                        ›
+                    </span>
+
+                </button>
+
+            </section>
+
+
+            <!-- CERRAR SESIÓN -->
+
+            <a href="logout.php" class="logout-button">
+
+                <span>
+                    ⎋
                 </span>
 
-                <span class="option-text">
-                    Mis datos
-                </span>
+                Cerrar sesión
 
-                <span class="option-arrow">
-                    ›
-                </span>
-
-            </button>
+            </a>
 
 
-            <button class="profile-option">
+        <?php else: ?>
 
-                <span class="option-icon">
-                    ▣
-                </span>
+            <!-- PERFIL SIN SESIÓN -->
 
-                <span class="option-text">
-                    Métodos de pago
-                </span>
+            <section class="profile-header">
 
-                <span class="option-arrow">
-                    ›
-                </span>
+                <div class="profile-avatar">
+                    ?
+                </div>
 
-            </button>
+                <div class="profile-name">
 
+                    <h1>Mi perfil</h1>
 
-            <button class="profile-option">
+                    <p>
+                        Iniciá sesión para acceder a tu perfil.
+                    </p>
 
-                <span class="option-icon">
-                    ◷
-                </span>
+                </div>
 
-                <span class="option-text">
-                    Historial de transacciones
-                </span>
-
-                <span class="option-arrow">
-                    ›
-                </span>
-
-            </button>
+            </section>
 
 
-            <button class="profile-option">
+            <section class="profile-menu">
 
-                <span class="option-icon">
-                    ◉
-                </span>
+                <div class="profile-option">
 
-                <span class="option-text">
-                    Seguridad
-                </span>
+                    <span class="option-icon">
+                        ♙
+                    </span>
 
-                <span class="option-arrow">
-                    ›
-                </span>
+                    <span class="option-text">
+                        Registrate para acceder a tu perfil
+                    </span>
 
-            </button>
+                </div>
 
-
-            <button class="profile-option">
-
-                <span class="option-icon">
-                    ⚙
-                </span>
-
-                <span class="option-text">
-                    Configuración
-                </span>
-
-                <span class="option-arrow">
-                    ›
-                </span>
-
-            </button>
+            </section>
 
 
-        </section>
+            <a href="registro.php" class="edit-profile">
+                Crear una cuenta
+            </a>
 
+            <br><br>
 
-        <!-- CERRAR SESIÓN -->
+            <a href="login.php" class="edit-profile">
+                Iniciar sesión
+            </a>
 
-        <button class="logout-button">
-
-            <span>
-                ⎋
-            </span>
-
-            Cerrar sesión
-
-        </button>
+        <?php endif; ?>
 
 
     </main>

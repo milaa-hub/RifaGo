@@ -2,6 +2,10 @@
 
 require_once "conexion.php";
 
+session_start();
+
+$usuario_logueado = isset($_SESSION['id_usuario']);
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +43,17 @@ require_once "conexion.php";
         </div>
 
         <div class="user-icon">
-            <span>SM</span>
+
+            <?php if ($usuario_logueado): ?>
+
+                <span>SM</span>
+
+            <?php else: ?>
+
+                <span>?</span>
+
+            <?php endif; ?>
+
         </div>
 
     </header>
@@ -49,275 +63,315 @@ require_once "conexion.php";
 
     <main class="main-content">
 
-        <div class="page-title">
+        <?php if ($usuario_logueado): ?>
 
-            <h1>Mis rifas</h1>
+            <!-- ========================= -->
+            <!-- USUARIO LOGUEADO -->
+            <!-- ========================= -->
 
-            <p>
-                Administrá las rifas que creaste.
-            </p>
+            <div class="page-title">
 
-        </div>
-
-
-        <!-- PESTAÑAS -->
-
-        <div class="tabs">
-
-            <button class="tab active" data-tab="activas">
-                Activas
-            </button>
-
-            <button class="tab" data-tab="finalizadas">
-                Finalizadas
-            </button>
-
-            <button class="tab" data-tab="borradores">
-                Borradores
-            </button>
-
-        </div>
-
-
-        <!-- RIFAS ACTIVAS -->
-
-        <section class="raffle-list tab-content active" id="activas">
-
-
-            <article class="my-raffle-card">
-
-                <div class="my-raffle-image">
-
-                    <img
-                        src="assets/img/macbook.webp"
-                        alt="MacBook Air M2"
-                    >
-
-                </div>
-
-
-                <div class="my-raffle-info">
-
-                    <div>
-
-                        <h2>MacBook Air M2</h2>
-
-                        <p class="raffle-price">
-                            $1.500 por número
-                        </p>
-
-                    </div>
-
-
-                    <div class="raffle-details">
-
-                        <p>
-                            <strong>Sorteo:</strong>
-                            16/09/2026
-                        </p>
-
-                        <p>
-                            <strong>Números:</strong>
-                            500 / 1000
-                        </p>
-
-                    </div>
-
-
-                    <div class="my-progress">
-
-                        <div class="my-progress-bar">
-                            <span style="width: 50%;"></span>
-                        </div>
-
-                        <small>
-                            50% vendido
-                        </small>
-
-                    </div>
-
-
-                    <button class="secondary-button">
-                        Ver rifa
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="my-raffle-card">
-
-                <div class="my-raffle-image">
-
-                    <img
-                        src="assets/img/bicicleta.webp"
-                        alt="Bicicleta Mountain Bike"
-                    >
-
-                </div>
-
-
-                <div class="my-raffle-info">
-
-                    <div>
-
-                        <h2>Bicicleta Mountain Bike</h2>
-
-                        <p class="raffle-price">
-                            $1.500 por número
-                        </p>
-
-                    </div>
-
-
-                    <div class="raffle-details">
-
-                        <p>
-                            <strong>Sorteo:</strong>
-                            05/10/2026
-                        </p>
-
-                        <p>
-                            <strong>Números:</strong>
-                            300 / 800
-                        </p>
-
-                    </div>
-
-
-                    <div class="my-progress">
-
-                        <div class="my-progress-bar">
-                            <span style="width: 37.5%;"></span>
-                        </div>
-
-                        <small>
-                            37,5% vendido
-                        </small>
-
-                    </div>
-
-
-                    <button class="secondary-button">
-                        Ver rifa
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <article class="my-raffle-card">
-
-                <div class="my-raffle-image">
-
-                    <img
-                        src="assets/img/smarttv.webp"
-                        alt="Smart TV 50 pulgadas"
-                    >
-
-                </div>
-
-
-                <div class="my-raffle-info">
-
-                    <div>
-
-                        <h2>Smart TV 50"</h2>
-
-                        <p class="raffle-price">
-                            $1.000 por número
-                        </p>
-
-                    </div>
-
-
-                    <div class="raffle-details">
-
-                        <p>
-                            <strong>Sorteo:</strong>
-                            20/10/2026
-                        </p>
-
-                        <p>
-                            <strong>Números:</strong>
-                            600 / 1000
-                        </p>
-
-                    </div>
-
-
-                    <div class="my-progress">
-
-                        <div class="my-progress-bar">
-                            <span style="width: 60%;"></span>
-                        </div>
-
-                        <small>
-                            60% vendido
-                        </small>
-
-                    </div>
-
-
-                    <button class="secondary-button">
-                        Ver rifa
-                    </button>
-
-                </div>
-
-            </article>
-
-        </section>
-
-
-        <!-- FINALIZADAS -->
-
-        <section class="raffle-list tab-content" id="finalizadas">
-
-            <div class="empty-state">
-
-                <div class="empty-icon">
-                    ✓
-                </div>
-
-                <h2>No hay rifas finalizadas</h2>
+                <h1>Mis rifas</h1>
 
                 <p>
-                    Cuando una de tus rifas termine,
-                    aparecerá acá.
+                    Administrá las rifas que creaste.
                 </p>
 
             </div>
 
-        </section>
+
+            <!-- PESTAÑAS -->
+
+            <div class="tabs">
+
+                <button class="tab active" data-tab="activas">
+                    Activas
+                </button>
+
+                <button class="tab" data-tab="finalizadas">
+                    Finalizadas
+                </button>
+
+                <button class="tab" data-tab="borradores">
+                    Borradores
+                </button>
+
+            </div>
 
 
-        <!-- BORRADORES -->
+            <!-- RIFAS ACTIVAS -->
 
-        <section class="raffle-list tab-content" id="borradores">
+            <section class="raffle-list tab-content active" id="activas">
 
-            <div class="empty-state">
+
+                <article class="my-raffle-card">
+
+                    <div class="my-raffle-image">
+
+                        <img
+                            src="assets/img/macbook.webp"
+                            alt="MacBook Air M2"
+                        >
+
+                    </div>
+
+
+                    <div class="my-raffle-info">
+
+                        <div>
+
+                            <h2>MacBook Air M2</h2>
+
+                            <p class="raffle-price">
+                                $1.500 por número
+                            </p>
+
+                        </div>
+
+
+                        <div class="raffle-details">
+
+                            <p>
+                                <strong>Sorteo:</strong>
+                                16/09/2026
+                            </p>
+
+                            <p>
+                                <strong>Números:</strong>
+                                500 / 1000
+                            </p>
+
+                        </div>
+
+
+                        <div class="my-progress">
+
+                            <div class="my-progress-bar">
+                                <span style="width: 50%;"></span>
+                            </div>
+
+                            <small>
+                                50% vendido
+                            </small>
+
+                        </div>
+
+
+                        <button class="secondary-button">
+                            Ver rifa
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="my-raffle-card">
+
+                    <div class="my-raffle-image">
+
+                        <img
+                            src="assets/img/bicicleta.webp"
+                            alt="Bicicleta Mountain Bike"
+                        >
+
+                    </div>
+
+
+                    <div class="my-raffle-info">
+
+                        <div>
+
+                            <h2>Bicicleta Mountain Bike</h2>
+
+                            <p class="raffle-price">
+                                $1.500 por número
+                            </p>
+
+                        </div>
+
+
+                        <div class="raffle-details">
+
+                            <p>
+                                <strong>Sorteo:</strong>
+                                05/10/2026
+                            </p>
+
+                            <p>
+                                <strong>Números:</strong>
+                                300 / 800
+                            </p>
+
+                        </div>
+
+
+                        <div class="my-progress">
+
+                            <div class="my-progress-bar">
+                                <span style="width: 37.5%;"></span>
+                            </div>
+
+                            <small>
+                                37,5% vendido
+                            </small>
+
+                        </div>
+
+
+                        <button class="secondary-button">
+                            Ver rifa
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="my-raffle-card">
+
+                    <div class="my-raffle-image">
+
+                        <img
+                            src="assets/img/smarttv.webp"
+                            alt="Smart TV 50 pulgadas"
+                        >
+
+                    </div>
+
+
+                    <div class="my-raffle-info">
+
+                        <div>
+
+                            <h2>Smart TV 50"</h2>
+
+                            <p class="raffle-price">
+                                $1.000 por número
+                            </p>
+
+                        </div>
+
+
+                        <div class="raffle-details">
+
+                            <p>
+                                <strong>Sorteo:</strong>
+                                20/10/2026
+                            </p>
+
+                            <p>
+                                <strong>Números:</strong>
+                                600 / 1000
+                            </p>
+
+                        </div>
+
+
+                        <div class="my-progress">
+
+                            <div class="my-progress-bar">
+                                <span style="width: 60%;"></span>
+                            </div>
+
+                            <small>
+                                60% vendido
+                            </small>
+
+                        </div>
+
+
+                        <button class="secondary-button">
+                            Ver rifa
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- FINALIZADAS -->
+
+            <section class="raffle-list tab-content" id="finalizadas">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <h2>No hay rifas finalizadas</h2>
+
+                    <p>
+                        Cuando una de tus rifas termine,
+                        aparecerá acá.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- BORRADORES -->
+
+            <section class="raffle-list tab-content" id="borradores">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        +
+                    </div>
+
+                    <h2>No tenés borradores</h2>
+
+                    <p>
+                        Las rifas que guardes como borrador
+                        aparecerán acá.
+                    </p>
+
+                    <a href="crear_rifa.php" class="primary-button">
+                        Crear una rifa
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        <?php else: ?>
+
+            <!-- ========================= -->
+            <!-- USUARIO SIN CUENTA -->
+            <!-- ========================= -->
+
+            <section class="empty-state">
 
                 <div class="empty-icon">
                     +
                 </div>
 
-                <h2>No tenés borradores</h2>
+                <h2>Creá tu cuenta para crear rifas</h2>
 
                 <p>
-                    Las rifas que guardes como borrador
-                    aparecerán acá.
+                    Registrate en RifaGo para crear,
+                    administrar y seguir tus propias rifas.
                 </p>
 
-                <a href="crear_rifa.php" class="primary-button">
-                    Crear una rifa
+                <a href="registro.php" class="primary-button">
+                    Crear una cuenta
                 </a>
 
-            </div>
+                <br><br>
 
-        </section>
+                <a href="login.php" class="secondary-button">
+                    Ya tengo una cuenta
+                </a>
+
+            </section>
+
+        <?php endif; ?>
 
     </main>
 
@@ -374,5 +428,6 @@ require_once "conexion.php";
 </div>
 
 <script src="assets/js/mis_rifas.js"></script>
+
 </body>
 </html>
