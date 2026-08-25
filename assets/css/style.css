@@ -2663,6 +2663,14 @@ h3 {
 /* REGISTRO */
 
 .register-container {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
     margin-top: 25px;
 
     padding-top: 22px;

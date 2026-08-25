@@ -183,7 +183,7 @@
                 <a href="registro.php">
                     Crear cuenta
                 </a>
-
+                
                 <a href="index.php" class="btn-secundario">Continuar sin iniciar sesión</a>
             </div>
 

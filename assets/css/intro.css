@@ -1,0 +1,230 @@
+/* =========================
+   RIFAGO - PANTALLA INICIAL
+========================= */
+
+:root {
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
+
+    --color-acento: #18b8a6;
+
+    --color-blanco: #ffffff;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+
+/* =========================
+   PANTALLA DE INICIO
+========================= */
+
+.intro {
+
+    width: 100%;
+    height: 100vh;
+
+    background-color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 1;
+
+    transition: opacity 0.5s ease;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-container {
+
+    display: flex;
+    align-items: center;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    animation: aparecerLogo 0.7s ease forwards;
+}
+
+
+.logo-container h1 {
+
+    color: var(--color-blanco);
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+}
+
+
+/* Pequeño detalle de color */
+
+.logo-container h1 span {
+    color: var(--color-primario);
+}
+
+
+/* =========================
+   ANIMACIÓN DEL LOGO
+========================= */
+
+@keyframes aparecerLogo {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   SALIDA
+========================= */
+
+.intro.salida {
+    opacity: 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .logo-container h1 {
+        font-size: 36px;
+    }
+}
+
+
+/* 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+
+
+
+.intro {
+
+    width: 100%;
+    height: 100vh;
+
+    background: #4d7cff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 1;
+
+    transition: opacity 0.5s ease;
+}
+
+
+
+
+.logo-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: white;
+
+    opacity: 0;
+
+    transform: scale(0.92);
+
+    animation: aparecerLogo 0.7s ease forwards;
+}
+
+
+
+.logo-container h1 {
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+
+
+@keyframes aparecerLogo {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.92);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+
+.intro.salida {
+
+    opacity: 0;
+
+}*/
