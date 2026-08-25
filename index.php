@@ -133,9 +133,9 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                 <div class="section-header">
                     <h2>Rifas destacadas</h2>
 
-                    <button class="see-more" id="btnVerTodas">
+                    <a href="rifas.php" class="see-more" id="btnVerTodas">
                         Ver todas
-                    </button>
+                    </a>
                 </div>
 
 

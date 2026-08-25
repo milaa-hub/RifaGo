@@ -1,0 +1,556 @@
+/* ==================================================
+   RIFAS
+================================================== */
+
+.raffles-header {
+
+    width: 100%;
+
+    min-height: 70px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
+}
+
+
+/* LOGO */
+
+.raffles-logo {
+
+    text-decoration: none;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+}
+
+
+.raffles-logo sup {
+
+    color: #FF6666;
+
+    font-size: 11px;
+
+    position: relative;
+
+    top: -12px;
+
+    margin-left: 2px;
+}
+
+
+/* NAV */
+
+.raffles-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.raffles-nav a {
+
+    color: #6B7280;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.raffles-nav a:hover {
+
+    color: #1F3A8A;
+}
+
+
+.raffles-nav a.active {
+
+    color: #1F3A8A;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PÁGINA
+========================================== */
+
+.raffles-page {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 55px 30px 80px;
+}
+
+
+/* TITULO */
+
+.raffles-title {
+
+    margin-bottom: 40px;
+}
+
+
+.raffles-title > span {
+
+    color: #FF6666;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.raffles-title h1 {
+
+    margin: 5px 0 8px;
+
+    color: #111827;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+.raffles-title p {
+
+    color: #6B7280;
+
+    font-size: 13px;
+
+    max-width: 550px;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.raffles-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* ==========================================
+   TARJETA
+========================================== */
+
+.raffle-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.raffle-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ==========================================
+   IMAGEN
+========================================== */
+
+.raffle-image {
+
+    width: 100%;
+
+    height: 210px;
+
+    background: #f1f4f9;
+
+    overflow: hidden;
+}
+
+
+.raffle-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.raffle-no-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   CONTENIDO
+========================================== */
+
+.raffle-content {
+
+    padding: 21px;
+}
+
+
+.raffle-status {
+
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    background: #eaf8f1;
+
+    color: #25875b;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.raffle-content h2 {
+
+    color: #111827;
+
+    font-size: 18px;
+
+    margin: 12px 0 5px;
+}
+
+
+.raffle-content > p {
+
+    color: #6B7280;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    margin-bottom: 17px;
+}
+
+
+/* ==========================================
+   PREMIO
+========================================== */
+
+.raffle-prize {
+
+    padding: 12px;
+
+    background: #fff5f5;
+
+    border-radius: 11px;
+
+    margin-bottom: 15px;
+}
+
+
+.raffle-prize span {
+
+    display: block;
+
+    color: #FF6666;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 2px;
+}
+
+
+.raffle-prize strong {
+
+    color: #111827;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   DATOS
+========================================== */
+
+.raffle-info {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-bottom: 17px;
+}
+
+
+.raffle-info div {
+
+    padding: 10px;
+
+    border: 1px solid #edf0f4;
+
+    border-radius: 10px;
+}
+
+
+.raffle-info span {
+
+    display: block;
+
+    color: #9ca3af;
+
+    font-size: 9px;
+
+    margin-bottom: 2px;
+}
+
+
+.raffle-info strong {
+
+    color: #1F3A8A;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   BOTÓN
+========================================== */
+
+.raffle-button {
+
+    width: 100%;
+
+    min-height: 44px;
+
+    background: #FF6666;
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.raffle-button:hover {
+
+    background: #f85555;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(255, 102, 102, 0.20);
+}
+
+
+/* ==========================================
+   SIN RIFAS
+========================================== */
+
+.no-raffles {
+
+    grid-column: 1 / -1;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    padding: 70px 30px;
+
+    text-align: center;
+}
+
+
+.no-raffles-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background: #fff1f1;
+
+    color: #FF6666;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+
+.no-raffles h2 {
+
+    color: #111827;
+
+    font-size: 20px;
+
+    margin-bottom: 6px;
+}
+
+
+.no-raffles p {
+
+    color: #6B7280;
+
+    font-size: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.no-raffles .raffle-button {
+
+    max-width: 200px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .raffles-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .raffles-header {
+
+        padding: 0 20px;
+    }
+
+
+    .raffles-nav {
+
+        gap: 12px;
+    }
+
+
+    .raffles-nav a:not(.active) {
+
+        display: none;
+    }
+
+
+    .raffles-page {
+
+        padding: 40px 18px 60px;
+    }
+
+
+    .raffles-title h1 {
+
+        font-size: 27px;
+    }
+
+
+    .raffles-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .raffle-image {
+
+        height: 200px;
+    }
+}
