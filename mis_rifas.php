@@ -14,7 +14,7 @@ require_once "conexion.php";
 
     <title>Mis rifas - RifaGo</title>
 
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -373,37 +373,6 @@ require_once "conexion.php";
 
 </div>
 
-
-<script>
-
-const tabs = document.querySelectorAll(".tab");
-const contents = document.querySelectorAll(".tab-content");
-
-tabs.forEach(function(tab) {
-
-    tab.addEventListener("click", function() {
-
-        const tabSeleccionada = tab.dataset.tab;
-
-        tabs.forEach(function(item) {
-            item.classList.remove("active");
-        });
-
-        contents.forEach(function(content) {
-            content.classList.remove("active");
-        });
-
-        tab.classList.add("active");
-
-        document
-            .getElementById(tabSeleccionada)
-            .classList.add("active");
-
-    });
-
-});
-
-</script>
-
+<script src="assets/js/mis_rifas.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ echo "Conexion a RifaGo exitosa";
 
     <title>RifaGo</title>
 
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -300,6 +300,6 @@ echo "Conexion a RifaGo exitosa";
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="assets/js/crear_rifa.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ require_once "conexion.php";
 
     <title>Perfil - RifaGo</title>
 
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

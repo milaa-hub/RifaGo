@@ -1780,10 +1780,597 @@ h3 {
 }
 
 
+
+/* =====================================================
+   CREAR RIFA
+===================================================== */
+
+.crear-rifa-app {
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+.crear-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-button {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #111827;
+
+    text-decoration: none;
+
+    font-size: 30px;
+    line-height: 1;
+
+    transition: 0.2s;
+}
+
+.back-button:hover {
+    background: #e2e8f0;
+}
+
+.header-space {
+    width: 42px;
+}
+
+.crear-title {
+    margin-bottom: 24px;
+}
+
+.crear-title h1 {
+    margin-bottom: 6px;
+}
+
+
+/* =====================================================
+   PASOS
+===================================================== */
+
+.steps {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 75px;
+
+    color: #94a3b8;
+}
+
+.step span {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e2e8f0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.step small {
+    font-size: 11px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.step.active {
+    color: #123f8a;
+}
+
+.step.active span {
+    background: #ff5b5b;
+    color: white;
+}
+
+.step-line {
+    width: 70px;
+    height: 2px;
+
+    margin: 0 5px 20px;
+
+    background: #e2e8f0;
+}
+
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+.form-message {
+    max-width: 650px;
+
+    margin: 0 auto 20px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-message {
+    background: #fff1f2;
+    color: #be123c;
+    border: 1px solid #fecdd3;
+}
+
+.success-message {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+
+/* =====================================================
+   FORMULARIO
+===================================================== */
+
+.crear-rifa-form {
+    width: 100%;
+}
+
+.crear-step {
+    display: none;
+
+    width: 100%;
+}
+
+.crear-step.active {
+    display: block;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+}
+
+.form-card-title {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 28px;
+}
+
+.title-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ff5b5b;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.form-card-title h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 20px;
+}
+
+.form-card-title p {
+    margin: 3px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.form-group {
+    margin-bottom: 21px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #111827;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group label span {
+    color: #ff5b5b;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #123f8a;
+
+    box-shadow: 0 0 0 3px rgba(18, 63, 138, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 105px;
+}
+
+
+/* =====================================================
+   SUBIR IMAGEN
+===================================================== */
+
+.image-upload input {
+    display: none;
+}
+
+.upload-box {
+    min-height: 130px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    border: 2px dashed #d9dee7;
+
+    border-radius: 14px;
+
+    background: #fafbfc;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.upload-box:hover {
+    border-color: #ff5b5b;
+
+    background: #fff7f7;
+}
+
+.upload-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border-radius: 50%;
+
+    background: #eef3fb;
+
+    color: #123f8a;
+
+    font-size: 24px;
+}
+
+.upload-box strong {
+    color: #111827;
+
+    font-size: 13px;
+}
+
+.upload-box small {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   PRECIO
+===================================================== */
+
+.input-prefix {
+    position: relative;
+}
+
+.input-prefix > span {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    z-index: 1;
+}
+
+.input-prefix input {
+    padding-left: 31px;
+}
+
+
+/* =====================================================
+   RESUMEN
+===================================================== */
+
+.config-summary {
+    margin-top: 26px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+}
+
+.config-summary > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 9px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.config-summary > div:last-child {
+    border-bottom: none;
+}
+
+.config-summary span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.config-summary strong {
+    color: #111827;
+
+    font-size: 13px;
+}
+
+.config-summary .summary-total {
+    margin-top: 5px;
+    padding-top: 14px;
+}
+
+.config-summary .summary-total span {
+    color: #111827;
+
+    font-weight: 600;
+}
+
+.config-summary .summary-total strong {
+    color: #ff5b5b;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.next-button {
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+.form-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.secondary-button {
+    min-height: 46px;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #123f8a;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.secondary-button:hover {
+    background: #f8fafc;
+}
+
+.primary-button {
+    min-height: 46px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff5b5b;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.primary-button:hover {
+    background: #f34d4d;
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .crear-main {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .form-card {
+        padding: 21px 17px;
+
+        border-radius: 16px;
+    }
+
+    .form-card-title {
+        margin-bottom: 22px;
+    }
+
+    .form-card-title h2 {
+        font-size: 18px;
+    }
+
+    .steps {
+        margin-bottom: 24px;
+    }
+
+    .step {
+        min-width: 60px;
+    }
+
+    .step small {
+        font-size: 9px;
+    }
+
+    .step-line {
+        width: 35px;
+    }
+
+    .form-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .secondary-button {
+        order: 2;
+    }
+
+    .primary-button {
+        order: 1;
+    }
+
+}
+
+
+
+
 /* =========================================
    RESPONSIVE PARA COMPUTADORA
    ========================================= */
-
+/*
 @media (min-width: 768px) {
 
     body {
@@ -1805,7 +2392,7 @@ h3 {
     }
 
 
-    /* HEADER */
+
 
     .header {
 
@@ -1828,7 +2415,7 @@ h3 {
     }
 
 
-    /* CONTENIDO */
+  
 
     .main-content {
 
@@ -1839,7 +2426,7 @@ h3 {
     }
 
 
-    /* BUSCADOR */
+   
 
     .search-container {
 
@@ -1866,7 +2453,7 @@ h3 {
     }
 
 
-    /* BANNER */
+   
 
     .hero-banner {
 
@@ -1923,7 +2510,6 @@ h3 {
     }
 
 
-    /* SECCIONES */
 
     .section {
         margin-bottom: 35px;
@@ -1940,7 +2526,7 @@ h3 {
     }
 
 
-    /* CATEGORÍAS */
+   
 
     .categories {
 
@@ -1974,7 +2560,7 @@ h3 {
     }
 
 
-    /* RIFAS */
+    
 
     .raffles {
 
@@ -2020,7 +2606,7 @@ h3 {
     }
 
 
-    /* NAVEGACIÓN */
+    
 
     .bottom-nav {
 
@@ -2088,7 +2674,7 @@ h3 {
     }
 
 
-    /* PÁGINAS INTERNAS */
+   
 
     .page-title h1 {
         font-size: 32px;
@@ -2116,13 +2702,13 @@ h3 {
         max-width: 700px;
     }
 
-}
+}*/
 
 
 /* =========================================
    TABLET
    ========================================= */
-
+/*
 @media (min-width: 768px) and (max-width: 1100px) {
 
     .main-content {
@@ -2180,13 +2766,13 @@ h3 {
     }
 
 }
-
+*/
 
 /* =========================================
    COMPUTADORA GRANDE
    ========================================= */
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
 
     .main-content {
 
@@ -2217,7 +2803,7 @@ h3 {
 
 
     /* CARDS DE MIS RIFAS */
-
+/*
     .my-raffle-card,
     .participation-card {
 
@@ -2247,7 +2833,7 @@ h3 {
     }
 
 }
-
+*/
 
 
 

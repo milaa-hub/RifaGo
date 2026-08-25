@@ -1,7 +1,5 @@
 <?php
-
 require_once "conexion.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +12,7 @@ require_once "conexion.php";
 
     <title>Mis participaciones - RifaGo</title>
 
-    <link rel="stylesheet" href="assets/tyle.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,37 +343,7 @@ require_once "conexion.php";
 
 </div>
 
-
-<script>
-
-const tabs = document.querySelectorAll(".participation-tab");
-const contents = document.querySelectorAll(".participation-content");
-
-tabs.forEach(function(tab) {
-
-    tab.addEventListener("click", function() {
-
-        const tabSeleccionada = tab.dataset.tab;
-
-        tabs.forEach(function(item) {
-            item.classList.remove("active");
-        });
-
-        contents.forEach(function(content) {
-            content.classList.remove("active");
-        });
-
-        tab.classList.add("active");
-
-        document
-            .getElementById(tabSeleccionada)
-            .classList.add("active");
-
-    });
-
-});
-
-</script>
+<script src="assets/js/participaciones.js"></script>
 
 </body>
 </html>
