@@ -15,7 +15,7 @@ echo "Conexion a RifaGo exitosa";
 
     <title>RifaGo</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,13 +46,14 @@ echo "Conexion a RifaGo exitosa";
                 <div class="search-box">
                     <span class="search-icon">⌕</span>
                     <input
-                        type="text"
-                        placeholder="Buscar rifas..."
-                        aria-label="Buscar rifas"
+                    type="text"
+                    id="buscador"
+                    placeholder="Buscar rifas..."
+                    aria-label="Buscar rifas"
                     >
                 </div>
 
-                <button class="filter-button">
+                <button class="filter-button" id="btnFiltro">
                     ☷
                 </button>
 
@@ -69,7 +70,7 @@ echo "Conexion a RifaGo exitosa";
                         premios increíbles!
                     </h1>
 
-                    <button class="hero-button">
+                    <button class="hero-button" id="btnVerRifas">
                         Ver rifas
                     </button>
 
@@ -92,27 +93,27 @@ echo "Conexion a RifaGo exitosa";
 
                 <div class="categories">
 
-                    <button class="category">
+                    <button class="category activa" data-categoria="todas">
                         <div class="category-icon">◉</div>
                         <span>Todas</span>
                     </button>
 
-                    <button class="category">
+                    <button class="category" data-categoria="tecnologia">
                         <div class="category-icon">▣</div>
                         <span>Tecnología</span>
                     </button>
 
-                    <button class="category">
+                    <button class="category" data-categoria="hogar">
                         <div class="category-icon">⌂</div>
                         <span>Hogar</span>
                     </button>
 
-                    <button class="category">
+                    <button class="category" data-categoria="viajes">
                         <div class="category-icon">✈</div>
                         <span>Viajes</span>
                     </button>
 
-                    <button class="category">
+                    <button class="category" data-categoria="mas">
                         <div class="category-icon">•••</div>
                         <span>Más</span>
                     </button>
@@ -127,7 +128,7 @@ echo "Conexion a RifaGo exitosa";
                 <div class="section-header">
                     <h2>Rifas destacadas</h2>
 
-                    <button class="see-more">
+                    <button class="see-more" id="btnVerTodas">
                         Ver todas
                     </button>
                 </div>
@@ -137,7 +138,7 @@ echo "Conexion a RifaGo exitosa";
 
 
 
-                    <article class="raffle-card">
+                    <article class="raffle-card" data-categoria="tecnologia">
 
                         <div class="raffle-image">
                             <img
@@ -173,7 +174,7 @@ echo "Conexion a RifaGo exitosa";
                     </article>
 
 
-                    <article class="raffle-card">
+                    <article class="raffle-card" data-categoria="tecnologia">
 
                         <div class="raffle-image">
                             <img
@@ -209,7 +210,7 @@ echo "Conexion a RifaGo exitosa";
                     </article>
 
 
-                    <article class="raffle-card">
+                    <article class="raffle-card" data-categoria="viajes">
 
                         <div class="raffle-image">
                             <img
@@ -253,7 +254,7 @@ echo "Conexion a RifaGo exitosa";
 
         <nav class="bottom-nav">
 
-            <a href="#" class="nav-item active">
+            <a href="index.php" class="nav-item active">
 
                 <span class="nav-icon">⌂</span>
 
@@ -262,7 +263,7 @@ echo "Conexion a RifaGo exitosa";
             </a>
 
 
-            <a href="#" class="nav-item">
+            <a href="mis-rifas.php" class="nav-item">
 
                 <span class="nav-icon">▤</span>
 
@@ -271,14 +272,14 @@ echo "Conexion a RifaGo exitosa";
             </a>
 
 
-            <button class="create-button">
+            <button class="create-button" id="btnCrearRifa">
 
                 <span>+</span>
 
             </button>
 
 
-            <a href="#" class="nav-item">
+            <a href="participaciones.php" class="nav-item">
 
                 <span class="nav-icon">♧</span>
 
@@ -287,7 +288,7 @@ echo "Conexion a RifaGo exitosa";
             </a>
 
 
-            <a href="#" class="nav-item">
+            <a href="perfil.php" class="nav-item">
 
                 <span class="nav-icon">♙</span>
 
@@ -299,5 +300,6 @@ echo "Conexion a RifaGo exitosa";
 
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
