@@ -374,12 +374,12 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
 
                 <?php if ($usuario_logueado): ?>
 
-                    <a
-                        href="participar.php?id=<?php echo $id_rifa; ?>"
-                        class="participate-button"
-                    >
-                        Elegir número
-                    </a>
+                <a 
+                    href="seleccion_numero.php?id_rifa=<?php echo $id_rifa; ?>" 
+                    class="participate-button"
+                >
+                    Elegir número
+                </a>
 
                 <?php else: ?>
 
