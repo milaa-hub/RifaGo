@@ -628,6 +628,111 @@ h3 {
     color: var(--color-primario);
 }
 
+/* =========================================
+   PANEL DE FILTROS
+========================================= */
+
+.filter-panel {
+    display: none;
+
+    margin-top: 10px;
+    margin-bottom: 18px;
+
+    padding: 10px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+
+    box-shadow:
+        0 6px 20px rgba(17, 24, 39, 0.08);
+
+    gap: 8px;
+}
+
+.filter-panel.visible {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* OPCIONES */
+
+.filter-option {
+    border: 1px solid var(--color-borde);
+
+    background-color: var(--color-blanco);
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: var(--color-texto-suave);
+
+    font-family: var(--fuente-principal);
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.filter-option:hover {
+    color: var(--color-secundario);
+}
+
+.filter-option.active {
+    background-color: var(--color-secundario);
+
+    border-color: var(--color-secundario);
+
+    color: var(--color-blanco);
+}
+
+
+/* =========================================
+   TARJETA CLICKEABLE
+========================================= */
+
+.raffle-card-link {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+/* Evita que el enlace cambie el aspecto
+   de los elementos internos */
+
+.raffle-card-link:hover {
+    color: inherit;
+}
+
+
+/* =========================================
+   IMAGEN SIN CONTENIDO
+========================================= */
+
+.raffle-image .empty-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f1f5f9;
+
+    color: var(--color-texto-suave);
+
+    font-size: 12px;
+}
 
 /* =========================================
    RIFAS
@@ -992,33 +1097,25 @@ h3 {
 }
 
 
+
 /* =========================================
-   TABS
-   ========================================= */
+   TABS - MIS RIFAS
+========================================= */
 
 .tabs {
-
     display: flex;
-
-    gap: 8px;
-
+    gap: 6px;
     margin-bottom: 25px;
-
-    background-color: #f1f5f9;
-
     padding: 5px;
 
+    background-color: #f1f5f9;
     border-radius: 12px;
 }
 
-
-.tab,
-.participation-tab {
-
+.tab {
     flex: 1;
 
     border: none;
-
     background: transparent;
 
     padding: 11px 10px;
@@ -1026,158 +1123,189 @@ h3 {
     border-radius: 9px;
 
     font-family: var(--fuente-principal);
-
     font-size: 13px;
-
     font-weight: 500;
 
     color: #64748b;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+.tab:hover {
+    color: var(--color-secundario);
+}
 
-.tab.active,
-.participation-tab.active {
-
+.tab.active {
     background-color: var(--color-blanco);
-
     color: var(--color-secundario);
 
     box-shadow:
-        0 2px 8px
-        rgba(17, 24, 39, 0.06);
+        0 2px 8px rgba(17, 24, 39, 0.06);
 }
 
 
 /* =========================================
-   CONTENIDO DE TABS
-   ========================================= */
+   CONTENIDO DE LAS TABS
+========================================= */
 
-.tab-content,
+/* =========================================
+   CONTENIDO DE TABS
+========================================= */
+
+.tab-content {
+    display: none !important;
+}
+
+.tab-content.active {
+    display: flex !important;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* Las pestañas de participaciones mantienen
+   su propio funcionamiento */
+
 .participation-content {
     display: none;
 }
 
-
-.tab-content.active,
 .participation-content.active {
     display: block;
 }
 
 
 /* =========================================
-   MIS RIFAS
-   ========================================= */
+   LISTA DE RIFAS
+========================================= */
 
 .raffle-list {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 18px;
 }
 
 
+/* =========================================
+   TARJETA DE MI RIFA
+========================================= */
+
 .my-raffle-card {
-
     display: flex;
-
     gap: 16px;
-
-    background-color: var(--color-blanco);
-
-    border-radius: 16px;
 
     padding: 14px;
 
-    box-shadow:
-        0 8px 24px
-        rgba(17, 24, 39, 0.08);
+    background-color: var(--color-blanco);
 
-    border:
-        1px solid var(--color-borde);
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 24px rgba(17, 24, 39, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.my-raffle-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 28px rgba(17, 24, 39, 0.10);
 }
 
 
+/* =========================================
+   IMAGEN
+========================================= */
+
 .my-raffle-image {
-
     width: 120px;
-
     min-width: 120px;
-
     height: 120px;
+
+    overflow: hidden;
 
     border-radius: 14px;
 
-    overflow: hidden;
+    background-color: #f1f5f9;
 }
 
-
 .my-raffle-image img {
-
     width: 100%;
-
     height: 100%;
+
+    display: block;
 
     object-fit: cover;
 }
 
-
-.my-raffle-info {
-
-    flex: 1;
+.empty-image {
+    width: 100%;
+    height: 100%;
 
     display: flex;
-
-    flex-direction: column;
-
-    min-width: 0;
-}
-
-
-.my-raffle-info h2 {
-
-    margin: 0 0 5px;
-
-    color: var(--color-texto);
-
-    font-size: 17px;
-
-    font-weight: 600;
-}
-
-
-.my-raffle-info .raffle-price {
-
-    margin: 0 0 12px;
-
-    color: var(--color-primario);
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-.raffle-details {
-
-    margin-bottom: 12px;
-}
-
-
-.raffle-details p {
-
-    margin: 3px 0;
+    align-items: center;
+    justify-content: center;
 
     color: var(--color-texto-suave);
 
     font-size: 12px;
 }
 
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.my-raffle-info {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.my-raffle-info h2 {
+    margin: 0 0 5px;
+
+    color: var(--color-texto);
+
+    font-size: 17px;
+    font-weight: 600;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.raffle-price {
+    margin: 0;
+
+    color: var(--color-primario);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.raffle-details {
+    margin-top: 10px;
+}
+
+.raffle-details p {
+    margin: 3px 0;
+
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+}
 
 .raffle-details strong {
     color: var(--color-texto);
@@ -1185,75 +1313,135 @@ h3 {
 
 
 /* =========================================
-   PROGRESO DE MIS RIFAS
-   ========================================= */
+   ESTADO
+========================================= */
 
-.my-progress {
+.my-raffle-status {
+    width: fit-content;
 
-    margin-bottom: 14px;
+    margin-top: auto;
+    margin-bottom: 8px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background-color: #eef2ff;
+    color: var(--color-secundario);
+
+    font-size: 10px;
+    font-weight: 600;
 }
 
 
-.my-progress-bar {
+/* =========================================
+   BOTÓN SECUNDARIO
+========================================= */
 
-    width: 100%;
+.my-raffle-info .secondary-button {
+    width: fit-content;
 
-    height: 7px;
+    padding: 8px 14px;
 
-    background-color: #e5e7eb;
-
-    border-radius: 999px;
-
-    overflow: hidden;
-}
-
-
-.my-progress-bar span {
-
-    display: block;
-
-    height: 100%;
-
-    background-color: var(--color-acento);
-
-    border-radius: 999px;
-}
-
-
-.my-progress small {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: var(--color-texto-suave);
+    border-radius: 8px;
 
     font-size: 11px;
 }
 
 
 /* =========================================
-   BOTÓN SECUNDARIO
-   ========================================= */
+   ESTADO VACÍO
+========================================= */
 
-.secondary-button {
+.empty-state {
+    padding: 45px 20px;
 
-    align-self: flex-start;
-
-    border:
-        1px solid var(--color-secundario);
+    text-align: center;
 
     background-color: var(--color-blanco);
 
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+}
+
+.empty-icon {
+    width: 50px;
+    height: 50px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #f1f5f9;
     color: var(--color-secundario);
 
-    padding: 8px 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.empty-state h2 {
+    margin: 0 0 7px;
+
+    color: var(--color-texto);
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.empty-state p {
+    max-width: 400px;
+
+    margin: 0 auto 18px;
+
+    color: var(--color-texto-suave);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   ACCIONES DE BORRADORES
+========================================= */
+
+.draft-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+
+.draft-actions form {
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+.delete-draft-button {
+
+    padding: 10px 16px;
+
+    border: 1px solid #fecdd3;
 
     border-radius: 10px;
 
+    background-color: #fff1f2;
+
+    color: #dc2626;
+
     font-family: var(--fuente-principal);
 
-    font-size: 12px;
+    font-size: 13px;
 
     font-weight: 500;
 
@@ -1263,17 +1451,170 @@ h3 {
 }
 
 
-.secondary-button:hover {
+.delete-draft-button:hover {
 
-    background-color: var(--color-secundario);
+    background-color: #ffe4e6;
+}
 
-    color: var(--color-blanco);
+
+.draft-status {
+
+    background-color: #fff7ed;
+
+    color: #c2410c;
+}
+
+/* =========================================
+   RESPONSIVE - CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .tabs {
+        margin-bottom: 18px;
+    }
+
+    .tab {
+        padding: 10px 6px;
+
+        font-size: 11px;
+    }
+
+    .my-raffle-card {
+        gap: 12px;
+        padding: 11px;
+    }
+
+    .my-raffle-image {
+        width: 95px;
+        min-width: 95px;
+        height: 95px;
+
+        border-radius: 11px;
+    }
+
+    .my-raffle-info h2 {
+        font-size: 14px;
+    }
+
+    .raffle-price {
+        font-size: 11px;
+    }
+
+    .raffle-details {
+        margin-top: 6px;
+    }
+
+    .raffle-details p {
+        font-size: 10px;
+    }
+
+    .my-raffle-status {
+        padding: 4px 8px;
+
+        font-size: 9px;
+    }
+
+    .my-raffle-info .secondary-button {
+        padding: 7px 11px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET / DESKTOP
+========================================= */
+
+@media (min-width: 768px) {
+
+    .my-raffle-card {
+        padding: 16px;
+    }
+
+    .my-raffle-image {
+        width: 140px;
+        min-width: 140px;
+        height: 140px;
+    }
+
+    .my-raffle-info h2 {
+        font-size: 18px;
+    }
+
+    .raffle-price {
+        font-size: 14px;
+    }
+
+    .raffle-details p {
+        font-size: 12px;
+    }
+
 }
 
 
 /* =========================================
    PARTICIPACIONES
    ========================================= */
+
+/* =========================================
+   TABS - PARTICIPACIONES
+========================================= */
+
+.participation-tab {
+    flex: 1;
+
+    border: none;
+    background: transparent;
+
+    padding: 11px 10px;
+
+    border-radius: 9px;
+
+    font-family: var(--fuente-principal);
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.participation-tab:hover {
+    color: var(--color-secundario);
+}
+
+.participation-tab.active {
+    background-color: var(--color-blanco);
+
+    color: var(--color-secundario);
+
+    box-shadow:
+        0 2px 8px rgba(17, 24, 39, 0.06);
+}
+
+
+/* =========================================
+   CONTENIDO DE PARTICIPACIONES
+========================================= */
+
+.participation-content {
+    display: none !important;
+}
+
+.participation-content.active {
+    display: flex !important;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
 
 .participation-list {
 
@@ -1552,10 +1893,29 @@ h3 {
         var(--color-primario-dark);
 }
 
-
 /* =========================================
    PERFIL
    ========================================= */
+/* =========================================
+   LOGO - SIN SUBRAYADO
+   ========================================= */
+
+.logo,
+.logo:hover,
+.logo:visited,
+.logo:active {
+    text-decoration: none;
+}
+
+.logo {
+    text-decoration: none !important;
+}
+
+.logo:hover,
+.logo:visited,
+.logo:active {
+    text-decoration: none !important;
+}
 
 .profile-header {
 
@@ -1617,7 +1977,11 @@ h3 {
 }
 
 
+/* BOTÓN / ENLACE VER PERFIL */
+
 .edit-profile {
+
+    display: inline-block;
 
     border: none;
 
@@ -1634,6 +1998,15 @@ h3 {
     font-weight: 500;
 
     cursor: pointer;
+
+    text-decoration: none;
+}
+
+
+.edit-profile:hover {
+    text-decoration: none;
+
+    color: var(--color-primario-dark);
 }
 
 
@@ -1662,9 +2035,15 @@ h3 {
 }
 
 
+/* =========================================
+   OPCIONES
+   ========================================= */
+
 .profile-option {
 
     width: 100%;
+
+    min-height: 70px;
 
     display: flex;
 
@@ -1674,6 +2053,8 @@ h3 {
 
     padding: 18px;
 
+    box-sizing: border-box;
+
     border: none;
 
     border-bottom:
@@ -1681,25 +2062,46 @@ h3 {
 
     background-color: var(--color-blanco);
 
+    color: inherit;
+
     font-family: var(--fuente-principal);
 
     cursor: pointer;
 
     text-align: left;
 
+    text-decoration: none;
+
     transition: 0.2s;
 }
 
+
+/* Evita el subrayado de los enlaces */
+
+.profile-option:visited,
+.profile-option:hover,
+.profile-option:active {
+    text-decoration: none;
+}
+
+
+/* Hover */
+
+.profile-option:hover {
+    background-color: #f8fafc;
+}
+
+
+/* Última opción */
 
 .profile-option:last-child {
     border-bottom: none;
 }
 
 
-.profile-option:hover {
-    background-color: #f8fafc;
-}
-
+/* =========================================
+   ICONOS
+   ========================================= */
 
 .option-icon {
 
@@ -1713,6 +2115,8 @@ h3 {
 
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 10px;
 
     background-color: #eff6ff;
@@ -1722,6 +2126,10 @@ h3 {
     font-size: 17px;
 }
 
+
+/* =========================================
+   TEXTO
+   ========================================= */
 
 .option-text {
 
@@ -1735,11 +2143,17 @@ h3 {
 }
 
 
+/* =========================================
+   FLECHA
+   ========================================= */
+
 .option-arrow {
 
     color: #94a3b8;
 
     font-size: 22px;
+
+    line-height: 1;
 }
 
 
@@ -1751,15 +2165,27 @@ h3 {
 
     width: 100%;
 
-    margin-top: 20px;
+    min-height: 70px;
 
-    padding: 14px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    box-sizing: border-box;
+
+    padding: 18px;
+
+    margin: 0;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 0;
 
-    background-color: #fff1f2;
+    border-top: 1px solid #f1f5f9;
+
+    background-color: var(--color-blanco);
 
     color: #dc2626;
 
@@ -1771,14 +2197,45 @@ h3 {
 
     cursor: pointer;
 
+    text-align: left;
+
+    text-decoration: none;
+
     transition: 0.2s;
 }
 
 
 .logout-button:hover {
-    background-color: #ffe4e6;
+
+    background-color: #fff1f2;
+
 }
 
+
+/* Icono de cerrar sesión */
+
+.logout-button span {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background-color: #fff1f2;
+
+    color: #dc2626;
+
+    font-size: 17px;
+}
 
 
 /* =====================================================
@@ -3293,8 +3750,1001 @@ h3 {
 
 
 
+```css
+/* =========================================
+   MIS DATOS
+   ========================================= */
+
+.back-link {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--color-secundario);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+}
 
 
+.back-link:hover {
+
+    text-decoration: none;
+
+    color: var(--color-primario);
+
+}
+
+
+/* =========================================
+   TÍTULO
+   ========================================= */
+
+.page-title {
+
+    margin-bottom: 20px;
+}
+
+
+.page-title h1 {
+
+    margin: 0 0 5px;
+
+    color: var(--color-texto);
+
+    font-size: 24px;
+
+    font-weight: 600;
+}
+
+
+.page-title p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   PERFIL
+   ========================================= */
+
+.profile-header p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   FORMULARIO
+   ========================================= */
+
+.data-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(17, 24, 39, 0.08);
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.form-group label {
+
+    color: var(--color-texto);
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.form-group input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 10px;
+
+    background-color: #ffffff;
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.form-group input:focus {
+
+    border-color: var(--color-secundario);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(18, 63, 138, 0.08);
+}
+
+
+/* =========================================
+   BOTÓN GUARDAR
+   ========================================= */
+
+.save-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: var(--color-primario);
+
+    color: var(--color-blanco);
+
+    font-family: var(--fuente-principal);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.save-button:hover {
+
+    background-color: var(--color-primario-dark);
+
+}
+
+
+/* =========================================
+   MENSAJES
+   ========================================= */
+
+.success-message {
+
+    padding: 12px 14px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    background-color: #ecfdf5;
+
+    color: #047857;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+.error-message {
+
+    padding: 12px 14px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    background-color: #fff1f2;
+
+    color: #dc2626;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+```
+
+/* =========================================
+   MÉTODOS DE PAGO
+   ========================================= */
+
+.payment-menu,
+.history-list,
+.settings-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 24px
+        rgba(17, 24, 39, 0.08);
+}
+
+
+.payment-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+
+.payment-option:last-child {
+    border-bottom: none;
+}
+
+
+.payment-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background-color: #eff6ff;
+
+    color: var(--color-secundario);
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+.payment-info h3 {
+
+    margin: 0 0 3px;
+
+    color: var(--color-texto);
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.payment-info p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.info-box {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background-color: #eff6ff;
+
+    color: #334155;
+
+    font-size: 12px;
+}
+
+
+.info-box p {
+    margin: 0;
+}
+
+
+/* =========================================
+   HISTORIAL
+   ========================================= */
+
+.history-card {
+
+    display: flex;
+
+    gap: 14px;
+
+    padding: 16px;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+
+.history-card:last-child {
+    border-bottom: none;
+}
+
+
+.history-image {
+
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background-color: #eff6ff;
+
+    color: var(--color-secundario);
+
+    font-size: 24px;
+}
+
+
+.history-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.history-content {
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.history-content h3 {
+
+    margin: 0 0 5px;
+
+    color: var(--color-texto);
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.history-content p {
+
+    margin: 3px 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.history-status {
+
+    display: inline-block;
+
+    margin-top: 7px;
+
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.status-success {
+
+    background-color: #ecfdf5;
+
+    color: #047857;
+}
+
+
+.status-pending {
+
+    background-color: #fff7ed;
+
+    color: #c2410c;
+}
+
+
+/* =========================================
+   ESTADO VACÍO
+   ========================================= */
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+}
+
+
+.empty-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background-color: #eff6ff;
+
+    color: var(--color-secundario);
+
+    font-size: 25px;
+}
+
+
+.empty-state h2 {
+
+    margin: 0 0 6px;
+
+    color: var(--color-texto);
+
+    font-size: 16px;
+}
+
+
+.empty-state p {
+
+    margin: 0 0 20px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   CONFIGURACIÓN
+   ========================================= */
+
+.settings-option {
+
+    width: 100%;
+
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    box-sizing: border-box;
+
+    padding: 16px 18px;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    background-color: var(--color-blanco);
+
+    color: inherit;
+
+    text-decoration: none;
+
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+
+.settings-option:hover {
+
+    background-color: #f8fafc;
+
+}
+
+
+.settings-option:last-child {
+
+    border-bottom: none;
+}
+
+
+.settings-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background-color: #eff6ff;
+
+    color: var(--color-secundario);
+
+    font-size: 16px;
+}
+
+
+.settings-text {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.settings-text h3 {
+
+    margin: 0 0 3px;
+
+    color: var(--color-texto);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.settings-text p {
+
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   LOGO Y ENLACES
+   ========================================= */
+
+.logo,
+.logo:hover,
+.logo:visited,
+.logo:active {
+
+    text-decoration: none !important;
+}
+
+
+.back-link,
+.back-link:hover,
+.back-link:visited,
+.back-link:active {
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   PERFIL PÚBLICO DE USUARIO
+========================================= */
+
+.public-profile {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(17, 24, 39, 0.08);
+}
+
+
+/* =========================================
+   AVATAR
+========================================= */
+
+.public-avatar {
+
+    width: 90px;
+
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    margin-bottom: 14px;
+
+    border-radius: 50%;
+
+    background-color: var(--color-secundario);
+
+    color: var(--color-blanco);
+
+    font-size: 27px;
+
+    font-weight: 600;
+}
+
+
+.public-avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   NOMBRE
+========================================= */
+
+.public-profile h1 {
+
+    margin: 0;
+
+    color: var(--color-texto);
+
+    font-size: 21px;
+
+    font-weight: 600;
+}
+
+
+.profile-date {
+
+    margin: 5px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.profile-bio {
+
+    max-width: 500px;
+
+    margin: 15px 0 0;
+
+    color: #475569;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   ESTADÍSTICAS
+========================================= */
+
+.profile-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    margin-top: 18px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+
+.profile-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 18px;
+
+    border-right: 1px solid #f1f5f9;
+}
+
+
+.profile-stat:last-child {
+    border-right: none;
+}
+
+
+.profile-stat strong {
+
+    color: var(--color-secundario);
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+.profile-stat span {
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   REPUTACIÓN
+========================================= */
+
+.reputation-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 16px;
+
+    background-color: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+}
+
+
+.reputation-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background-color: #fff7ed;
+
+    color: #f59e0b;
+
+    font-size: 18px;
+}
+
+
+.reputation-card h3 {
+
+    margin: 0 0 3px;
+
+    color: var(--color-texto);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.reputation-card p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   RIFAS DEL USUARIO
+========================================= */
+
+.user-raffles {
+
+    margin-top: 25px;
+}
+
+
+.section-heading {
+
+    margin-bottom: 12px;
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    color: var(--color-texto);
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   TARJETAS DE RIFA
+========================================= */
+
+.user-raffles .raffle-card {
+
+    text-decoration: none;
+}
+
+
+.user-raffles .raffle-card:hover {
+
+    text-decoration: none;
+}
+
+
+.raffle-placeholder {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #eff6ff;
+
+    font-size: 28px;
+}
+
+
+.raffle-status {
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background-color: #ecfdf5;
+
+    color: #047857;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
 
 
 
@@ -3609,4 +5059,4 @@ h3 {
         height: 220px;
     }
 
-}*/
+}

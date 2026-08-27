@@ -3,7 +3,78 @@
 require_once "conexion.php";
 session_start();
 
+/* ==========================================
+   VERIFICAR SESIÓN
+========================================== */
+
 $usuario_logueado = isset($_SESSION['id_usuario']);
+
+$usuario = null;
+
+if ($usuario_logueado) {
+
+    $id_usuario = $_SESSION['id_usuario'];
+
+    /* ==========================================
+       OBTENER DATOS DEL USUARIO
+    ========================================== */
+
+    $sql = "SELECT id_usuario, nombre, apellido, email, telefono, rol
+            FROM usuarios
+            WHERE id_usuario = ?";
+
+    $stmt = $conexion->prepare($sql);
+
+    if ($stmt) {
+
+        $stmt->bind_param("i", $id_usuario);
+        $stmt->execute();
+
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows > 0) {
+
+            $usuario = $resultado->fetch_assoc();
+
+        } else {
+
+            /*
+             * Si la sesión existe pero el usuario
+             * ya no existe en la base de datos,
+             * cerramos la sesión.
+             */
+
+            session_unset();
+            session_destroy();
+
+            $usuario_logueado = false;
+        }
+
+        $stmt->close();
+    }
+}
+
+
+/* ==========================================
+   DATOS PARA MOSTRAR
+========================================== */
+
+if ($usuario_logueado && $usuario) {
+
+    $nombre = htmlspecialchars($usuario['nombre']);
+    $apellido = htmlspecialchars($usuario['apellido']);
+
+    $nombre_completo = $nombre . " " . $apellido;
+
+    /*
+     * Obtener iniciales automáticamente
+     */
+
+    $inicial_nombre = strtoupper(substr($usuario['nombre'], 0, 1));
+    $inicial_apellido = strtoupper(substr($usuario['apellido'], 0, 1));
+
+    $iniciales = $inicial_nombre . $inicial_apellido;
+}
 
 ?>
 
@@ -33,55 +104,96 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
 
 <div class="app">
 
-    <!-- HEADER -->
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
 
     <header class="header">
 
-        <div class="logo">
+        <a href="index.php" class="logo">
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
-        </div>
+        </a>
 
-        <div class="user-icon">
-            <?php if ($usuario_logueado): ?>
-                <span>SM</span>
+
+        <a
+            href="usuario.php?id=<?php echo $_SESSION['id_usuario']; ?>"
+            class="user-icon"
+        >
+
+            <?php if ($usuario_logueado && $usuario): ?>
+
+                <span>
+                    <?php echo $iniciales; ?>
+                </span>
+
             <?php else: ?>
+
                 <span>?</span>
+
             <?php endif; ?>
-        </div>
+
+        </a>
 
     </header>
 
 
+    <!-- ==========================================
+         CONTENIDO
+    =========================================== -->
+
     <main class="main-content">
 
-        <?php if ($usuario_logueado): ?>
 
-            <!-- PERFIL CON SESIÓN -->
+        <?php if ($usuario_logueado && $usuario): ?>
+
+
+            <!-- ==========================================
+                 PERFIL CON SESIÓN
+            =========================================== -->
 
             <section class="profile-header">
 
+
                 <div class="profile-avatar">
-                    SM
+
+                    <?php echo $iniciales; ?>
+
                 </div>
+
 
                 <div class="profile-name">
 
-                    <h1>Sofía Martínez</h1>
+                    <h1>
+                        <?php echo $nombre_completo; ?>
+                    </h1>
 
-                    <button class="edit-profile">
+
+                    <a
+                        href="usuario.php?id=<?php echo $_SESSION['id_usuario']; ?>"
+                        class="edit-profile"
+                    >
                         Ver perfil
-                    </button>
+                    </a>
 
                 </div>
 
             </section>
 
 
-            <!-- OPCIONES -->
+            <!-- ==========================================
+                 OPCIONES DEL PERFIL
+            =========================================== -->
 
             <section class="profile-menu">
 
-                <button class="profile-option">
+
+                <!-- MIS DATOS -->
+
+                <a
+                    href="mis_datos.php"
+                    class="profile-option"
+                >
 
                     <span class="option-icon">
                         ♙
@@ -95,10 +207,15 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                         ›
                     </span>
 
-                </button>
+                </a>
 
 
-                <button class="profile-option">
+                <!-- MÉTODOS DE PAGO -->
+
+                <a
+                    href="metodos_pago.php"
+                    class="profile-option"
+                >
 
                     <span class="option-icon">
                         ▣
@@ -112,10 +229,15 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                         ›
                     </span>
 
-                </button>
+                </a>
 
 
-                <button class="profile-option">
+                <!-- HISTORIAL -->
+
+                <a
+                    href="historial.php"
+                    class="profile-option"
+                >
 
                     <span class="option-icon">
                         ◷
@@ -129,10 +251,15 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                         ›
                     </span>
 
-                </button>
+                </a>
 
 
-                <button class="profile-option">
+                <!-- SEGURIDAD -->
+
+                <a
+                    href="seguridad.php"
+                    class="profile-option"
+                >
 
                     <span class="option-icon">
                         ◉
@@ -146,10 +273,15 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                         ›
                     </span>
 
-                </button>
+                </a>
 
 
-                <button class="profile-option">
+                <!-- CONFIGURACIÓN -->
+
+                <a
+                    href="configuracion.php"
+                    class="profile-option"
+                >
 
                     <span class="option-icon">
                         ⚙
@@ -163,14 +295,20 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
                         ›
                     </span>
 
-                </button>
+                </a>
+
 
             </section>
 
 
-            <!-- CERRAR SESIÓN -->
+            <!-- ==========================================
+                 CERRAR SESIÓN
+            =========================================== -->
 
-            <a href="logout.php" class="logout-button">
+            <a
+                href="logout.php"
+                class="logout-button"
+            >
 
                 <span>
                     ⎋
@@ -183,17 +321,24 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
 
         <?php else: ?>
 
-            <!-- PERFIL SIN SESIÓN -->
+
+            <!-- ==========================================
+                 PERFIL SIN SESIÓN
+            =========================================== -->
 
             <section class="profile-header">
+
 
                 <div class="profile-avatar">
                     ?
                 </div>
 
+
                 <div class="profile-name">
 
-                    <h1>Mi perfil</h1>
+                    <h1>
+                        Mi perfil
+                    </h1>
 
                     <p>
                         Iniciá sesión para acceder a tu perfil.
@@ -203,6 +348,10 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
 
             </section>
 
+
+            <!-- ==========================================
+                 AVISO
+            =========================================== -->
 
             <section class="profile-menu">
 
@@ -221,15 +370,28 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
             </section>
 
 
-            <a href="registro.php" class="edit-profile">
+            <!-- ==========================================
+                 BOTONES
+            =========================================== -->
+
+            <a
+                href="registro.php"
+                class="edit-profile"
+            >
                 Crear una cuenta
             </a>
 
+
             <br><br>
 
-            <a href="login.php" class="edit-profile">
+
+            <a
+                href="login.php"
+                class="edit-profile"
+            >
                 Iniciar sesión
             </a>
+
 
         <?php endif; ?>
 
@@ -237,56 +399,126 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
     </main>
 
 
-    <!-- NAV -->
+    <!-- ==========================================
+         NAVEGACIÓN INFERIOR
+    =========================================== -->
 
     <nav class="bottom-nav">
 
-        <a href="index.php" class="nav-item">
 
-            <span class="nav-icon">⌂</span>
+        <!-- INICIO -->
 
-            <span>Inicio</span>
+        <a
+            href="index.php"
+            class="nav-item"
+        >
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Inicio
+            </span>
 
         </a>
 
 
-        <a href="mis_rifas.php" class="nav-item">
+        <!-- MIS RIFAS -->
 
-            <span class="nav-icon">▤</span>
+        <a
+            href="mis_rifas.php"
+            class="nav-item"
+        >
 
-            <span>Mis rifas</span>
+            <span class="nav-icon">
+                ▤
+            </span>
+
+            <span>
+                Mis rifas
+            </span>
 
         </a>
 
+
+        <!-- CREAR RIFA -->
 
         <button
             class="create-button"
-            onclick="window.location.href='crear_rifa.php'"
+            onclick="crearRifa()"
         >
-            <span>+</span>
+
+            <span>
+                +
+            </span>
+
         </button>
 
 
-        <a href="participaciones.php" class="nav-item">
+        <!-- PARTICIPACIONES -->
 
-            <span class="nav-icon">♧</span>
+        <a
+            href="participaciones.php"
+            class="nav-item"
+        >
 
-            <span>Participaciones</span>
+            <span class="nav-icon">
+                ♧
+            </span>
+
+            <span>
+                Participaciones
+            </span>
 
         </a>
 
 
-        <a href="perfil.php" class="nav-item active">
+        <!-- PERFIL -->
 
-            <span class="nav-icon">♙</span>
+        <a
+            href="perfil.php"
+            class="nav-item active"
+        >
 
-            <span>Perfil</span>
+            <span class="nav-icon">
+                ♙
+            </span>
+
+            <span>
+                Perfil
+            </span>
 
         </a>
+
 
     </nav>
 
 </div>
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script>
+
+function crearRifa() {
+
+    <?php if ($usuario_logueado): ?>
+
+        window.location.href = "crear_rifa.php";
+
+    <?php else: ?>
+
+        window.location.href = "login.php";
+
+    <?php endif; ?>
+
+}
+
+</script>
+
 
 </body>
 </html>

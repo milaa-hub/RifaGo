@@ -1,7 +1,6 @@
 <?php
 
 require_once "conexion.php";
-
 session_start();
 
 $usuario_logueado = isset($_SESSION["id_usuario"]);
@@ -9,139 +8,228 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
 $mensaje = "";
 $error = "";
 
+$id_usuario = $_SESSION["id_usuario"] ?? null;
+
+
+// ==================================================
+// VARIABLES DEL FORMULARIO
+// ==================================================
+
+$nombre_premio = "";
+$descripcion = "";
+$precio_numero = "";
+$cantidad_numeros = "";
+$fecha_sorteo = "";
+$metodo_sorteo = "Automatico";
+
+$ruta_imagen = "";
+
+$id_borrador = null;
+
+
+// ==================================================
+// SI VIENE UN ID, BUSCAMOS EL BORRADOR
+// ==================================================
+
+if (
+    $usuario_logueado &&
+    isset($_GET["id"]) &&
+    is_numeric($_GET["id"])
+) {
+
+    $id_borrador = intval($_GET["id"]);
+
+
+    $consulta = $conexion->prepare("
+        SELECT
+            id_rifa,
+            titulo,
+            descripcion,
+            premio,
+            imagen,
+            precio_numero,
+            cantidad_numeros,
+            fecha_sorteo,
+            estado
+        FROM rifas
+        WHERE id_rifa = ?
+        AND id_usuario = ?
+        AND estado = 'borrador'
+        LIMIT 1
+    ");
+
+
+    $consulta->bind_param(
+        "ii",
+        $id_borrador,
+        $id_usuario
+    );
+
+
+    $consulta->execute();
+
+    $resultado = $consulta->get_result();
+
+
+    if ($resultado->num_rows === 1) {
+
+        $rifa = $resultado->fetch_assoc();
+
+
+        $nombre_premio = $rifa["titulo"] ?? "";
+        $descripcion = $rifa["descripcion"] ?? "";
+        $precio_numero = $rifa["precio_numero"] ?? "";
+        $cantidad_numeros = $rifa["cantidad_numeros"] ?? "";
+        $fecha_sorteo = $rifa["fecha_sorteo"] ?? "";
+        $ruta_imagen = $rifa["imagen"] ?? "";
+
+
+    } else {
+
+        // El borrador no existe o no pertenece al usuario
+
+        $id_borrador = null;
+
+        $error = "El borrador no existe o no tenés permiso para editarlo.";
+
+    }
+
+
+    $consulta->close();
+}
+
 
 // ==================================================
 // PROCESAR FORMULARIO
 // ==================================================
 
-if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
+if (
+    $usuario_logueado &&
+    $_SERVER["REQUEST_METHOD"] === "POST"
+) {
 
-    $nombre_premio = trim($_POST["nombre_premio"] ?? "");
-    $descripcion = trim($_POST["descripcion"] ?? "");
+
+    // ==================================================
+    // RECIBIR DATOS
+    // ==================================================
+
+    $nombre_premio = trim(
+        $_POST["nombre_premio"] ?? ""
+    );
+
+    $descripcion = trim(
+        $_POST["descripcion"] ?? ""
+    );
+
     $precio_numero = $_POST["precio_numero"] ?? "";
+
     $cantidad_numeros = $_POST["cantidad_numeros"] ?? "";
+
     $fecha_sorteo = $_POST["fecha_sorteo"] ?? "";
 
-    $ruta_imagen = null;
+    $metodo_sorteo = $_POST["metodo_sorteo"] ?? "Automatico";
+
+    $accion = $_POST["accion"] ?? "publicar";
+
+    $id_borrador_post = $_POST["id_borrador"] ?? "";
 
 
-    // ==================================================
-    // VALIDACIONES
-    // ==================================================
 
     if (
-        empty($nombre_premio) ||
-        empty($descripcion) ||
-        empty($precio_numero) ||
-        empty($cantidad_numeros) ||
-        empty($fecha_sorteo)
+        is_numeric($id_borrador_post) &&
+        intval($id_borrador_post) > 0
     ) {
 
-        $error = "Completá todos los campos obligatorios.";
+        $id_borrador = intval($id_borrador_post);
 
-    } elseif (
-        !is_numeric($precio_numero) ||
-        $precio_numero <= 0
+    }
+
+
+
+    // ==================================================
+    // GUARDAR IMAGEN
+    // ==================================================
+
+    $nueva_imagen = null;
+
+
+    if (
+        isset($_FILES["imagen"]) &&
+        $_FILES["imagen"]["error"] !== UPLOAD_ERR_NO_FILE
     ) {
 
-        $error = "El precio por número debe ser mayor a 0.";
-
-    } elseif (
-        !is_numeric($cantidad_numeros) ||
-        $cantidad_numeros <= 0
-    ) {
-
-        $error = "La cantidad de números debe ser mayor a 0.";
-
-    } elseif (
-        strtotime($fecha_sorteo) < strtotime(date("Y-m-d"))
-    ) {
-
-        $error = "La fecha del sorteo no puede ser anterior a hoy.";
-
-    } else {
-
-
-        // ==================================================
-        // GUARDAR IMAGEN
-        // ==================================================
 
         if (
-            isset($_FILES["imagen"]) &&
-            $_FILES["imagen"]["error"] !== UPLOAD_ERR_NO_FILE
+            $_FILES["imagen"]["error"] !== UPLOAD_ERR_OK
         ) {
 
+            $error = "Hubo un problema al subir la imagen.";
+
+        } else {
+
+
+            $extension = strtolower(
+                pathinfo(
+                    $_FILES["imagen"]["name"],
+                    PATHINFO_EXTENSION
+                )
+            );
+
+
+            $extensiones_permitidas = [
+                "jpg",
+                "jpeg",
+                "png",
+                "webp"
+            ];
+
+
             if (
-                $_FILES["imagen"]["error"] !== UPLOAD_ERR_OK
+                !in_array(
+                    $extension,
+                    $extensiones_permitidas
+                )
             ) {
 
-                $error = "Hubo un problema al subir la imagen.";
+                $error = "La imagen debe ser JPG, PNG o WEBP.";
 
             } else {
 
-                $extension = strtolower(
-                    pathinfo(
-                        $_FILES["imagen"]["name"],
-                        PATHINFO_EXTENSION
-                    )
-                );
+
+                $carpeta = "uploads/rifas/";
 
 
-                $extensiones_permitidas = [
-                    "jpg",
-                    "jpeg",
-                    "png",
-                    "webp"
-                ];
+                if (!is_dir($carpeta)) {
+
+                    mkdir(
+                        $carpeta,
+                        0777,
+                        true
+                    );
+
+                }
+
+
+                $nombre_archivo =
+                    uniqid("rifa_", true)
+                    . "."
+                    . $extension;
+
+
+                $nueva_imagen =
+                    $carpeta
+                    . $nombre_archivo;
 
 
                 if (
-                    !in_array(
-                        $extension,
-                        $extensiones_permitidas
+                    !move_uploaded_file(
+                        $_FILES["imagen"]["tmp_name"],
+                        $nueva_imagen
                     )
                 ) {
 
-                    $error = "La imagen debe ser JPG, PNG o WEBP.";
-
-                } else {
-
-                    $carpeta = "uploads/rifas/";
-
-
-                    if (!is_dir($carpeta)) {
-
-                        mkdir(
-                            $carpeta,
-                            0777,
-                            true
-                        );
-
-                    }
-
-
-                    $nombre_archivo =
-                        uniqid("rifa_", true)
-                        . "."
-                        . $extension;
-
-
-                    $ruta_imagen =
-                        $carpeta
-                        . $nombre_archivo;
-
-
-                    if (
-                        !move_uploaded_file(
-                            $_FILES["imagen"]["tmp_name"],
-                            $ruta_imagen
-                        )
-                    ) {
-
-                        $error =
-                            "No se pudo guardar la imagen.";
-
-                    }
+                    $error =
+                        "No se pudo guardar la imagen.";
 
                 }
 
@@ -149,33 +237,147 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
         }
 
-
-        // ==================================================
-        // GUARDAR RIFA EN LA BASE DE DATOS
-        // ==================================================
-
-        if (empty($error)) {
-
-            try {
-
-                /*
-                 * Iniciamos una transacción.
-                 *
-                 * Si algo falla al guardar la rifa
-                 * o sus números, se deshace todo.
-                 */
-
-                $conexion->begin_transaction();
+    }
 
 
-                $estado_rifa = "activa";
+
+    // ==================================================
+    // GUARDAR COMO BORRADOR
+    // ==================================================
+
+    if (
+        empty($error) &&
+        $accion === "borrador"
+    ) {
 
 
-                // ==========================================
-                // INSERTAR RIFA
-                // ==========================================
+        try {
 
-                $consulta_rifa = $conexion->prepare("
+            $conexion->begin_transaction();
+
+
+            // ------------------------------------------
+            // IMAGEN
+            // ------------------------------------------
+
+            $imagen_final = $nueva_imagen;
+
+
+            /*
+             * Si no se subió una imagen nueva y estamos
+             * editando un borrador, conservamos la anterior.
+             */
+
+            if (
+                empty($imagen_final) &&
+                !empty($id_borrador)
+            ) {
+
+                $consulta_imagen = $conexion->prepare("
+                    SELECT imagen
+                    FROM rifas
+                    WHERE id_rifa = ?
+                    AND id_usuario = ?
+                    AND estado = 'borrador'
+                    LIMIT 1
+                ");
+
+
+                $consulta_imagen->bind_param(
+                    "ii",
+                    $id_borrador,
+                    $id_usuario
+                );
+
+
+                $consulta_imagen->execute();
+
+                $resultado_imagen =
+                    $consulta_imagen->get_result();
+
+
+                if (
+                    $fila_imagen =
+                    $resultado_imagen->fetch_assoc()
+                ) {
+
+                    $imagen_final =
+                        $fila_imagen["imagen"];
+
+                }
+
+
+                $consulta_imagen->close();
+
+            }
+
+
+
+            // ------------------------------------------
+            // ACTUALIZAR BORRADOR EXISTENTE
+            // ------------------------------------------
+
+            if (!empty($id_borrador)) {
+
+
+                $estado = "borrador";
+
+
+                $consulta = $conexion->prepare("
+                    UPDATE rifas
+                    SET
+                        titulo = ?,
+                        descripcion = ?,
+                        premio = ?,
+                        imagen = ?,
+                        precio_numero = NULLIF(?, ''),
+                        cantidad_numeros = NULLIF(?, ''),
+                        fecha_sorteo = NULLIF(?, ''),
+                        estado = ?
+                    WHERE id_rifa = ?
+                    AND id_usuario = ?
+                    AND estado = 'borrador'
+                ");
+
+
+                $consulta->bind_param(
+                    "ssssssssii",
+                    $nombre_premio,
+                    $descripcion,
+                    $nombre_premio,
+                    $imagen_final,
+                    $precio_numero,
+                    $cantidad_numeros,
+                    $fecha_sorteo,
+                    $estado,
+                    $id_borrador,
+                    $id_usuario
+                );
+
+
+                if (!$consulta->execute()) {
+
+                    throw new Exception(
+                        "No se pudo actualizar el borrador."
+                    );
+
+                }
+
+
+                $consulta->close();
+
+
+            } else {
+
+
+                // ------------------------------------------
+                // CREAR NUEVO BORRADOR
+                // ------------------------------------------
+
+                $estado = "borrador";
+
+
+                $consulta = $conexion->prepare("
                     INSERT INTO rifas (
                         id_usuario,
                         titulo,
@@ -187,65 +389,320 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                         fecha_sorteo,
                         estado
                     )
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, NULLIF(?, ''), NULLIF(?, ''), NULLIF(?, ''), ?)
                 ");
 
 
-                if (!$consulta_rifa) {
-
-                    throw new Exception(
-                        "Error al preparar la rifa: "
-                        . $conexion->error
-                    );
-
-                }
-
-
-                /*
-                 * Como actualmente el formulario tiene
-                 * un solo campo para el nombre del premio,
-                 * usamos ese mismo valor como:
-                 *
-                 * titulo
-                 * premio
-                 */
-
-                $consulta_rifa->bind_param(
-                    "issssdiss",
-                    $_SESSION["id_usuario"],
+                $consulta->bind_param(
+                    "issssssss",
+                    $id_usuario,
                     $nombre_premio,
                     $descripcion,
                     $nombre_premio,
-                    $ruta_imagen,
+                    $imagen_final,
                     $precio_numero,
                     $cantidad_numeros,
                     $fecha_sorteo,
-                    $estado_rifa
+                    $estado
                 );
 
 
-                if (!$consulta_rifa->execute()) {
+                if (!$consulta->execute()) {
 
                     throw new Exception(
-                        "No se pudo guardar la rifa: "
-                        . $consulta_rifa->error
+                        "No se pudo guardar el borrador."
                     );
 
                 }
 
 
-                // ID de la rifa recién creada
-
-                $id_rifa = $conexion->insert_id;
-
-
-                $consulta_rifa->close();
+                $id_borrador =
+                    $conexion->insert_id;
 
 
+                $consulta->close();
 
-                // ==========================================
-                // CREAR NÚMEROS
-                // ==========================================
+            }
+
+
+            $conexion->commit();
+
+
+            header(
+                "Location: mis_rifas.php"
+            );
+
+            exit;
+
+
+        } catch (Exception $e) {
+
+
+            $conexion->rollback();
+
+
+            if (
+                !empty($nueva_imagen) &&
+                file_exists($nueva_imagen)
+            ) {
+
+                unlink($nueva_imagen);
+
+            }
+
+
+            $error =
+                "No se pudo guardar el borrador. "
+                . $e->getMessage();
+
+        }
+
+    }
+
+
+
+    // ==================================================
+    // PUBLICAR RIFA
+    // ==================================================
+
+    elseif (
+        empty($error) &&
+        $accion === "publicar"
+    ) {
+
+
+        // ------------------------------------------
+        // VALIDACIONES
+        // ------------------------------------------
+
+        if (
+            empty($nombre_premio) ||
+            empty($descripcion) ||
+            empty($precio_numero) ||
+            empty($cantidad_numeros) ||
+            empty($fecha_sorteo)
+        ) {
+
+            $error =
+                "Completá todos los campos obligatorios.";
+
+        } elseif (
+            !is_numeric($precio_numero) ||
+            $precio_numero <= 0
+        ) {
+
+            $error =
+                "El precio por número debe ser mayor a 0.";
+
+        } elseif (
+            !is_numeric($cantidad_numeros) ||
+            $cantidad_numeros <= 0
+        ) {
+
+            $error =
+                "La cantidad de números debe ser mayor a 0.";
+
+        } elseif (
+            strtotime($fecha_sorteo)
+            <
+            strtotime(date("Y-m-d"))
+        ) {
+
+            $error =
+                "La fecha del sorteo no puede ser anterior a hoy.";
+
+        }
+
+
+
+        // ------------------------------------------
+        // PUBLICAR
+        // ------------------------------------------
+
+        if (empty($error)) {
+
+
+            try {
+
+
+                $conexion->begin_transaction();
+
+
+                $estado_rifa = "activa";
+
+
+                // ------------------------------------------
+                // IMAGEN
+                // ------------------------------------------
+
+                $imagen_final = $nueva_imagen;
+
+
+                /*
+                 * Si estamos editando un borrador y no
+                 * elegimos una imagen nueva, conservamos
+                 * la imagen anterior.
+                 */
+
+                if (
+                    empty($imagen_final) &&
+                    !empty($id_borrador)
+                ) {
+
+
+                    $consulta_imagen = $conexion->prepare("
+                        SELECT imagen
+                        FROM rifas
+                        WHERE id_rifa = ?
+                        AND id_usuario = ?
+                        AND estado = 'borrador'
+                        LIMIT 1
+                    ");
+
+
+                    $consulta_imagen->bind_param(
+                        "ii",
+                        $id_borrador,
+                        $id_usuario
+                    );
+
+
+                    $consulta_imagen->execute();
+
+                    $resultado_imagen =
+                        $consulta_imagen->get_result();
+
+
+                    if (
+                        $fila_imagen =
+                        $resultado_imagen->fetch_assoc()
+                    ) {
+
+                        $imagen_final =
+                            $fila_imagen["imagen"];
+
+                    }
+
+
+                    $consulta_imagen->close();
+
+                }
+
+
+
+                // ------------------------------------------
+                // SI ES BORRADOR → ACTUALIZAR
+                // ------------------------------------------
+
+                if (!empty($id_borrador)) {
+
+
+                    $consulta_rifa = $conexion->prepare("
+                        UPDATE rifas
+                        SET
+                            titulo = ?,
+                            descripcion = ?,
+                            premio = ?,
+                            imagen = ?,
+                            precio_numero = ?,
+                            cantidad_numeros = ?,
+                            fecha_sorteo = ?,
+                            estado = ?
+                        WHERE id_rifa = ?
+                        AND id_usuario = ?
+                        AND estado = 'borrador'
+                    ");
+
+
+                    $consulta_rifa->bind_param(
+                        "ssssdissii",
+                        $nombre_premio,
+                        $descripcion,
+                        $nombre_premio,
+                        $imagen_final,
+                        $precio_numero,
+                        $cantidad_numeros,
+                        $fecha_sorteo,
+                        $estado_rifa,
+                        $id_borrador,
+                        $id_usuario
+                    );
+
+
+                    if (!$consulta_rifa->execute()) {
+
+                        throw new Exception(
+                            "No se pudo publicar la rifa."
+                        );
+
+                    }
+
+
+                    $id_rifa = $id_borrador;
+
+
+                    $consulta_rifa->close();
+
+
+                } else {
+
+
+                    // ------------------------------------------
+                    // NUEVA RIFA
+                    // ------------------------------------------
+
+                    $consulta_rifa = $conexion->prepare("
+                        INSERT INTO rifas (
+                            id_usuario,
+                            titulo,
+                            descripcion,
+                            premio,
+                            imagen,
+                            precio_numero,
+                            cantidad_numeros,
+                            fecha_sorteo,
+                            estado
+                        )
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ");
+
+
+                    $consulta_rifa->bind_param(
+                        "issssdiss",
+                        $id_usuario,
+                        $nombre_premio,
+                        $descripcion,
+                        $nombre_premio,
+                        $imagen_final,
+                        $precio_numero,
+                        $cantidad_numeros,
+                        $fecha_sorteo,
+                        $estado_rifa
+                    );
+
+
+                    if (!$consulta_rifa->execute()) {
+
+                        throw new Exception(
+                            "No se pudo guardar la rifa."
+                        );
+
+                    }
+
+
+                    $id_rifa =
+                        $conexion->insert_id;
+
+
+                    $consulta_rifa->close();
+
+                }
+
+
+
+                // ------------------------------------------
+                // CREAR NÚMEROS DE LA RIFA
+                // ------------------------------------------
 
                 $estado_numero = "disponible";
 
@@ -272,9 +729,10 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
                 for (
                     $numero = 1;
-                    $numero <= $cantidad_numeros;
+                    $numero <= intval($cantidad_numeros);
                     $numero++
                 ) {
+
 
                     $consulta_numero->bind_param(
                         "iis",
@@ -299,46 +757,38 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                 $consulta_numero->close();
 
 
-                // ==========================================
+                // ------------------------------------------
                 // CONFIRMAR
-                // ==========================================
+                // ------------------------------------------
 
                 $conexion->commit();
 
 
-                // ==========================================
-                // IR A MIS RIFAS
-                // ==========================================
-
-                header("Location: mis_rifas.php");
+                header(
+                    "Location: mis_rifas.php"
+                );
 
                 exit;
 
 
             } catch (Exception $e) {
 
-                /*
-                 * Si algo falló, deshacemos todos
-                 * los INSERT realizados.
-                 */
 
                 $conexion->rollback();
 
 
-                // Eliminar imagen si ya se había guardado
-
                 if (
-                    !empty($ruta_imagen) &&
-                    file_exists($ruta_imagen)
+                    !empty($nueva_imagen) &&
+                    file_exists($nueva_imagen)
                 ) {
 
-                    unlink($ruta_imagen);
+                    unlink($nueva_imagen);
 
                 }
 
 
                 $error =
-                    "No se pudo crear la rifa. "
+                    "No se pudo publicar la rifa. "
                     . $e->getMessage();
 
             }
@@ -364,7 +814,12 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Crear rifa - RifaGo</title>
+    <title>
+        <?= !empty($id_borrador)
+            ? "Editar borrador - RifaGo"
+            : "Crear rifa - RifaGo"
+        ?>
+    </title>
 
 
     <link
@@ -380,7 +835,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link
         rel="preconnect"
-        href="https://fonts.gstatic.com"
+        href="https://fonts.googleapis.com"
         crossorigin
     >
 
@@ -406,8 +861,9 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <a
-            href="inicio.php"
+            href="mis_rifas.php"
             class="back-button"
+            id="btnVolverCrear"
         >
             ‹
         </a>
@@ -448,18 +904,28 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 
             <!-- ==========================================
-                 USUARIO LOGUEADO
+                 TÍTULO
             =========================================== -->
-
 
             <div class="page-title crear-title">
 
                 <h1>
-                    Crear nueva rifa
+
+                    <?= !empty($id_borrador)
+                        ? "Editar borrador"
+                        : "Crear nueva rifa"
+                    ?>
+
                 </h1>
 
+
                 <p>
-                    Completá los datos para publicar tu rifa.
+
+                    <?= !empty($id_borrador)
+                        ? "Continuá completando los datos de tu rifa."
+                        : "Completá los datos para publicar tu rifa."
+                    ?>
+
                 </p>
 
             </div>
@@ -547,7 +1013,20 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                 action=""
                 enctype="multipart/form-data"
                 class="crear-rifa-form"
+                id="formCrearRifa"
             >
+
+
+                <?php if (!empty($id_borrador)): ?>
+
+                    <input
+                        type="hidden"
+                        name="id_borrador"
+                        value="<?= $id_borrador ?>"
+                    >
+
+                <?php endif; ?>
+
 
 
                 <!-- ==========================================
@@ -609,7 +1088,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                 id="nombre_premio"
                                 name="nombre_premio"
                                 placeholder="Ej: iPhone 15 Pro Max"
-                                value="<?= htmlspecialchars($_POST["nombre_premio"] ?? "") ?>"
+                                value="<?= htmlspecialchars($nombre_premio) ?>"
                                 required
                             >
 
@@ -640,7 +1119,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                 rows="4"
                                 placeholder="Contá los detalles del premio..."
                                 required
-                            ><?= htmlspecialchars($_POST["descripcion"] ?? "") ?></textarea>
+                            ><?= htmlspecialchars($descripcion) ?></textarea>
 
 
                         </div>
@@ -657,6 +1136,24 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                 Imagen del premio
 
                             </label>
+
+
+                            <?php if (!empty($ruta_imagen)): ?>
+
+                                <div class="current-image">
+
+                                    <img
+                                        src="<?= htmlspecialchars($ruta_imagen) ?>"
+                                        alt="Imagen actual"
+                                    >
+
+                                    <small>
+                                        Imagen actual
+                                    </small>
+
+                                </div>
+
+                            <?php endif; ?>
 
 
                             <div class="image-upload">
@@ -680,7 +1177,10 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                     </span>
 
                                     <strong>
-                                        Agregar imagen
+                                        <?= !empty($ruta_imagen)
+                                            ? "Cambiar imagen"
+                                            : "Agregar imagen"
+                                        ?>
                                     </strong>
 
                                     <small>
@@ -784,7 +1284,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                     min="1"
                                     step="0.01"
                                     placeholder="1000"
-                                    value="<?= htmlspecialchars($_POST["precio_numero"] ?? "") ?>"
+                                    value="<?= htmlspecialchars($precio_numero) ?>"
                                     required
                                 >
 
@@ -824,27 +1324,42 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                 </option>
 
 
-                                <option value="100">
+                                <option
+                                    value="100"
+                                    <?= $cantidad_numeros == 100 ? "selected" : "" ?>
+                                >
                                     100 números
                                 </option>
 
 
-                                <option value="500">
+                                <option
+                                    value="500"
+                                    <?= $cantidad_numeros == 500 ? "selected" : "" ?>
+                                >
                                     500 números
                                 </option>
 
 
-                                <option value="1000">
+                                <option
+                                    value="1000"
+                                    <?= $cantidad_numeros == 1000 ? "selected" : "" ?>
+                                >
                                     1.000 números
                                 </option>
 
 
-                                <option value="2000">
+                                <option
+                                    value="2000"
+                                    <?= $cantidad_numeros == 2000 ? "selected" : "" ?>
+                                >
                                     2.000 números
                                 </option>
 
 
-                                <option value="5000">
+                                <option
+                                    value="5000"
+                                    <?= $cantidad_numeros == 5000 ? "selected" : "" ?>
+                                >
                                     5.000 números
                                 </option>
 
@@ -877,7 +1392,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                                 id="fecha_sorteo"
                                 name="fecha_sorteo"
                                 min="<?= date("Y-m-d") ?>"
-                                value="<?= htmlspecialchars($_POST["fecha_sorteo"] ?? "") ?>"
+                                value="<?= htmlspecialchars($fecha_sorteo) ?>"
                                 required
                             >
 
@@ -983,11 +1498,27 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                             </button>
 
 
+                            <!-- GUARDAR BORRADOR -->
+
                             <button
                                 type="submit"
+                                name="accion"
+                                value="borrador"
+                                class="secondary-button"
+                            >
+                                Guardar borrador
+                            </button>
+
+
+                            <!-- PUBLICAR -->
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="publicar"
                                 class="primary-button"
                             >
-                                Crear rifa
+                                Publicar rifa
                             </button>
 
 
@@ -1009,7 +1540,6 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
             <!-- ==========================================
                  USUARIO SIN SESIÓN
             =========================================== -->
-
 
             <section class="profile-header">
 
@@ -1089,7 +1619,6 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
                 "
             >
 
-
                 <p>
                     Necesitás una cuenta para crear una rifa.
                 </p>
@@ -1132,7 +1661,7 @@ if ($usuario_logueado && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         <a
-            href="inicio.php"
+            href="index.php"
             class="nav-item"
         >
 

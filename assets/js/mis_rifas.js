@@ -1,6 +1,16 @@
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
 
+
+function confirmarEliminarBorrador() {
+
+    return confirm(
+        "¿Querés eliminar este borrador?\n\n" +
+        "Se perderán todos los datos guardados y no podrás recuperarlos."
+    );
+
+}
+
 tabs.forEach(function(tab) {
 
     tab.addEventListener("click", function() {
@@ -17,9 +27,11 @@ tabs.forEach(function(tab) {
 
         tab.classList.add("active");
 
-        document
-            .getElementById(tabSeleccionada)
-            .classList.add("active");
+        const contenido = document.getElementById(tabSeleccionada);
+
+        if (contenido) {
+            contenido.classList.add("active");
+        }
 
     });
 

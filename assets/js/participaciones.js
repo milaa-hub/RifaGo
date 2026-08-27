@@ -17,9 +17,14 @@ tabs.forEach(function(tab) {
 
         tab.classList.add("active");
 
-        document
-            .getElementById(tabSeleccionada)
-            .classList.add("active");
+        const contenido =
+            document.getElementById(tabSeleccionada);
+
+        if (contenido) {
+
+            contenido.classList.add("active");
+
+        }
 
     });
 

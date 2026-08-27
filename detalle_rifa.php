@@ -411,17 +411,9 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
 
             <div class="organizer">
 
-                <span>
-                    Organizada por
-                </span>
-
-                <strong>
-                    <?php
-                    echo htmlspecialchars(
-                        $rifa["nombre"] . " " . $rifa["apellido"]
-                    );
-                    ?>
-                </strong>
+                <a href="usuario.php?id=<?php echo $rifa['id_usuario']; ?>">
+                    Creado por <?php echo $rifa['nombre']; ?>
+                </a>
 
             </div>
 
