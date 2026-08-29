@@ -3329,73 +3329,157 @@ h3 {
 }
 
 
-/* GRID */
+/* ==========================================
+   GRID DE NÚMEROS
+========================================== */
 
 .numbers-grid {
     display: grid;
+
     grid-template-columns: repeat(5, 1fr);
+
     gap: 10px;
+
     padding-bottom: 120px;
 }
 
+
+/* CADA NÚMERO */
+
 .number-item {
     position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    height: 42px;
+
     cursor: pointer;
 }
 
+
+
+/* CHECKBOX OCULTO */
+
 .number-item input {
     position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    margin: 0;
+
     opacity: 0;
+
+    cursor: pointer;
+
+    z-index: 2;
 }
 
+
+
+/* NÚMERO */
+
 .number-item span {
-    height: 42px;
+    position: absolute;
+
+    inset: 0;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border: 1px solid #e5e7eb;
+
     border-radius: 9px;
 
-    background: white;
+    background: #ffffff;
+
     color: #1F3A8A;
 
     font-size: 13px;
+
     font-weight: 600;
 
-    transition: 0.2s;
+    transition: all 0.2s ease;
+
+    z-index: 1;
 }
 
 
-/* SELECCIONADO */
 
-.number-item.number-selected span {
-    background: #18B8A6;
+
+/* HOVER */
+.number-item:not(.number-disabled):hover span {
     border-color: #18B8A6;
-    color: white;
+
+    transform: translateY(-1px);
+}
+/*.number-item:hover span {
+    border-color: #18B8A6;
+
+    transform: translateY(-1px);
+}*/
+
+
+/* ==========================================
+   SELECCIONADO
+========================================== */
+
+.number-item input:checked + span {
+    background: #18B8A6;
+
+    border-color: #18B8A6;
+
+    color: #ffffff;
+
+    transform: none;
 }
 
 
-/* OCUPADO */
+
+/* ==========================================
+   OCUPADO
+========================================== */
 
 .number-item.number-disabled {
     cursor: not-allowed;
 }
 
+
+.number-item.number-disabled input {
+    cursor: not-allowed;
+}
+
+
 .number-item.number-disabled span {
     background: #FF6666;
+
     border-color: #FF6666;
-    color: white;
+
+    color: #ffffff;
+
     opacity: 0.8;
 }
 
 
-/* BOTÓN INFERIOR */
+/* ==========================================
+   BOTÓN
+========================================== */
 
 .selection-bottom {
     position: fixed;
+
     bottom: 0;
+
     left: 50%;
+
     transform: translateX(-50%);
 
     width: min(100%, 1200px);
@@ -3407,7 +3491,9 @@ h3 {
     padding: 15px 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
@@ -3415,26 +3501,37 @@ h3 {
     z-index: 20;
 }
 
+
 .selection-bottom div {
     font-size: 11px;
+
     color: #777;
 }
 
+
 .selection-bottom span {
     color: #1F3A8A;
+
     font-weight: 600;
 }
 
+
 .selection-bottom strong {
     display: block;
+
     font-size: 17px;
+
     color: #111827;
+
     margin-top: 3px;
 }
 
+
 .btn-primary {
     border: none;
+
     background: #FF6666;
+
     color: white;
 
     padding: 12px 28px;
@@ -3442,31 +3539,35 @@ h3 {
     border-radius: 8px;
 
     font-family: Poppins, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
 
-    text-decoration: none;
+    font-size: 13px;
+
+    font-weight: 600;
 
     cursor: pointer;
 }
+
 
 .btn-primary:hover {
     background: #f34d4d;
 }
 
+
 .btn-primary:disabled {
     opacity: 0.5;
+
     cursor: not-allowed;
 }
 
 
-/* DESKTOP */
+/* ==========================================
+   DESKTOP
+========================================== */
 
 @media (min-width: 768px) {
 
     .numbers-grid {
-        grid-template-columns:
-            repeat(8, 1fr);
+        grid-template-columns: repeat(8, 1fr);
     }
 
 }
@@ -3750,7 +3851,7 @@ h3 {
 
 
 
-```css
+
 /* =========================================
    MIS DATOS
    ========================================= */
@@ -3987,7 +4088,7 @@ h3 {
 
     font-weight: 500;
 }
-```
+
 
 /* =========================================
    MÉTODOS DE PAGO

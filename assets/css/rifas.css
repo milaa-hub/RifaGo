@@ -1,16 +1,69 @@
 /* ==================================================
-   RIFAS
+   RIFAGO - RIFAS
+================================================== */
+
+:root {
+    --color-primario: #ff6666;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #1f3a8a;
+    --color-acento: #14b8a6;
+
+    --color-texto: #111827;
+    --color-texto-suave: #6b7280;
+
+    --color-fondo: #f8fafc;
+    --color-blanco: #ffffff;
+
+    --color-borde: #e5e7eb;
+
+    --sombra:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+
+/* ==================================================
+   GENERAL
+================================================== */
+
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    background: var(--color-fondo);
+
+    color: var(--color-texto);
+
+    min-height: 100vh;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+/* ==================================================
+   HEADER
 ================================================== */
 
 .raffles-header {
-
     width: 100%;
 
-    min-height: 70px;
+    height: 74px;
 
-    background: #ffffff;
+    padding: 0 40px;
 
-    border-bottom: 1px solid #e5e7eb;
+    background: white;
+
+    border-bottom: 1px solid var(--color-borde);
 
     display: flex;
 
@@ -18,170 +71,165 @@
 
     justify-content: space-between;
 
-    padding: 0 7%;
-
     position: sticky;
 
     top: 0;
 
-    z-index: 10;
+    z-index: 50;
 }
 
 
-/* LOGO */
-
 .raffles-logo {
-
-    text-decoration: none;
-
-    font-size: 28px;
+    font-size: 29px;
 
     font-weight: 700;
 
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
+}
+
+
+.logo-blue {
+    color: var(--color-secundario);
+}
+
+
+.logo-red {
+    color: var(--color-primario);
 }
 
 
 .raffles-logo sup {
+    color: var(--color-primario);
 
-    color: #FF6666;
-
-    font-size: 11px;
-
-    position: relative;
-
-    top: -12px;
-
-    margin-left: 2px;
+    font-size: 10px;
 }
 
 
-/* NAV */
-
 .raffles-nav {
-
     display: flex;
 
     align-items: center;
 
-    gap: 25px;
+    gap: 32px;
 }
 
 
 .raffles-nav a {
-
-    color: #6B7280;
+    color: #64748b;
 
     font-size: 12px;
 
     font-weight: 500;
-
-    text-decoration: none;
 
     transition: 0.2s;
 }
 
 
 .raffles-nav a:hover {
-
-    color: #1F3A8A;
+    color: var(--color-secundario);
 }
 
 
 .raffles-nav a.active {
+    color: var(--color-secundario);
 
-    color: #1F3A8A;
-
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
-/* ==========================================
+/* ==================================================
    PÁGINA
-========================================== */
+================================================== */
 
 .raffles-page {
-
-    max-width: 1200px;
+    width: min(100% - 40px, 1200px);
 
     margin: 0 auto;
 
-    padding: 55px 30px 80px;
+    padding: 45px 0 60px;
 }
 
 
-/* TITULO */
+/* ==================================================
+   TÍTULO
+================================================== */
 
 .raffles-title {
+    text-align: center;
 
-    margin-bottom: 40px;
+    max-width: 650px;
+
+    margin: 0 auto 38px;
 }
 
 
-.raffles-title > span {
+.raffles-title span {
+    display: inline-block;
 
-    color: #FF6666;
+    color: var(--color-primario);
 
-    font-size: 10px;
+    font-size: 11px;
 
     font-weight: 700;
 
     letter-spacing: 1px;
+
+    margin-bottom: 7px;
 }
 
 
 .raffles-title h1 {
+    color: var(--color-secundario);
 
-    margin: 5px 0 8px;
+    font-size: clamp(28px, 4vw, 38px);
 
-    color: #111827;
+    line-height: 1.2;
 
-    font-size: 32px;
-
-    font-weight: 700;
-
-    letter-spacing: -0.5px;
+    margin-bottom: 10px;
 }
 
 
 .raffles-title p {
-
-    color: #6B7280;
+    color: var(--color-texto-suave);
 
     font-size: 13px;
 
-    max-width: 550px;
+    line-height: 1.7;
 }
 
 
-/* ==========================================
+/* ==================================================
    GRID
-========================================== */
+================================================== */
 
 .raffles-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(auto-fit, minmax(280px, 1fr));
 
-    gap: 24px;
+    gap: 22px;
 }
 
 
-/* ==========================================
-   TARJETA
-========================================== */
+/* ==================================================
+   CARD
+================================================== */
 
 .raffle-card {
+    background: white;
 
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-borde);
 
     border-radius: 20px;
 
     overflow: hidden;
+
+    box-shadow: var(--sombra);
+
+    display: flex;
+
+    flex-direction: column;
 
     transition:
         transform 0.2s ease,
@@ -190,34 +238,30 @@
 
 
 .raffle-card:hover {
-
     transform: translateY(-4px);
 
     box-shadow:
-        0 12px 30px rgba(15, 23, 42, 0.08);
+        0 15px 35px rgba(15, 23, 42, 0.10);
 }
 
 
-/* ==========================================
+/* ==================================================
    IMAGEN
-========================================== */
+================================================== */
 
 .raffle-image {
-
     width: 100%;
 
-    height: 210px;
+    height: 225px;
 
-    background: #f1f4f9;
+    background: #f1f5f9;
 
     overflow: hidden;
 }
 
 
 .raffle-image img {
-
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
@@ -227,9 +271,7 @@
 
 
 .raffle-no-image {
-
     width: 100%;
-
     height: 100%;
 
     display: flex;
@@ -238,163 +280,165 @@
 
     justify-content: center;
 
-    color: #9ca3af;
-
-    font-size: 12px;
-}
-
-
-/* ==========================================
-   CONTENIDO
-========================================== */
-
-.raffle-content {
-
-    padding: 21px;
-}
-
-
-.raffle-status {
-
-    display: inline-block;
-
-    padding: 4px 9px;
-
-    background: #eaf8f1;
-
-    color: #25875b;
-
-    border-radius: 20px;
-
-    font-size: 10px;
-
-    font-weight: 600;
-}
-
-
-.raffle-content h2 {
-
-    color: #111827;
-
-    font-size: 18px;
-
-    margin: 12px 0 5px;
-}
-
-
-.raffle-content > p {
-
-    color: #6B7280;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-
-    margin-bottom: 17px;
-}
-
-
-/* ==========================================
-   PREMIO
-========================================== */
-
-.raffle-prize {
-
-    padding: 12px;
-
-    background: #fff5f5;
-
-    border-radius: 11px;
-
-    margin-bottom: 15px;
-}
-
-
-.raffle-prize span {
-
-    display: block;
-
-    color: #FF6666;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.5px;
-
-    margin-bottom: 2px;
-}
-
-
-.raffle-prize strong {
-
-    color: #111827;
+    color: var(--color-texto-suave);
 
     font-size: 13px;
 }
 
 
-/* ==========================================
-   DATOS
-========================================== */
+/* ==================================================
+   CONTENIDO
+================================================== */
+
+.raffle-content {
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+
+.raffle-status {
+    width: fit-content;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #e6f8f5;
+
+    color: #0f766e;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+
+.raffle-content h2 {
+    color: var(--color-secundario);
+
+    font-size: 19px;
+
+    line-height: 1.35;
+
+    margin-bottom: 7px;
+}
+
+
+.raffle-content > p {
+    color: var(--color-texto-suave);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    min-height: 38px;
+}
+
+
+/* ==================================================
+   PREMIO
+================================================== */
+
+.raffle-prize {
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+    padding: 12px 14px;
+
+    margin: 16px 0;
+}
+
+
+.raffle-prize span {
+    display: block;
+
+    color: var(--color-primario);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+
+    margin-bottom: 3px;
+}
+
+
+.raffle-prize strong {
+    color: var(--color-texto);
+
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   INFORMACIÓN
+================================================== */
 
 .raffle-info {
-
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-bottom: 17px;
+    margin-bottom: 18px;
 }
 
 
 .raffle-info div {
+    display: flex;
 
-    padding: 10px;
+    flex-direction: column;
 
-    border: 1px solid #edf0f4;
-
-    border-radius: 10px;
+    gap: 3px;
 }
 
 
 .raffle-info span {
+    color: var(--color-texto-suave);
 
-    display: block;
-
-    color: #9ca3af;
-
-    font-size: 9px;
-
-    margin-bottom: 2px;
+    font-size: 10px;
 }
 
 
 .raffle-info strong {
+    color: var(--color-texto);
 
-    color: #1F3A8A;
-
-    font-size: 12px;
+    font-size: 13px;
 }
 
 
-/* ==========================================
+/* ==================================================
    BOTÓN
-========================================== */
+================================================== */
 
 .raffle-button {
-
     width: 100%;
 
     min-height: 44px;
 
-    background: #FF6666;
-
-    color: #ffffff;
-
     border-radius: 10px;
+
+    background: var(--color-primario);
+
+    color: white;
 
     display: flex;
 
@@ -402,60 +446,51 @@
 
     justify-content: center;
 
-    text-decoration: none;
-
     font-size: 12px;
 
     font-weight: 600;
+
+    margin-top: auto;
 
     transition: 0.2s;
 }
 
 
 .raffle-button:hover {
-
-    background: #f85555;
-
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 6px 15px rgba(255, 102, 102, 0.20);
+    background: var(--color-primario-dark);
 }
 
 
-/* ==========================================
+/* ==================================================
    SIN RIFAS
-========================================== */
+================================================== */
 
 .no-raffles {
-
     grid-column: 1 / -1;
 
-    background: #ffffff;
+    background: white;
 
-    border: 1px solid #e5e7eb;
+    border: 1px dashed var(--color-borde);
 
     border-radius: 20px;
 
-    padding: 70px 30px;
+    padding: 65px 20px;
 
     text-align: center;
 }
 
 
 .no-raffles-icon {
-
     width: 55px;
-
     height: 55px;
 
     margin: 0 auto 15px;
 
     border-radius: 50%;
 
-    background: #fff1f1;
+    background: #eef2ff;
 
-    color: #FF6666;
+    color: var(--color-secundario);
 
     display: flex;
 
@@ -463,23 +498,21 @@
 
     justify-content: center;
 
-    font-size: 20px;
+    font-size: 24px;
 }
 
 
 .no-raffles h2 {
+    color: var(--color-secundario);
 
-    color: #111827;
+    font-size: 19px;
 
-    font-size: 20px;
-
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
 
 .no-raffles p {
-
-    color: #6B7280;
+    color: var(--color-texto-suave);
 
     font-size: 12px;
 
@@ -487,70 +520,87 @@
 }
 
 
-.no-raffles .raffle-button {
-
-    max-width: 200px;
-
-    margin: 0 auto;
-}
-
-
-/* ==========================================
+/* ==================================================
    RESPONSIVE
-========================================== */
+================================================== */
 
-@media (max-width: 900px) {
-
-    .raffles-grid {
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-}
-
-
-@media (max-width: 650px) {
+@media (max-width: 700px) {
 
     .raffles-header {
+        height: 68px;
 
-        padding: 0 20px;
+        padding: 0 18px;
+    }
+
+
+    .raffles-logo {
+        font-size: 25px;
     }
 
 
     .raffles-nav {
-
-        gap: 12px;
+        gap: 15px;
     }
 
 
-    .raffles-nav a:not(.active) {
-
-        display: none;
+    .raffles-nav a {
+        font-size: 10px;
     }
 
 
     .raffles-page {
+        width: min(100% - 24px, 600px);
 
-        padding: 40px 18px 60px;
+        padding-top: 30px;
     }
 
 
-    .raffles-title h1 {
-
-        font-size: 27px;
+    .raffles-title {
+        margin-bottom: 28px;
     }
 
 
     .raffles-grid {
-
         grid-template-columns: 1fr;
-
-        gap: 18px;
     }
 
 
     .raffle-image {
-
-        height: 200px;
+        height: 220px;
     }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .raffles-header {
+        padding: 0 14px;
+    }
+
+
+    .raffles-nav {
+        gap: 10px;
+    }
+
+
+    .raffles-nav a {
+        font-size: 9px;
+    }
+
+
+    .raffles-page {
+        width: min(100% - 20px, 430px);
+    }
+
+
+    .raffle-card {
+        border-radius: 16px;
+    }
+
+
+    .raffle-content {
+        padding: 17px;
+    }
+
 }

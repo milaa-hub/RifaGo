@@ -356,10 +356,10 @@ if ($usuario_logueado) {
                                 <!-- BOTÓN -->
 
                                 <a
-                                    href="detalle_rifa.php?id=<?= $rifa['id_rifa'] ?>"
+                                    href="administrar_rifa.php?id=<?= $rifa['id_rifa'] ?>"
                                     class="secondary-button"
                                 >
-                                    Ver rifa
+                                    Administrar rifa
                                 </a>
 
                             </div>

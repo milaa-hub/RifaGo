@@ -1,0 +1,1093 @@
+/* ==================================================
+   RIFAGO - ADMINISTRAR RIFA
+================================================== */
+
+:root {
+    --color-primario: #ff6666;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #1f3a8a;
+    --color-secundario-dark: #123f8a;
+
+    --color-acento: #14b8a6;
+
+    --color-texto: #111827;
+    --color-texto-suave: #6b7280;
+
+    --color-fondo: #f8fafc;
+    --color-blanco: #ffffff;
+
+    --color-borde: #e5e7eb;
+
+    --sombra:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+
+/* ==================================================
+   GENERAL
+================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    background: var(--color-fondo);
+
+    color: var(--color-texto);
+
+    min-height: 100vh;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+.admin-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding-bottom: 100px;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.admin-header {
+    height: 72px;
+
+    background: var(--color-blanco);
+
+    border-bottom: 1px solid var(--color-borde);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 50;
+}
+
+
+.back-button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    color: var(--color-secundario);
+
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+    background: #f1f5f9;
+}
+
+
+.admin-logo {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.logo-blue {
+    color: var(--color-secundario);
+}
+
+
+.logo-red {
+    color: var(--color-primario);
+}
+
+
+.admin-logo sup {
+    color: var(--color-primario);
+    font-size: 11px;
+}
+
+
+.header-user {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   CONTENIDO
+================================================== */
+
+.admin-content {
+    width: min(100% - 32px, 1100px);
+
+    margin: 0 auto;
+
+    padding: 32px 0;
+}
+
+
+.admin-title {
+    margin-bottom: 24px;
+}
+
+
+.section-label {
+    color: var(--color-primario);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.admin-title h1 {
+    margin-top: 4px;
+
+    font-size: clamp(25px, 4vw, 34px);
+
+    line-height: 1.2;
+
+    color: var(--color-secundario);
+}
+
+
+.admin-title p {
+    margin-top: 8px;
+
+    color: var(--color-texto-suave);
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   TARJETA PRINCIPAL
+================================================== */
+
+.raffle-main-card {
+    background: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    display: grid;
+
+    grid-template-columns: 240px 1fr;
+
+    gap: 24px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.raffle-main-image {
+    width: 100%;
+    height: 220px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: #f1f5f9;
+}
+
+
+.raffle-main-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.no-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-texto-suave);
+
+    font-size: 13px;
+}
+
+
+.raffle-main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.raffle-status {
+    width: fit-content;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+
+.raffle-status.activa {
+    background: #e6f8f5;
+    color: #0f766e;
+}
+
+
+.raffle-status.finalizada {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+
+.raffle-status.borrador {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+
+.raffle-main-info h2 {
+    font-size: 24px;
+
+    color: var(--color-texto);
+
+    margin-bottom: 8px;
+}
+
+
+.raffle-description {
+    color: var(--color-texto-suave);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 650px;
+
+    margin-bottom: 20px;
+}
+
+
+.raffle-data {
+    display: flex;
+
+    gap: 40px;
+}
+
+
+.raffle-data div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.raffle-data span {
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+}
+
+
+.raffle-data strong {
+    color: var(--color-texto);
+
+    font-size: 15px;
+}
+
+
+/* ==================================================
+   PROGRESO
+================================================== */
+
+.progress-card {
+    background: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.progress-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+.progress-header div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.progress-header span {
+    font-size: 12px;
+
+    color: var(--color-texto-suave);
+}
+
+
+.progress-header strong {
+    color: var(--color-secundario);
+
+    font-size: 16px;
+}
+
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+    height: 100%;
+
+    background: var(--color-primario);
+
+    border-radius: inherit;
+
+    transition: width 0.4s ease;
+}
+
+
+.progress-labels {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   ESTADÍSTICAS
+================================================== */
+
+.stats-section {
+    margin-top: 30px;
+}
+
+
+.stats-section h2,
+.section-heading h2 {
+    font-size: 20px;
+
+    color: var(--color-secundario);
+
+    margin-bottom: 15px;
+}
+
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.stat-card {
+    background: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: #eef2ff;
+
+    color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+
+.stat-card div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.stat-card strong {
+    font-size: 18px;
+
+    color: var(--color-texto);
+}
+
+
+.stat-card span:not(.stat-icon) {
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   NÚMEROS
+================================================== */
+
+.numbers-section,
+.participants-section {
+    margin-top: 32px;
+}
+
+
+.section-heading p {
+    color: var(--color-texto-suave);
+
+    font-size: 13px;
+
+    margin-top: -8px;
+
+    margin-bottom: 18px;
+}
+
+
+.number-legend {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-bottom: 16px;
+
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+}
+
+
+.number-legend span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.legend-dot.disponible {
+    background: var(--color-acento);
+}
+
+
+.legend-dot.reservado {
+    background: #f59e0b;
+}
+
+
+.legend-dot.vendido {
+    background: var(--color-primario);
+}
+
+
+.numbers-grid {
+    background: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(55px, 1fr));
+
+    gap: 10px;
+
+    box-shadow: var(--sombra);
+}
+
+
+.raffle-number {
+    height: 46px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    border: 1px solid transparent;
+}
+
+
+.raffle-number.disponible {
+    background: #f0fdfa;
+
+    color: #0f766e;
+
+    border-color: #ccfbf1;
+}
+
+
+.raffle-number.reservado {
+    background: #fffbeb;
+
+    color: #b45309;
+
+    border-color: #fde68a;
+}
+
+
+.raffle-number.vendido {
+    background: #fff1f2;
+
+    color: #dc2626;
+
+    border-color: #fecdd3;
+}
+
+
+/* ==================================================
+   PARTICIPANTES
+================================================== */
+
+.participants-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.participant-card {
+    background: var(--color-blanco);
+
+    border: 1px solid var(--color-borde);
+
+    border-radius: 15px;
+
+    padding: 13px 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.participant-avatar {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.participant-info {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+
+.participant-info strong {
+    font-size: 13px;
+}
+
+
+.participant-info span {
+    color: var(--color-texto-suave);
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+
+.participant-status {
+    color: #0f766e;
+
+    background: #ecfdf5;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.empty-participants {
+    background: var(--color-blanco);
+
+    border: 1px dashed var(--color-borde);
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    padding: 40px 20px;
+}
+
+
+.empty-participants > div {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    font-size: 22px;
+}
+
+
+.empty-participants h3 {
+    font-size: 15px;
+
+    color: var(--color-texto);
+}
+
+
+.empty-participants p {
+    font-size: 12px;
+
+    color: var(--color-texto-suave);
+
+    margin-top: 5px;
+}
+
+
+/* ==================================================
+   ACCIONES
+================================================== */
+
+.admin-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+.primary-button,
+.secondary-button {
+    min-height: 46px;
+
+    padding: 0 22px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.primary-button {
+    background: var(--color-primario);
+
+    color: white;
+
+    border: none;
+
+    flex: 1;
+}
+
+
+.primary-button:hover {
+    background: var(--color-primario-dark);
+}
+
+
+.secondary-button {
+    background: white;
+
+    color: var(--color-secundario);
+
+    border: 1px solid var(--color-secundario);
+
+    flex: 1;
+}
+
+
+.secondary-button:hover {
+    background: #f8fafc;
+}
+
+
+/* ==================================================
+   BOTTOM NAV
+================================================== */
+
+.bottom-nav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 72px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-top: 1px solid var(--color-borde);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    z-index: 100;
+}
+
+
+.nav-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 3px;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    min-width: 50px;
+}
+
+
+.nav-item.active {
+    color: var(--color-secundario);
+
+    font-weight: 600;
+}
+
+
+.nav-icon {
+    font-size: 19px;
+}
+
+
+.create-button {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--color-primario);
+
+    color: white;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px rgba(255, 102, 102, 0.3);
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 750px) {
+
+    .admin-content {
+        width: min(100% - 24px, 600px);
+
+        padding-top: 24px;
+    }
+
+
+    .raffle-main-card {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .raffle-main-image {
+        height: 210px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .bottom-nav {
+        gap: 12px;
+
+        justify-content: space-around;
+    }
+
+
+    .nav-item {
+        min-width: 55px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .admin-header {
+        padding: 0 15px;
+    }
+
+
+    .admin-logo {
+        font-size: 23px;
+    }
+
+
+    .admin-content {
+        width: min(100% - 20px, 430px);
+
+        padding-bottom: 15px;
+    }
+
+
+    .raffle-main-card {
+        padding: 12px;
+
+        border-radius: 16px;
+    }
+
+
+    .raffle-main-image {
+        height: 190px;
+    }
+
+
+    .raffle-main-info h2 {
+        font-size: 20px;
+    }
+
+
+    .raffle-data {
+        gap: 20px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+    }
+
+
+    .stat-card {
+        padding: 13px;
+
+        gap: 8px;
+    }
+
+
+    .stat-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+
+    .stat-card strong {
+        font-size: 15px;
+    }
+
+
+    .numbers-grid {
+        padding: 14px;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap: 7px;
+    }
+
+
+    .raffle-number {
+        height: 40px;
+
+        font-size: 11px;
+    }
+
+
+    .participant-card {
+        padding: 11px;
+    }
+
+
+    .participant-status {
+        font-size: 9px;
+    }
+
+
+    .admin-actions {
+        flex-direction: column;
+    }
+
+}
