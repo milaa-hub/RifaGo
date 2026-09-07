@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 
@@ -69,7 +69,7 @@ $resultado = $consulta->get_result();
 
     <link
         rel="stylesheet"
-        href="assets/css/rifas.css"
+        href="../assets/css/rifas.css"
     >
 
 </head>
@@ -84,24 +84,16 @@ $resultado = $consulta->get_result();
 
     <header class="raffles-header">
 
-        <a href="inicio.php" class="raffles-logo">
+        <a href="../index.php" class="raffles-logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>®</sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </a>
 
 
         <nav class="raffles-nav">
 
-            <a href="inicio.php">
+            <a href="../index.php">
                 Inicio
             </a>
 
@@ -117,7 +109,7 @@ $resultado = $consulta->get_result();
 
             <?php else: ?>
 
-                <a href="login.php">
+                <a href="../login.php">
                     Iniciar sesión
                 </a>
 
@@ -356,7 +348,7 @@ $resultado = $consulta->get_result();
                     <?php else: ?>
 
                         <a
-                            href="login.php"
+                            href="../login.php"
                             class="raffle-button"
                         >
                             Iniciar sesión

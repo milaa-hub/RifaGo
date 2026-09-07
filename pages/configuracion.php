@@ -1,18 +1,21 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
 $id_usuario = $_SESSION['id_usuario'];
 
-/* Obtener datos del usuario */
 
-$sql = "SELECT nombre, apellido
+/* ==========================================
+   DATOS DEL USUARIO
+========================================== */
+
+$sql = "SELECT nombre, apellido, email, telefono, rol
         FROM usuarios
         WHERE id_usuario = ?";
 
@@ -27,9 +30,15 @@ $stmt->close();
 
 if (!$usuario) {
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
+
+$nombre = htmlspecialchars(
+    $usuario['nombre'] . " " . $usuario['apellido']
+);
+
+$email = htmlspecialchars($usuario['email']);
 
 $iniciales =
     strtoupper(substr($usuario['nombre'], 0, 1)) .
@@ -49,20 +58,14 @@ $iniciales =
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Métodos de pago - RifaGo</title>
+    <title>Configuración - RifaGo</title>
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
@@ -79,7 +82,7 @@ $iniciales =
 
     <header class="header">
 
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
 
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
@@ -98,6 +101,7 @@ $iniciales =
 
     <main class="main-content">
 
+
         <a
             href="perfil.php"
             class="back-link"
@@ -109,35 +113,95 @@ $iniciales =
         <section class="page-title">
 
             <h1>
-                Métodos de pago
+                Configuración
             </h1>
 
             <p>
-                Elegí cómo querés pagar tus participaciones.
+                Administrá las opciones de tu cuenta.
             </p>
 
         </section>
 
 
-        <!-- MÉTODOS DISPONIBLES -->
+        <!-- INFORMACIÓN DE CUENTA -->
 
-        <section class="payment-menu">
+        <section class="settings-menu">
 
 
-            <div class="payment-option">
+            <a
+                href="mis_datos.php"
+                class="settings-option"
+            >
 
-                <div class="payment-icon">
-                    $
+                <div class="settings-icon">
+                    ♙
                 </div>
 
-                <div class="payment-info">
+                <div class="settings-text">
 
                     <h3>
-                        Mercado Pago
+                        Datos de la cuenta
                     </h3>
 
                     <p>
-                        Pagá de forma rápida y segura.
+                        <?php echo $nombre; ?>
+                    </p>
+
+                </div>
+
+                <span class="option-arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+            <!-- SEGURIDAD -->
+
+            <a
+                href="seguridad.php"
+                class="settings-option"
+            >
+
+                <div class="settings-icon">
+                    ◉
+                </div>
+
+                <div class="settings-text">
+
+                    <h3>
+                        Seguridad
+                    </h3>
+
+                    <p>
+                        Cambiar contraseña
+                    </p>
+
+                </div>
+
+                <span class="option-arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <div class="settings-option">
+
+                <div class="settings-icon">
+                    @
+                </div>
+
+                <div class="settings-text">
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        <?php echo $email; ?>
                     </p>
 
                 </div>
@@ -145,40 +209,26 @@ $iniciales =
             </div>
 
 
-            <div class="payment-option">
+            <!-- CERRAR SESIÓN -->
 
-                <div class="payment-icon">
-                    $
-                </div>
+            <a
+                href="../logout.php"
+                class="logout-button"
+            >
 
-                <div class="payment-info">
+                <span>
+                    ⎋
+                </span>
 
-                    <h3>
-                        Transferencia bancaria
-                    </h3>
+                <span>
+                    Cerrar sesión
+                </span>
 
-                    <p>
-                        Realizá una transferencia al medio indicado.
-                    </p>
-
-                </div>
-
-            </div>
+            </a>
 
 
         </section>
 
-
-        <div class="info-box">
-
-            <span>ⓘ</span>
-
-            <p>
-                Los datos de pago se solicitarán al momento
-                de comprar una participación.
-            </p>
-
-        </div>
 
     </main>
 
@@ -187,7 +237,7 @@ $iniciales =
 
     <nav class="bottom-nav">
 
-        <a href="index.php" class="nav-item">
+        <a href="../index.php" class="nav-item">
 
             <span class="nav-icon">⌂</span>
 

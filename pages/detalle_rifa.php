@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 
@@ -163,7 +163,7 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
 
     <link
         rel="stylesheet"
-        href="assets/css/detalle_rifa.css"
+        href="../assets/css/detalle_rifa.css"
     >
 
 </head>
@@ -178,17 +178,9 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
 
     <header class="main-header">
 
-        <a href="index.php" class="main-logo">
+        <a href="../index.php" class="main-logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>®</sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </a>
 
@@ -388,14 +380,14 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
                     </p>
 
                     <a
-                        href="login.php"
+                        href="../login.php"
                         class="participate-button"
                     >
                         Iniciar sesión
                     </a>
 
                     <a
-                        href="registro.php"
+                        href="../registro.php"
                         class="register-detail-link"
                     >
                         ¿No tenés una cuenta? Crear cuenta

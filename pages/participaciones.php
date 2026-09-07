@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 $usuario_logueado = isset($_SESSION['id_usuario']);
@@ -182,7 +182,7 @@ if ($usuario_logueado) {
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
 
@@ -218,9 +218,7 @@ if ($usuario_logueado) {
 
         <div class="logo">
 
-            <span class="logo-blue">Rifa</span>
-            <span class="logo-red">Go</span>
-            <sup>+</sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </div>
 
@@ -514,7 +512,7 @@ if ($usuario_logueado) {
 
 
                         <a
-                            href="index.php"
+                            href="../index.php"
                             class="primary-button"
                         >
                             Explorar rifas
@@ -772,7 +770,7 @@ if ($usuario_logueado) {
 
 
                 <a
-                    href="registro.php"
+                    href="../registro.php"
                     class="primary-button"
                 >
                     Crear una cuenta
@@ -784,7 +782,7 @@ if ($usuario_logueado) {
 
 
                 <a
-                    href="login.php"
+                    href="../login.php"
                     class="secondary-button"
                 >
                     Ya tengo una cuenta
@@ -808,7 +806,7 @@ if ($usuario_logueado) {
 
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 
@@ -893,7 +891,7 @@ if ($usuario_logueado) {
 </div>
 
 
-<script src="assets/js/participaciones.js"></script>
+<script src="../assets/js/participaciones.js"></script>
 
 </body>
 

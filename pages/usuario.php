@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 
@@ -9,7 +9,7 @@ session_start();
 ========================================== */
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -43,7 +43,7 @@ $stmt_usuario->execute();
 $resultado_usuario = $stmt_usuario->get_result();
 
 if ($resultado_usuario->num_rows === 0) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -216,7 +216,7 @@ $rifas_usuario =
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
 
@@ -248,21 +248,11 @@ $rifas_usuario =
     <header class="header">
 
         <a
-            href="index.php"
+            href="../index.php"
             class="logo"
         >
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>
-                +
-            </sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </a>
 
@@ -306,7 +296,7 @@ $rifas_usuario =
         <?php else: ?>
 
             <a
-                href="login.php"
+                href="../login.php"
                 class="user-icon"
             >
 
@@ -645,7 +635,7 @@ $rifas_usuario =
 
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 

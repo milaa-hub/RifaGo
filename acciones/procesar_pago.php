@@ -1,10 +1,10 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -13,7 +13,7 @@ if (
     !isset($_POST['numeros']) ||
     !isset($_POST['metodo_pago'])
 ) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 

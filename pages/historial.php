@@ -1,10 +1,10 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -30,7 +30,7 @@ $stmt_usuario->close();
 
 if (!$usuario) {
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -94,7 +94,7 @@ $resultado = $stmt->get_result();
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@ $resultado = $stmt->get_result();
 
     <header class="header">
 
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
 
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
@@ -290,7 +290,7 @@ $resultado = $stmt->get_result();
                 </p>
 
                 <a
-                    href="index.php"
+                    href="../index.php"
                     class="save-button"
                 >
                     Ver rifas
@@ -309,7 +309,7 @@ $resultado = $stmt->get_result();
 
     <nav class="bottom-nav">
 
-        <a href="index.php" class="nav-item">
+        <a href="../index.php" class="nav-item">
 
             <span class="nav-icon">⌂</span>
 

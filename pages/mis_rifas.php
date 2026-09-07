@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 $usuario_logueado = isset($_SESSION['id_usuario']);
@@ -106,7 +106,7 @@ if ($usuario_logueado) {
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link
@@ -680,7 +680,7 @@ if ($usuario_logueado) {
                                     <!-- ELIMINAR -->
 
                                     <form
-                                        action="eliminar_borrador.php"
+                                        action="../acciones/eliminar_borrador.php"
                                         method="POST"
                                         onsubmit="return confirmarEliminarBorrador();"
                                     >
@@ -779,7 +779,7 @@ if ($usuario_logueado) {
 
 
                 <a
-                    href="registro.php"
+                    href="../registro.php"
                     class="primary-button"
                 >
                     Crear una cuenta
@@ -791,7 +791,7 @@ if ($usuario_logueado) {
 
 
                 <a
-                    href="login.php"
+                    href="../login.php"
                     class="secondary-button"
                 >
                     Ya tengo una cuenta
@@ -815,7 +815,7 @@ if ($usuario_logueado) {
 
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 
@@ -900,7 +900,7 @@ if ($usuario_logueado) {
 </div>
 
 
-<script src="assets/js/mis_rifas.js"></script>
+<script src="../assets/js/mis_rifas.js"></script>
 
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 $usuario_logueado = isset($_SESSION["id_usuario"]);
@@ -824,7 +824,7 @@ if (
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
 
@@ -871,17 +871,7 @@ if (
 
         <div class="logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>
-                +
-            </sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </div>
 
@@ -1625,7 +1615,7 @@ if (
 
 
                 <a
-                    href="registro.php"
+                    href="../registro.php"
                     class="primary-button"
                 >
                     Crear una cuenta
@@ -1636,7 +1626,7 @@ if (
 
 
                 <a
-                    href="login.php"
+                    href="../login.php"
                     class="secondary-button"
                 >
                     Ya tengo una cuenta
@@ -1661,7 +1651,7 @@ if (
 
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 
@@ -1748,7 +1738,7 @@ if (
 
 
 
-<script src="assets/js/crear_rifa.js"></script>
+<script src="../assets/js/crear_rifa.js"></script>
 
 
 </body>

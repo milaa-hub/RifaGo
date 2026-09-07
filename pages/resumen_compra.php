@@ -1,10 +1,10 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -13,7 +13,7 @@ if (
     !isset($_POST['numeros']) ||
     empty($_POST['numeros'])
 ) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -22,7 +22,7 @@ $id_rifa = intval($_POST['id_rifa']);
 $ids_numeros = $_POST['numeros'];
 
 if (!is_array($ids_numeros)) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -40,7 +40,7 @@ $stmt->execute();
 $rifa = $stmt->get_result()->fetch_assoc();
 
 if (!$rifa) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -113,7 +113,7 @@ $total = count($numeros) * $rifa['precio_numero'];
 
     <title>Resumen de compra - RifaGo</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"

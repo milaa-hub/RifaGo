@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 
@@ -9,7 +9,7 @@ session_start();
 // ==================================================
 
 if (!isset($_SESSION["id_usuario"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -319,7 +319,7 @@ if (
 
     <link
         rel="stylesheet"
-        href="assets/css/administrar_rifa.css"
+        href="../assets/css/administrar_rifa.css"
     >
 
 </head>
@@ -346,15 +346,7 @@ if (
 
         <div class="admin-logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>+</sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </div>
 
@@ -887,7 +879,7 @@ if (
     <nav class="bottom-nav">
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
             <span class="nav-icon">⌂</span>

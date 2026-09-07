@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 
@@ -10,7 +10,7 @@ session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
 
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 
 }
@@ -25,7 +25,7 @@ if (
     !is_numeric($_POST['id_rifa'])
 ) {
 
-    header("Location: mis_rifas.php");
+    header("Location: ../pages/mis_rifas.php");
     exit;
 
 }
@@ -64,7 +64,7 @@ $consulta->close();
 // VOLVER A MIS RIFAS
 // ==================================================
 
-header("Location: mis_rifas.php");
+header("Location: ../pages/mis_rifas.php");
 
 exit;
 

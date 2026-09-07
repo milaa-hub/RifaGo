@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 /* ==========================================
@@ -88,7 +88,7 @@ if ($usuario_logueado && $usuario) {
 
     <title>Perfil - RifaGo</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +111,7 @@ if ($usuario_logueado && $usuario) {
 
     <header class="header">
 
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
         </a>
 
@@ -306,7 +306,7 @@ if ($usuario_logueado && $usuario) {
             =========================================== -->
 
             <a
-                href="logout.php"
+                href="../acciones/logout.php"
                 class="logout-button"
             >
 
@@ -375,7 +375,7 @@ if ($usuario_logueado && $usuario) {
             =========================================== -->
 
             <a
-                href="registro.php"
+                href="../registro.php"
                 class="edit-profile"
             >
                 Crear una cuenta
@@ -386,7 +386,7 @@ if ($usuario_logueado && $usuario) {
 
 
             <a
-                href="login.php"
+                href="../login.php"
                 class="edit-profile"
             >
                 Iniciar sesión
@@ -409,7 +409,7 @@ if ($usuario_logueado && $usuario) {
         <!-- INICIO -->
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 
@@ -511,7 +511,7 @@ function crearRifa() {
 
     <?php else: ?>
 
-        window.location.href = "login.php";
+        window.location.href = "../login.php";
 
     <?php endif; ?>
 

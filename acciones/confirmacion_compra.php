@@ -6,7 +6,7 @@ if (
     !isset($_SESSION['compra_exitosa']) ||
     $_SESSION['compra_exitosa'] !== true
 ) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -37,7 +37,7 @@ $total =
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link
@@ -138,7 +138,7 @@ $total =
 
 
     <a
-        href="participaciones.php"
+        href="../pages/participaciones.php"
         class="btn-primary full-button"
     >
         Ver mis participaciones
@@ -146,7 +146,7 @@ $total =
 
 
     <a
-        href="index.php"
+        href="../index.php"
         class="confirmation-home"
     >
         Ir al inicio

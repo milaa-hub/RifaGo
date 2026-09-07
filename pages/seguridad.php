@@ -1,10 +1,10 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -33,7 +33,7 @@ $stmt_usuario->close();
 
 if (!$usuario) {
     session_destroy();
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <header class="header">
 
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
 
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
@@ -313,7 +313,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <nav class="bottom-nav">
 
-        <a href="index.php" class="nav-item">
+        <a href="../index.php" class="nav-item">
 
             <span class="nav-icon">⌂</span>
 

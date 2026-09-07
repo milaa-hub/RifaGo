@@ -1,7 +1,6 @@
-```php
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 /* ==========================================
@@ -9,7 +8,7 @@ session_start();
 ========================================== */
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -150,7 +149,7 @@ if ($resultado->num_rows === 0) {
     session_unset();
     session_destroy();
 
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -202,7 +201,7 @@ $iniciales = $inicial_nombre . $inicial_apellido;
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
 
@@ -233,19 +232,9 @@ $iniciales = $inicial_nombre . $inicial_apellido;
 
     <header class="header">
 
-        <a href="index.php" class="logo">
+        <a href="../index.php" class="logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>
-                +
-            </sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </a>
 
@@ -457,7 +446,7 @@ $iniciales = $inicial_nombre . $inicial_apellido;
 
 
         <a
-            href="index.php"
+            href="../index.php"
             class="nav-item"
         >
 

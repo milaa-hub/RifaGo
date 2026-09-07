@@ -220,15 +220,7 @@ function escapar($texto)
 
         <div class="logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>+</sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </div>
 
@@ -507,7 +499,7 @@ function escapar($texto)
 
 
                 <a
-                    href="rifas.php"
+                    href="pages/rifas.php"
                     class="see-more"
                 >
                     Ver todas
@@ -603,7 +595,7 @@ function escapar($texto)
                             <!-- HACER TODA LA TARJETA CLICKEABLE -->
 
                             <a
-                                href="detalle_rifa.php?id=<?= $rifa['id_rifa'] ?>"
+                                href="pages/detalle_rifa.php?id=<?= $rifa['id_rifa'] ?>"
                                 class="raffle-card-link"
                             >
 
@@ -732,7 +724,7 @@ function escapar($texto)
                         <?php if ($usuario_logueado): ?>
 
                             <a
-                                href="crear_rifa.php"
+                                href="pages/crear_rifa.php"
                                 class="primary-button"
                             >
                                 Crear una rifa
@@ -814,7 +806,7 @@ function escapar($texto)
 
 
         <a
-            href="mis_rifas.php"
+            href="pages/mis_rifas.php"
             class="nav-item"
         >
 
@@ -845,7 +837,7 @@ function escapar($texto)
 
 
         <a
-            href="participaciones.php"
+            href="pages/participaciones.php"
             class="nav-item"
         >
 
@@ -862,7 +854,7 @@ function escapar($texto)
 
 
         <a
-            href="perfil.php"
+            href="pages/perfil.php"
             class="nav-item"
         >
 

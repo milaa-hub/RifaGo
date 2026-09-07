@@ -1,10 +1,10 @@
 <?php
 
-require_once "conexion.php";
+require_once "../conexion.php";
 session_start();
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 
@@ -13,7 +13,7 @@ if (
     !isset($_POST['numeros']) ||
     empty($_POST['numeros'])
 ) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -36,7 +36,7 @@ $stmt->execute();
 $rifa = $stmt->get_result()->fetch_assoc();
 
 if (!$rifa) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -60,7 +60,7 @@ $total = count($numeros) * $rifa['precio_numero'];
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="../assets/css/style.css"
     >
 
     <link
@@ -107,7 +107,7 @@ $total = count($numeros) * $rifa['precio_numero'];
 
 
     <form
-        action="procesar_pago.php"
+        action="../acciones/procesar_pago.php"
         method="POST"
     >
 
