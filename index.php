@@ -822,18 +822,12 @@ function escapar($texto)
 
 
 
-        <button
-            type="button"
-            class="create-button"
-            id="btnCrearRifa"
-        >
-
+                
+        <a href="pages/crear_rifa.php" class="create-button" style="text-decoration: none;">
             <span>
                 +
             </span>
-
-        </button>
-
+        </a>
 
 
         <a

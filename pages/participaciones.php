@@ -339,7 +339,7 @@ if ($usuario_logueado) {
                                 ): ?>
 
                                     <img
-                                        src="<?= htmlspecialchars(
+                                        src="../<?= htmlspecialchars(
                                             $participacion['imagen']
                                         ) ?>"
                                         alt="<?= htmlspecialchars(
@@ -563,7 +563,7 @@ if ($usuario_logueado) {
                                 ): ?>
 
                                     <img
-                                        src="<?= htmlspecialchars(
+                                        src="../<?= htmlspecialchars(
                                             $participacion['imagen']
                                         ) ?>"
                                         alt="<?= htmlspecialchars(

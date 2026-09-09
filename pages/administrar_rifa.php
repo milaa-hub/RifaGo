@@ -321,6 +321,10 @@ if (
         rel="stylesheet"
         href="../assets/css/administrar_rifa.css"
     >
+    <link
+        rel="stylesheet"
+        href="../assets/css/bottom-nav.css"
+    >
 
 </head>
 

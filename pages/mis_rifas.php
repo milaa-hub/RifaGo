@@ -259,7 +259,7 @@ if ($usuario_logueado) {
                                 <?php if (!empty($rifa['imagen'])): ?>
 
                                     <img
-                                        src="<?= htmlspecialchars($rifa['imagen']) ?>"
+                                        src="../<?= htmlspecialchars($rifa['imagen']) ?>"
                                         alt="<?= htmlspecialchars($rifa['premio']) ?>"
                                     >
 
@@ -434,7 +434,7 @@ if ($usuario_logueado) {
                                 <?php if (!empty($rifa['imagen'])): ?>
 
                                     <img
-                                        src="<?= htmlspecialchars($rifa['imagen']) ?>"
+                                        src="../<?= htmlspecialchars($rifa['imagen']) ?>"
                                         alt="<?= htmlspecialchars($rifa['premio']) ?>"
                                     >
 
@@ -598,7 +598,7 @@ if ($usuario_logueado) {
                                 <?php if (!empty($rifa['imagen'])): ?>
 
                                     <img
-                                        src="<?= htmlspecialchars($rifa['imagen']) ?>"
+                                        src="../<?= htmlspecialchars($rifa['imagen']) ?>"
                                         alt="<?= htmlspecialchars($rifa['premio']) ?>"
                                     >
 

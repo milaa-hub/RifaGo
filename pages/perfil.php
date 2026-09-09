@@ -10,14 +10,16 @@ session_start();
 $usuario_logueado = isset($_SESSION['id_usuario']);
 
 $usuario = null;
+$id_usuario = null;
+
+
+/* ==========================================
+   OBTENER DATOS DEL USUARIO
+========================================== */
 
 if ($usuario_logueado) {
 
-    $id_usuario = $_SESSION['id_usuario'];
-
-    /* ==========================================
-       OBTENER DATOS DEL USUARIO
-    ========================================== */
+    $id_usuario = (int) $_SESSION['id_usuario'];
 
     $sql = "SELECT id_usuario, nombre, apellido, email, telefono, rol
             FROM usuarios
@@ -48,6 +50,7 @@ if ($usuario_logueado) {
             session_destroy();
 
             $usuario_logueado = false;
+            $id_usuario = null;
         }
 
         $stmt->close();
@@ -66,9 +69,7 @@ if ($usuario_logueado && $usuario) {
 
     $nombre_completo = $nombre . " " . $apellido;
 
-    /*
-     * Obtener iniciales automáticamente
-     */
+    /* Obtener iniciales */
 
     $inicial_nombre = strtoupper(substr($usuario['nombre'], 0, 1));
     $inicial_apellido = strtoupper(substr($usuario['apellido'], 0, 1));
@@ -84,6 +85,7 @@ if ($usuario_logueado && $usuario) {
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Perfil - RifaGo</title>
@@ -91,6 +93,7 @@ if ($usuario_logueado && $usuario) {
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
@@ -99,6 +102,7 @@ if ($usuario_logueado && $usuario) {
     >
 
 </head>
+
 
 <body>
 
@@ -112,28 +116,47 @@ if ($usuario_logueado && $usuario) {
     <header class="header">
 
         <a href="../index.php" class="logo">
+
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
+
         </a>
 
 
-        <a
-            href="usuario.php?id=<?php echo $_SESSION['id_usuario']; ?>"
-            class="user-icon"
-        >
+        <!-- ICONO DE USUARIO -->
 
-            <?php if ($usuario_logueado && $usuario): ?>
+        <?php if ($usuario_logueado && $usuario): ?>
+
+            <!-- USUARIO LOGUEADO -->
+
+            <a
+                href="usuario.php?id=<?php echo $id_usuario; ?>"
+                class="user-icon"
+                style="text-decoration: none;"
+            >
 
                 <span>
                     <?php echo $iniciales; ?>
                 </span>
 
-            <?php else: ?>
+            </a>
 
-                <span>?</span>
+        <?php else: ?>
 
-            <?php endif; ?>
+            <!-- USUARIO NO LOGUEADO -->
 
-        </a>
+            <a
+                href="perfil.php"
+                class="user-icon"
+                style="text-decoration: none;"
+            >
+
+                <span>
+                    ?
+                </span>
+
+            </a>
+
+        <?php endif; ?>
 
     </header>
 
@@ -170,7 +193,7 @@ if ($usuario_logueado && $usuario) {
 
 
                     <a
-                        href="usuario.php?id=<?php echo $_SESSION['id_usuario']; ?>"
+                        href="usuario.php?id=<?php echo $id_usuario; ?>"
                         class="edit-profile"
                     >
                         Ver perfil

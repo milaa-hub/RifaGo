@@ -362,7 +362,7 @@ if (btnCrearRifa) {
         function() {
 
             window.location.href =
-                "crear_rifa.php";
+                "../../pages/crear_rifa.php";
 
         }
     );

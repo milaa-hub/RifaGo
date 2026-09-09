@@ -3,6 +3,7 @@
 require_once "../conexion.php";
 session_start();
 
+$usuario_logueado = isset($_SESSION['id_usuario']);
 
 // ==========================================
 // OBTENER RIFAS
@@ -69,7 +70,11 @@ $resultado = $consulta->get_result();
 
     <link
         rel="stylesheet"
-        href="../assets/css/rifas.css"
+        href="../assets/css/rifas.css?v=2"
+    >
+    <link
+        rel="stylesheet"
+        href="../assets/css/bottom-nav.css"
     >
 
 </head>
@@ -91,31 +96,33 @@ $resultado = $consulta->get_result();
         </a>
 
 
-        <nav class="raffles-nav">
+        <div class="user-icon">
 
-            <a href="../index.php">
-                Inicio
-            </a>
+            <?php if ($usuario_logueado): ?>
 
-            <a href="rifas.php" class="active">
-                Rifas
-            </a>
+                <span>
 
-            <?php if (isset($_SESSION["id_usuario"])): ?>
+                    <?= strtoupper(
+                        substr(
+                            $_SESSION['nombre'] ?? 'U',
+                            0,
+                            2
+                        )
+                    ) ?>
 
-                <a href="perfil.php">
-                    Mi perfil
-                </a>
+                </span>
 
             <?php else: ?>
 
-                <a href="../login.php">
-                    Iniciar sesión
-                </a>
+                <span>
+                    ?
+                </span>
 
             <?php endif; ?>
 
-        </nav>
+        </div>
+
+
 
     </header>
 
@@ -172,7 +179,7 @@ $resultado = $consulta->get_result();
                             <?php if (!empty($rifa["imagen"])): ?>
 
                                 <img
-                                    src="<?php echo htmlspecialchars($rifa["imagen"]); ?>"
+                                    src="../<?php echo htmlspecialchars($rifa["imagen"]); ?>"
                                     alt="<?php echo htmlspecialchars($rifa["titulo"]); ?>"
                                 >
 
@@ -366,7 +373,85 @@ $resultado = $consulta->get_result();
 
     </main>
 
+    <nav class="bottom-nav">
 
+
+        <a
+            href="../index.php"
+            class="nav-item active"
+        >
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Inicio
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="mis_rifas.php"
+            class="nav-item"
+        >
+
+            <span class="nav-icon">
+                ▤
+            </span>
+
+            <span>
+                Mis rifas
+            </span>
+
+        </a>
+
+
+
+                
+        <a href="crear_rifa.php" class="create-button" style="text-decoration: none;">
+            <span>
+                +
+            </span>
+        </a>
+
+
+        <a
+            href="participaciones.php"
+            class="nav-item"
+        >
+
+            <span class="nav-icon">
+                ♧
+            </span>
+
+            <span>
+                Participaciones
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="perfil.php"
+            class="nav-item"
+        >
+
+            <span class="nav-icon">
+                ♙
+            </span>
+
+            <span>
+                Perfil
+            </span>
+
+        </a>
+
+
+    </nav>
 
 </body>
 

@@ -209,8 +209,8 @@ $usuario_logueado = isset($_SESSION["id_usuario"]);
             <?php if (!empty($rifa["imagen"])): ?>
 
                 <img
-                    src="<?php echo htmlspecialchars($rifa["imagen"]); ?>"
-                    alt="<?php echo htmlspecialchars($rifa["titulo"]); ?>"
+                    src="../<?php echo htmlspecialchars($rifa["imagen"]); ?>"
+                    alt="../<?php echo htmlspecialchars($rifa["titulo"]); ?>"
                 >
 
             <?php else: ?>

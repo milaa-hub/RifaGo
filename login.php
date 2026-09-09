@@ -112,6 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         rel="stylesheet"
         href="assets/css/style.css"
     >
+    <link
+        rel="stylesheet"
+        href="assets/css/login.css"
+    >
 
     <link
         rel="preconnect"
@@ -147,15 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <a href="index.php" class="logo">
 
-                <span class="logo-blue">
-                    Rifa
-                </span>
-
-                <span class="logo-red">
-                    Go
-                </span>
-
-                <sup>+</sup>
+                <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
             </a>
 
