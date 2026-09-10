@@ -1114,7 +1114,19 @@ if (
 
                         </div>
 
+                        <div class="form-group"> 
+                            <select name="categoria" required>
+                                <option value="">Seleccionar categoría</option>
 
+                                <option value="Vehículos">Vehículos</option>
+                                <option value="Tecnología">Tecnología</option>
+                                <option value="Electrónica">Electrónica</option>
+                                <option value="Hogar">Hogar</option>
+                                <option value="Dinero">Dinero</option>
+                                <option value="Viajes">Viajes</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
 
                         <!-- IMAGEN -->
 
