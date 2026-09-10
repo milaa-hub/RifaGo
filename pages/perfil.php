@@ -90,7 +90,7 @@ if ($usuario_logueado && $usuario) {
 
     <title>Perfil - RifaGo</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css?=v2">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -396,25 +396,25 @@ if ($usuario_logueado && $usuario) {
             <!-- ==========================================
                  BOTONES
             =========================================== -->
-
-            <a
-                href="../registro.php"
-                class="edit-profile"
-            >
-                Crear una cuenta
-            </a>
-
-
-            <br><br>
+            <div class="auth-buttons"> 
+                <a
+                    href="../registro.php"
+                    class="edit-profile"
+                >
+                    Crear una cuenta
+                </a>
 
 
-            <a
-                href="../login.php"
-                class="edit-profile"
-            >
-                Iniciar sesión
-            </a>
+                <br><br>
 
+
+                <a
+                    href="../login.php"
+                    class="edit-profile"
+                >
+                    Iniciar sesión
+                </a>
+            </div>
 
         <?php endif; ?>
 

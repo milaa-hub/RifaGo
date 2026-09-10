@@ -182,7 +182,7 @@ if ($usuario_logueado) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/style.css"
+        href="../assets/css/style.css?=v2"
     >
 
 
