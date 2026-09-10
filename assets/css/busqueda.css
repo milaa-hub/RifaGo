@@ -1,0 +1,497 @@
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #123f8a;
+
+    --color-fondo: #f8fafc;
+
+    --color-blanco: #ffffff;
+
+    --color-texto: #111827;
+
+    --color-texto-suave: #6b7280;
+
+    --color-borde: #e8ebf0;
+
+    --sombra:
+        0 4px 18px rgba(20, 40, 80, 0.07);
+
+    --radio: 14px;
+
+    --fuente-principal:
+        "Poppins", Arial, sans-serif;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        var(--color-fondo);
+
+    color:
+        var(--color-texto);
+
+    font-family:
+        var(--fuente-principal);
+
+}
+
+/*Header*/
+.raffles-header {
+    height: 72px;
+
+    background: var(--color-blanco);
+
+    border-bottom: 1px solid var(--color-borde);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 50;
+}
+
+
+.back-button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    color: var(--color-secundario);
+
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+    background: #f1f5f9;
+}
+
+
+.raffles-logo {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.logo-blue {
+    color: var(--color-secundario);
+}
+
+
+.logo-red {
+    color: var(--color-primario);
+}
+
+
+.raffles-logo sup {
+    color: var(--color-primario);
+    font-size: 11px;
+}
+
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: var(--color-secundario);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+main {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        40px 20px;
+
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+main h1 {
+
+    margin-bottom: 30px;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color:
+        var(--color-texto);
+
+}
+
+
+/* =========================================
+   GRID DE RIFAS
+========================================= */
+
+.rifas-container {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(280px, 1fr)
+        );
+
+    gap: 24px;
+
+}
+
+
+/* =========================================
+   TARJETA
+========================================= */
+
+.rifa-card {
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    overflow: hidden;
+
+    box-shadow:
+        var(--sombra);
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100%;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.rifa-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(20, 40, 80, 0.12);
+
+}
+
+
+/* =========================================
+   IMAGEN
+========================================= */
+
+.rifa-card img {
+
+    width: 100%;
+
+    height: 200px;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* =========================================
+   TÍTULO DE LA RIFA
+========================================= */
+
+.rifa-card h2 {
+
+    padding:
+        18px 18px 8px;
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+    color:
+        var(--color-texto);
+
+}
+
+
+/* =========================================
+   TEXTOS
+========================================= */
+
+.rifa-card p {
+
+    padding:
+        5px 18px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+
+    color:
+        var(--color-texto-suave);
+
+}
+
+
+.rifa-card strong {
+
+    color:
+        var(--color-texto);
+
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
+
+.rifa-card a {
+
+    width: calc(100% - 36px);
+
+    margin:
+        auto 18px 18px;
+
+    min-height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        var(--color-primario);
+
+    color:
+        #ffffff;
+
+    border-radius:
+        10px;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rifa-card a:hover {
+
+    background:
+        var(--color-primario-dark);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================
+   SIN RESULTADOS
+========================================= */
+
+.rifas-container > p {
+
+    grid-column:
+        1 / -1;
+
+    padding:
+        50px 20px;
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    text-align: center;
+
+    color:
+        var(--color-texto-suave);
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    main {
+
+        padding:
+            30px 16px;
+
+    }
+
+
+    .rifas-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+.rifa-info {
+
+    padding:
+        18px;
+
+}
+
+
+.rifa-info h2 {
+
+    padding: 0;
+
+    margin-bottom: 8px;
+
+}
+
+
+.rifa-descripcion {
+
+    padding: 0 !important;
+
+    margin-bottom: 15px;
+
+}
+
+
+.rifa-datos {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.rifa-datos p {
+
+    padding: 0;
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    main {
+
+        padding:
+            25px 16px;
+
+    }
+
+
+    main h1 {
+
+        font-size:
+            1.5rem;
+
+    }
+
+
+    .rifas-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            16px;
+
+    }
+
+
+    .rifa-card img {
+
+        height:
+            220px;
+
+    }
+
+}

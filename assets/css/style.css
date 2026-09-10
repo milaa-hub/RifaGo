@@ -333,7 +333,165 @@ h3 {
 .search-box input::placeholder {
     color: #9ca3af;
 }
+/* =========================================
+   PANEL DE FILTROS
+========================================= */
 
+.filter-panel {
+    display: none;
+
+    width: 100%;
+    margin-top: 12px;
+    padding: 18px;
+
+    background: var(--color-blanco);
+
+    border-radius: 16px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+
+    box-sizing: border-box;
+
+    animation: aparecerFiltro 0.2s ease;
+}
+
+
+/* CUANDO SE ABRE */
+
+.filter-panel.visible {
+    display: block;
+}
+
+
+/* FORMULARIO */
+
+.filter-panel form {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    align-items: end;
+}
+
+
+/* GRUPOS */
+
+.filtro-grupo {
+    width: 100%;
+
+    margin-bottom: 0;
+}
+
+
+/* LABEL */
+
+.filtro-grupo > label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+
+/* RANGOS */
+
+.filtro-rango {
+    display: flex;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+
+/* INPUTS */
+
+.filtro-rango input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    box-sizing: border-box;
+}
+
+
+/* FOCUS */
+
+.filtro-rango input:focus {
+    outline: none;
+
+    border-color: var(--color-primario);
+}
+
+
+/* BOTÓN */
+
+.filter-panel .primary-button {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+
+/* ANIMACIÓN */
+
+@keyframes aparecerFiltro {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .filter-panel form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .filter-panel form {
+        grid-template-columns: 1fr;
+    }
+
+}
 
 .filter-button {
 

@@ -184,7 +184,7 @@ function escapar($texto)
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
+        href="assets/css/style.css?=v3"
     >
 
 
@@ -268,7 +268,11 @@ function escapar($texto)
 
         <div class="search-container">
 
-            <div class="search-box">
+            <form 
+                action="pages/busqueda.php" 
+                method="GET"
+                class="search-box"
+            >
 
                 <span class="search-icon">
                     ⌕
@@ -277,12 +281,13 @@ function escapar($texto)
                 <input
                     type="text"
                     id="buscador"
+                    name="busqueda"
                     placeholder="Buscar rifas..."
                     aria-label="Buscar rifas"
                     autocomplete="off"
                 >
 
-            </div>
+            </form>
 
 
             <button
@@ -302,34 +307,104 @@ function escapar($texto)
              FILTRO
         ====================================== -->
 
-        <div
-            class="filter-panel"
-            id="filterPanel"
-        >
 
-            <button
-                type="button"
-                class="filter-option active"
-                data-filtro="todas"
-            >
-                Todas
-            </button>
+        <div class="filter-panel" id="filterPanel">
 
-            <button
-                type="button"
-                class="filter-option"
-                data-filtro="disponibles"
-            >
-                Disponibles
-            </button>
+            <form action="pages/busqueda.php" method="GET">
 
-            <button
-                type="button"
-                class="filter-option"
-                data-filtro="proximas"
-            >
-                Próximas
-            </button>
+                <!-- PRECIO -->
+
+                <div class="filtro-grupo">
+
+                    <label>
+                        Precio por número
+                    </label>
+
+                    <div class="filtro-rango">
+
+                        <input
+                            type="number"
+                            name="precio_min"
+                            placeholder="Desde"
+                            min="0"
+                        >
+
+                        <input
+                            type="number"
+                            name="precio_max"
+                            placeholder="Hasta"
+                            min="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- CANTIDAD DE NÚMEROS -->
+
+                <div class="filtro-grupo">
+
+                    <label>
+                        Cantidad de números
+                    </label>
+
+                    <div class="filtro-rango">
+
+                        <input
+                            type="number"
+                            name="cantidad_min"
+                            placeholder="Desde"
+                            min="1"
+                        >
+
+                        <input
+                            type="number"
+                            name="cantidad_max"
+                            placeholder="Hasta"
+                            min="1"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- FECHA DE SORTEO -->
+
+                <div class="filtro-grupo">
+
+                    <label>
+                        Fecha de sorteo
+                    </label>
+
+                    <div class="filtro-rango">
+
+                        <input
+                            type="date"
+                            name="fecha_desde"
+                        >
+
+                        <input
+                            type="date"
+                            name="fecha_hasta"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- APLICAR -->
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Aplicar filtros
+                </button>
+
+            </form>
 
         </div>
 
@@ -501,7 +576,7 @@ function escapar($texto)
                 <a
                     href="pages/rifas.php"
                     class="see-more"
-                    style="text-decoration: none;"
+                    style=
                 >
                     Ver todas
                 </a>
