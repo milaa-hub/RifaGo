@@ -357,7 +357,8 @@ if ($usuario_logueado) {
 
                                 <a
                                     href="administrar_rifa.php?id=<?= $rifa['id_rifa'] ?>"
-                                    class="secondary-button"
+                                    class="primary-button"
+                                    style="text-decoration: none;"
                                 >
                                     Administrar rifa
                                 </a>

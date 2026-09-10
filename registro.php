@@ -135,11 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
-    >
-    <link
-        rel="stylesheet"
-        href="assets/css/login.css"
+        href="assets/css/login.css?=v2"
     >
 
 </head>

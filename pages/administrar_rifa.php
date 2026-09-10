@@ -414,7 +414,7 @@ if (
                 <?php if (!empty($rifa["imagen"])): ?>
 
                     <img
-                        src="<?= htmlspecialchars($rifa["imagen"]) ?>"
+                        src="../<?= htmlspecialchars($rifa["imagen"]) ?>"
                         alt="<?= htmlspecialchars($rifa["premio"]) ?>"
                     >
 

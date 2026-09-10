@@ -25,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             apellido,
             email,
             password,
-            telefono,
-            rol
+            telefono
         FROM usuarios
         WHERE email = ?
     ");
@@ -64,7 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             $_SESSION["telefono"] = $usuario["telefono"];
 
-            $_SESSION["rol"] = $usuario["rol"];
 
 
             // ==========================================
@@ -110,11 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css"
-    >
-    <link
-        rel="stylesheet"
-        href="assets/css/login.css"
+        href="assets/css/login.css?=v2"
     >
 
     <link

@@ -501,6 +501,7 @@ function escapar($texto)
                 <a
                     href="pages/rifas.php"
                     class="see-more"
+                    style="text-decoration: none;"
                 >
                     Ver todas
                 </a>

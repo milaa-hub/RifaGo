@@ -24,10 +24,7 @@ $sql_usuario = "SELECT
                     id_usuario,
                     nombre,
                     apellido,
-                    fecha_registro,
-                    foto_perfil,
-                    biografia,
-                    rol
+                    fecha_registro
                 FROM usuarios
                 WHERE id_usuario = ?";
 
@@ -60,10 +57,6 @@ $nombre = htmlspecialchars($usuario['nombre']);
 $apellido = htmlspecialchars($usuario['apellido']);
 
 $nombre_completo = $nombre . " " . $apellido;
-
-$biografia = htmlspecialchars(
-    $usuario['biografia'] ?? ""
-);
 
 
 /* ==========================================
@@ -339,20 +332,7 @@ $rifas_usuario =
 
             <div class="public-avatar">
 
-                <?php if (!empty($usuario['foto_perfil'])): ?>
-
-                    <img
-                        src="<?php echo htmlspecialchars(
-                            $usuario['foto_perfil']
-                        ); ?>"
-                        alt="Foto de <?php echo $nombre_completo; ?>"
-                    >
-
-                <?php else: ?>
-
-                    <?php echo $iniciales; ?>
-
-                <?php endif; ?>
+                <?php echo $iniciales; ?>
 
             </div>
 
@@ -373,18 +353,6 @@ $rifas_usuario =
 
             </p>
 
-
-            <!-- BIO -->
-
-            <?php if ($biografia !== ""): ?>
-
-                <p class="profile-bio">
-
-                    <?php echo $biografia; ?>
-
-                </p>
-
-            <?php endif; ?>
 
 
         </section>
@@ -489,7 +457,7 @@ $rifas_usuario =
                                 <?php if (!empty($rifa['imagen'])): ?>
 
                                     <img
-                                        src="<?php echo htmlspecialchars(
+                                        src="../<?php echo htmlspecialchars(
                                             $rifa['imagen']
                                         ); ?>"
                                         alt="<?php echo htmlspecialchars(

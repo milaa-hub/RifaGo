@@ -21,7 +21,7 @@ if ($usuario_logueado) {
 
     $id_usuario = (int) $_SESSION['id_usuario'];
 
-    $sql = "SELECT id_usuario, nombre, apellido, email, telefono, rol
+    $sql = "SELECT id_usuario, nombre, apellido, email, telefono
             FROM usuarios
             WHERE id_usuario = ?";
 
