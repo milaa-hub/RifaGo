@@ -140,6 +140,7 @@ $total =
     <a
         href="participaciones.php"
         class="btn-primary full-button"
+        style="text-decoration: none"
     >
         Ver mis participaciones
     </a>

@@ -239,14 +239,16 @@
 
 .notification-item.no-leida {
 
-    background-color: #f7faff;
+    background-color: #f4f8ff;
+
+    border-left: 4px solid #ff6b5e;
 
 }
 
 
 .notification-item.no-leida:hover {
 
-    background-color: #f0f6ff;
+    background-color: #edf4ff;
 
 }
 
@@ -257,7 +259,60 @@
 
 .notification-item.leida {
 
-    opacity: 0.75;
+    background-color: var(--color-blanco);
+
+    opacity: 1;
+
+}
+
+
+.notification-item.leida:hover {
+
+    background-color: #fafafa;
+
+}
+
+
+/* =========================================
+   TEXTO NO LEÍDA
+========================================= */
+
+.notification-item.no-leida
+.notification-content h2 {
+
+    color: var(--color-texto);
+
+    font-weight: 700;
+
+}
+
+
+.notification-item.no-leida
+.notification-content p {
+
+    color: var(--color-texto);
+
+}
+
+
+/* =========================================
+   TEXTO LEÍDA
+========================================= */
+
+.notification-item.leida
+.notification-content h2 {
+
+    color: var(--color-texto-secundario);
+
+    font-weight: 500;
+
+}
+
+
+.notification-item.leida
+.notification-content p {
+
+    color: #9aa0aa;
 
 }
 
@@ -367,21 +422,21 @@
 }
 
 
-/* =========================================
-   INDICADOR NO LEÍDA
-========================================= */
-
 .notification-unread {
 
-    width: 9px;
+    width: 10px;
 
-    height: 9px;
+    height: 10px;
 
-    min-width: 9px;
+    min-width: 10px;
 
     border-radius: 50%;
 
-    background-color: var(--color-secundario);
+    background-color: #ff6b5e;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255, 107, 94, 0.12);
 
 }
 

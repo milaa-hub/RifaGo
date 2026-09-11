@@ -8,6 +8,28 @@ require_once "../acciones/notificar.php";
 
 session_start();
 
+// ==========================================
+// EVITAR CACHÉ DE NOTIFICACIONES
+// ==========================================
+
+header(
+
+    "Cache-Control: no-store, no-cache, must-revalidate, max-age=0"
+
+);
+
+header(
+    "Cache-Control: post-check=0, pre-check=0",
+    false
+);
+
+header(
+    "Pragma: no-cache"
+);
+
+header(
+    "Expires: 0"
+);
 
 // ==========================================
 // VERIFICAR SESIÓN
@@ -82,9 +104,8 @@ if (
 
     $sql = "
 
-        SELECT 
-            enlace,
-            id_rifa
+        SELECT
+            enlace
 
         FROM notificaciones
 
@@ -108,6 +129,7 @@ if (
             "ii",
 
             $id_notificacion,
+
             $id_usuario
 
         );
@@ -119,7 +141,8 @@ if (
         $resultado = $stmt->get_result();
 
 
-        $notificacion = $resultado->fetch_assoc();
+        $notificacion =
+            $resultado->fetch_assoc();
 
 
         $stmt->close();
@@ -133,16 +156,48 @@ if (
 
 
             // ==========================================
-            // MARCAR COMO LEÍDA
+            // MARCAR COMO LEÍDA DIRECTAMENTE
             // ==========================================
 
-            marcarNotificacionLeida(
+            $sql_update = "
 
-                $conexion,
-                $id_notificacion,
-                $id_usuario
+                UPDATE notificaciones
 
-            );
+                SET leida = 1
+
+                WHERE id_notificacion = ?
+
+                AND id_usuario = ?
+
+            ";
+
+
+            $stmt_update =
+                $conexion->prepare(
+                    $sql_update
+                );
+
+
+            if ($stmt_update) {
+
+
+                $stmt_update->bind_param(
+
+                    "ii",
+
+                    $id_notificacion,
+
+                    $id_usuario
+
+                );
+
+
+                $stmt_update->execute();
+
+
+                $stmt_update->close();
+
+            }
 
 
             // ==========================================
@@ -152,35 +207,17 @@ if (
             if (
 
                 !empty(
-                    $notificacion["id_rifa"]
-                )
-
-            ) {
-
-
-                header(
-
-                    "Location: participaciones.php?id="
-                    . intval(
-                        $notificacion["id_rifa"]
-                    )
-
-                );
-
-                exit;
-
-            }
-
-            if (
-
-                !empty(
                     $notificacion["enlace"]
                 )
 
             ) {
+
+
                 header(
-                    "Location: "
-                    . $notificacion["enlace"]
+
+                    "Location: " .
+                    $notificacion["enlace"]
+
                 );
 
                 exit;
@@ -194,6 +231,10 @@ if (
     }
 
 
+    // ==========================================
+    // VOLVER A NOTIFICACIONES
+    // ==========================================
+
     header(
         "Location: notificaciones.php"
     );
@@ -201,6 +242,7 @@ if (
     exit;
 
 }
+
 
 
 // ==========================================
@@ -760,6 +802,39 @@ $notificaciones = obtenerNotificaciones(
 
     </main>
 
+    <script>
+
+    window.addEventListener(
+
+        "pageshow",
+
+        function(event) {
+
+            if (
+
+                event.persisted
+
+                ||
+
+                (
+                    window.performance
+                    &&
+                    window.performance.navigation
+                    &&
+                    window.performance.navigation.type === 2
+                )
+
+            ) {
+
+                window.location.reload();
+
+            }
+
+        }
+
+    );
+
+    </script>
 
 </body>
 

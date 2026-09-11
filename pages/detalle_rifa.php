@@ -320,7 +320,7 @@ if ($total_numeros > 0) {
             <?php if (!empty($rifa["imagen"])): ?>
 
                 <img
-                    src="../<?php echo htmlspecialchars($rifa["imagen"]); ?>"
+                    src="/RifaGo/<?php echo htmlspecialchars($rifa["imagen"]); ?>"
                     alt="<?php echo htmlspecialchars($rifa["titulo"]); ?>"
                 >
 

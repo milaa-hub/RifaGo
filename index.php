@@ -5,7 +5,23 @@ session_start();
 
 $usuario_logueado = isset($_SESSION['id_usuario']);
 
+//Notificaciones//
+require_once "acciones/notificar.php";
+$notificaciones_no_leidas = 0;
 
+
+if ($usuario_logueado) {
+
+    $notificaciones_no_leidas =
+        contarNotificacionesNoLeidas(
+
+            $conexion,
+
+            $_SESSION["id_usuario"]
+
+        );
+
+}
 // ==================================================
 // OBTENER RIFAS ACTIVAS
 // ==================================================
@@ -184,7 +200,7 @@ function escapar($texto)
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css?=v2"
+        href="assets/css/style.css?=v3"
     >
     <link
     rel="stylesheet"
@@ -240,6 +256,22 @@ function escapar($texto)
         >
 
             <i class="fa-solid fa-bell"></i>
+
+
+            <?php if (
+
+                $usuario_logueado
+                &&
+                $notificaciones_no_leidas > 0
+
+            ): ?>
+
+                <span
+                    class="notification-badge"
+                ></span>
+
+            <?php endif; ?>
+
 
         </a>
 

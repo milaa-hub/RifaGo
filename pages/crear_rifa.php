@@ -1,6 +1,8 @@
 <?php
 
 require_once "../conexion.php";
+require_once "../acciones/notificar.php";
+
 session_start();
 
 $usuario_logueado = isset($_SESSION["id_usuario"]);
@@ -196,13 +198,31 @@ if (
             } else {
 
 
-                $carpeta = "uploads/rifas/";
+                // ==========================================
+                // RUTA FÍSICA DE LA CARPETA
+                // ==========================================
+
+                $carpeta_fisica =
+                    __DIR__
+                    . "/../uploads/rifas/";
 
 
-                if (!is_dir($carpeta)) {
+                // ==========================================
+                // RUTA QUE SE GUARDARÁ EN LA BASE DE DATOS
+                // ==========================================
+
+                $carpeta_bd =
+                    "uploads/rifas/";
+
+
+                // ==========================================
+                // CREAR CARPETA SI NO EXISTE
+                // ==========================================
+
+                if (!is_dir($carpeta_fisica)) {
 
                     mkdir(
-                        $carpeta,
+                        $carpeta_fisica,
                         0777,
                         true
                     );
@@ -210,21 +230,42 @@ if (
                 }
 
 
+                // ==========================================
+                // NOMBRE DEL ARCHIVO
+                // ==========================================
+
                 $nombre_archivo =
                     uniqid("rifa_", true)
                     . "."
                     . $extension;
 
 
+                // ==========================================
+                // RUTA FÍSICA
+                // ==========================================
+
+                $ruta_fisica =
+                $carpeta_fisica
+                . $nombre_archivo;
+
+
+                // ==========================================
+                // RUTA PARA BASE DE DATOS
+                // ==========================================
+
                 $nueva_imagen =
-                    $carpeta
+                    $carpeta_bd
                     . $nombre_archivo;
 
+
+                // ==========================================
+                // GUARDAR IMAGEN
+                // ==========================================
 
                 if (
                     !move_uploaded_file(
                         $_FILES["imagen"]["tmp_name"],
-                        $nueva_imagen
+                        $ruta_fisica
                     )
                 ) {
 
@@ -232,9 +273,7 @@ if (
                         "No se pudo guardar la imagen.";
 
                 }
-
             }
-
         }
 
     }
@@ -756,6 +795,41 @@ if (
 
                 $consulta_numero->close();
 
+
+                // ------------------------------------------
+                // CREAR NOTIFICACIÓN
+                // ------------------------------------------
+
+                $tipo_notificacion = "rifa_publicada";
+
+                $titulo_notificacion = "¡Rifa publicada!";
+
+                $mensaje_notificacion =
+                    'Tu rifa "' .
+                    $nombre_premio .
+                    '" fue publicada correctamente.';
+
+                $enlace_notificacion =
+                    "mis_rifas.php";
+
+
+                crearNotificacionUnica(
+
+                    $conexion,
+
+                    $id_usuario,
+
+                    $tipo_notificacion,
+
+                    $titulo_notificacion,
+
+                    $mensaje_notificacion,
+
+                    $id_rifa,
+
+                    $enlace_notificacion
+
+                );
 
                 // ------------------------------------------
                 // CONFIRMAR
@@ -1685,98 +1759,6 @@ if (
 
 
     </main>
-
-
-
-    <!-- ==========================================
-         NAVEGACIÓN
-    =========================================== -->
-
-    <nav class="bottom-nav">
-
-
-        <a
-            href="../index.php"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ⌂
-            </span>
-
-            <span>
-                Inicio
-            </span>
-
-        </a>
-
-
-
-        <a
-            href="mis_rifas.php"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ▤
-            </span>
-
-            <span>
-                Mis rifas
-            </span>
-
-        </a>
-
-
-
-        <button
-            type="button"
-            class="create-button active"
-            onclick="window.location.href='crear_rifa.php'"
-        >
-
-            <span>
-                +
-            </span>
-
-        </button>
-
-
-
-        <a
-            href="participaciones.php"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ♧
-            </span>
-
-            <span>
-                Participaciones
-            </span>
-
-        </a>
-
-
-
-        <a
-            href="perfil.php"
-            class="nav-item"
-        >
-
-            <span class="nav-icon">
-                ♙
-            </span>
-
-            <span>
-                Perfil
-            </span>
-
-        </a>
-
-
-    </nav>
 
 
 </div>

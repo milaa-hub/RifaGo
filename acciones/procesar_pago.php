@@ -426,7 +426,7 @@ try {
 
 
     /* ==========================================
-       NOTIFICACIÓN PARA EL COMPRADOR
+   NOTIFICACIÓN PARA EL COMPRADOR
     ========================================== */
 
     crearNotificacion(
@@ -443,20 +443,20 @@ try {
 
         $id_rifa,
 
-        "../pages/detalle_rifa.php?id="
-        . $id_rifa
+        "../pages/participaciones.php"
 
     );
 
 
-
     /* ==========================================
-       NOTIFICACIÓN PARA EL CREADOR
+    NOTIFICACIÓN PARA EL CREADOR
     ========================================== */
 
     if (
+
         $id_creador
         !== $id_usuario
+
     ) {
 
         crearNotificacion(
@@ -473,12 +473,13 @@ try {
 
             $id_rifa,
 
-            "../pages/detalle_rifa.php?id="
-            . $id_rifa
+            "../pages/mis_rifas.php"
 
         );
 
     }
+
+    
 
 
 
