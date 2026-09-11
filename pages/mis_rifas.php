@@ -532,8 +532,8 @@ if ($usuario_logueado) {
                                 <!-- BOTÓN -->
 
                                 <a
-                                    href="detalle_rifa.php?id=<?= $rifa['id_rifa'] ?>"
-                                    class="secondary-button"
+                                    href="resultado_rifa.php?id=<?= $rifa['id_rifa'] ?>"
+                                    class="primary-button"
                                 >
                                     Ver rifa
                                 </a>
