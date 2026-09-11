@@ -861,7 +861,7 @@ if (
 
 
         <a
-            href="mis_rifas.php"
+            href="../index.php"
             class="back-button"
             id="btnVolverCrear"
         >
@@ -1497,6 +1497,76 @@ if (
 
 
             </form>
+
+            <!-- ==========================================
+                MODAL SALIR / GUARDAR BORRADOR
+            ========================================== -->
+
+            <div
+                class="exit-modal"
+                id="exitModal"
+            >
+
+                <div class="exit-modal-content">
+
+                    <div class="exit-modal-icon">
+                        !
+                    </div>
+
+
+                    <h2>
+                        ¿Querés salir?
+                    </h2>
+
+
+                    <p>
+                        Tenés cambios sin guardar.
+                        Podés guardarlos como borrador
+                        y continuar después.
+                    </p>
+
+
+                    <div class="exit-modal-buttons">
+
+
+                        <!-- GUARDAR BORRADOR -->
+
+                        <button
+                            type="button"
+                            class="primary-button"
+                            id="guardarBorrador"
+                        >
+                            Guardar borrador
+                        </button>
+
+
+                        <!-- SEGUIR EDITANDO -->
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="seguirEditando"
+                        >
+                            Seguir editando
+                        </button>
+
+
+                        <!-- SALIR -->
+
+                        <button
+                            type="button"
+                            class="exit-without-save"
+                            id="salirSinGuardar"
+                        >
+                            Salir sin guardar
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
         <?php else: ?>

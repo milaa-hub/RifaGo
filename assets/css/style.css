@@ -1624,6 +1624,165 @@ h3 {
 }
 
 /* =========================================
+   MODAL ELIMINAR
+========================================= */
+
+.delete-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        0.45
+    );
+
+    z-index: 9999;
+
+}
+
+
+.delete-modal.active {
+
+    display: flex;
+
+}
+
+
+.delete-modal-content {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+}
+
+
+.delete-modal-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #fff1f2;
+
+    font-size: 22px;
+
+}
+
+
+.delete-modal-content h2 {
+
+    margin: 0 0 12px;
+
+    font-size: 20px;
+
+}
+
+
+.delete-modal-content p {
+
+    margin: 0 0 25px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
+.delete-modal-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+
+.delete-modal-buttons button {
+
+    flex: 1;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    font-family: var(--fuente-principal);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+}
+
+
+/* CANCELAR */
+
+.cancel-delete-button {
+
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    color: #374151;
+
+}
+
+
+/* CONFIRMAR */
+
+.confirm-delete-button {
+
+    border: none;
+
+    background: #dc2626;
+
+    color: white;
+
+}
+
+
+.confirm-delete-button:hover {
+
+    background: #b91c1c;
+
+}
+
+/* =========================================
    RESPONSIVE - CELULAR
 ========================================= */
 
@@ -3108,6 +3267,153 @@ h3 {
     width: 100%;
 
     padding-left: 32px !important;
+}
+
+/* ==========================================
+   MODAL SALIR CREAR RIFA
+========================================== */
+
+.exit-modal {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(
+        0,
+        0,
+        0,
+        0.45
+    );
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+
+}
+
+
+.exit-modal.active {
+
+    display: flex;
+
+}
+
+
+.exit-modal-content {
+
+    width: 100%;
+    max-width: 400px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+}
+
+
+.exit-modal-icon {
+
+    width: 45px;
+    height: 45px;
+
+    margin:
+        0
+        auto
+        15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #fff3cd;
+
+    color: #d97706;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+
+.exit-modal-content h2 {
+
+    margin-bottom: 10px;
+
+    font-size: 22px;
+
+}
+
+
+.exit-modal-content p {
+
+    margin-bottom: 25px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+
+}
+
+
+.exit-modal-buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.exit-modal-buttons button {
+
+    width: 100%;
+
+}
+
+
+.exit-without-save {
+
+    border: none;
+
+    background: transparent;
+
+    color: #ef4444;
+
+    cursor: pointer;
+
+    padding: 10px;
+
+    font-size: 14px;
+
 }
 
 /* =====================================================

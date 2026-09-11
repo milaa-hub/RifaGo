@@ -26,16 +26,17 @@ if (botonContinuar) {
         "click",
         function() {
 
-            const nombre = document
-                .getElementById("nombre_premio")
-                .value
-                .trim();
+            const nombre =
+                document
+                    .getElementById("nombre_premio")
+                    .value
+                    .trim();
 
-
-            const descripcion = document
-                .getElementById("descripcion")
-                .value
-                .trim();
+            const descripcion =
+                document
+                    .getElementById("descripcion")
+                    .value
+                    .trim();
 
 
             if (
@@ -52,58 +53,14 @@ if (botonContinuar) {
             }
 
 
-            /* OCULTAR PASO 1 */
-
             pasoDatos.classList.remove(
                 "active"
             );
-
-
-            /* MOSTRAR PASO 2 */
 
             pasoConfiguracion.classList.add(
                 "active"
             );
 
-
-            /* VOLVER ARRIBA */
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-}
-
-
-/* =========================
-   VOLVER AL PASO 1
-========================= */
-
-if (botonVolver) {
-
-    botonVolver.addEventListener(
-        "click",
-        function() {
-
-            /* OCULTAR PASO 2 */
-
-            pasoConfiguracion.classList.remove(
-                "active"
-            );
-
-
-            /* MOSTRAR PASO 1 */
-
-            pasoDatos.classList.add(
-                "active"
-            );
-
-
-            /* VOLVER ARRIBA */
 
             window.scrollTo({
                 top: 0,
@@ -121,8 +78,6 @@ if (botonVolver) {
 ========================= */
 
 function actualizarResumen() {
-
-    /* VERIFICAR QUE EXISTAN */
 
     if (
         !precio ||
@@ -145,8 +100,6 @@ function actualizarResumen() {
         Number(cantidad.value) || 0;
 
 
-    /* PRECIO */
-
     resumenPrecio.textContent =
         "$" +
         precioValor.toLocaleString(
@@ -154,15 +107,11 @@ function actualizarResumen() {
         );
 
 
-    /* CANTIDAD */
-
     resumenCantidad.textContent =
         cantidadValor.toLocaleString(
             "es-AR"
         );
 
-
-    /* TOTAL */
 
     const total =
         precioValor * cantidadValor;
@@ -212,30 +161,25 @@ if (cantidad) {
 const imageInput =
     document.getElementById("imagen");
 
-
 const previewContainer =
     document.getElementById(
         "imagePreviewContainer"
     );
-
 
 const previewImage =
     document.getElementById(
         "imagePreview"
     );
 
-
 const uploadBox =
     document.getElementById(
         "uploadBox"
     );
 
-
 const imageName =
     document.getElementById(
         "imageName"
     );
-
 
 const removeImage =
     document.getElementById(
@@ -285,16 +229,12 @@ if (imageInput) {
                 event.target.files[0];
 
 
-            /* SI NO HAY ARCHIVO */
-
             if (!file) {
 
                 return;
 
             }
 
-
-            /* TIPOS PERMITIDOS */
 
             const allowedTypes = [
 
@@ -304,8 +244,6 @@ if (imageInput) {
 
             ];
 
-
-            /* VALIDAR TIPO */
 
             if (
                 !allowedTypes.includes(
@@ -317,16 +255,12 @@ if (imageInput) {
                     "Solo se permiten imágenes JPG, PNG o WEBP."
                 );
 
-
                 imageInput.value = "";
-
 
                 return;
 
             }
 
-
-            /* LEER IMAGEN */
 
             const reader =
                 new FileReader();
@@ -334,8 +268,6 @@ if (imageInput) {
 
             reader.onload =
                 function(e) {
-
-                    /* PONER IMAGEN */
 
                     if (previewImage) {
 
@@ -345,8 +277,6 @@ if (imageInput) {
                     }
 
 
-                    /* MOSTRAR PREVIEW */
-
                     if (previewContainer) {
 
                         previewContainer.style.display =
@@ -355,8 +285,6 @@ if (imageInput) {
                     }
 
 
-                    /* OCULTAR UPLOAD */
-
                     if (uploadBox) {
 
                         uploadBox.style.display =
@@ -364,8 +292,6 @@ if (imageInput) {
 
                     }
 
-
-                    /* MOSTRAR NOMBRE */
 
                     if (imageName) {
 
@@ -376,20 +302,6 @@ if (imageInput) {
 
                 };
 
-
-            /* ERROR */
-
-            reader.onerror =
-                function() {
-
-                    alert(
-                        "No se pudo cargar la imagen."
-                    );
-
-                };
-
-
-            /* LEER ARCHIVO */
 
             reader.readAsDataURL(
                 file
@@ -411,16 +323,12 @@ if (removeImage) {
         "click",
         function() {
 
-            /* LIMPIAR INPUT */
-
             if (imageInput) {
 
                 imageInput.value = "";
 
             }
 
-
-            /* QUITAR IMAGEN */
 
             if (previewImage) {
 
@@ -431,8 +339,6 @@ if (removeImage) {
             }
 
 
-            /* OCULTAR PREVIEW */
-
             if (previewContainer) {
 
                 previewContainer.style.display =
@@ -440,8 +346,6 @@ if (removeImage) {
 
             }
 
-
-            /* MOSTRAR SUBIDA */
 
             if (uploadBox) {
 
@@ -451,14 +355,237 @@ if (removeImage) {
             }
 
 
-            /* LIMPIAR NOMBRE */
-
             if (imageName) {
 
                 imageName.textContent =
                     "";
 
             }
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   DETECTAR CAMBIOS Y SALIR
+========================================== */
+
+const formCrearRifa =
+    document.getElementById(
+        "formCrearRifa"
+    );
+
+const btnVolverCrear =
+    document.getElementById(
+        "btnVolverCrear"
+    );
+
+const exitModal =
+    document.getElementById(
+        "exitModal"
+    );
+
+const guardarBorrador =
+    document.getElementById(
+        "guardarBorrador"
+    );
+
+const seguirEditando =
+    document.getElementById(
+        "seguirEditando"
+    );
+
+const salirSinGuardar =
+    document.getElementById(
+        "salirSinGuardar"
+    );
+
+
+let hayCambios = false;
+
+
+/* =========================
+   DETECTAR CAMBIOS
+========================= */
+
+if (formCrearRifa) {
+
+    const campos =
+        formCrearRifa.querySelectorAll(
+            "input:not([type='hidden']), textarea, select"
+        );
+
+
+    campos.forEach(
+        function(campo) {
+
+            campo.addEventListener(
+                "input",
+                function() {
+
+                    hayCambios = true;
+
+                }
+            );
+
+
+            campo.addEventListener(
+                "change",
+                function() {
+
+                    hayCambios = true;
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   TOCAR FLECHA
+========================= */
+
+if (btnVolverCrear) {
+
+    btnVolverCrear.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+
+            /* SI NO HAY CAMBIOS */
+
+            if (!hayCambios) {
+
+                window.location.href =
+                    "mis_rifas.php";
+
+                return;
+
+            }
+
+
+            /* MOSTRAR MODAL */
+
+            if (exitModal) {
+
+                exitModal.classList.add(
+                    "active"
+                );
+
+            } else {
+
+                /* SOLO PARA EVITAR
+                   QUE NO PASE NADA */
+
+                alert(
+                    "Tenés cambios sin guardar."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SEGUIR EDITANDO
+========================= */
+
+if (seguirEditando) {
+
+    seguirEditando.addEventListener(
+        "click",
+        function() {
+
+            if (exitModal) {
+
+                exitModal.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SALIR SIN GUARDAR
+========================= */
+
+if (salirSinGuardar) {
+
+    salirSinGuardar.addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "mis_rifas.php";
+
+        }
+    );
+
+}
+
+
+/* =========================
+   GUARDAR BORRADOR
+========================= */
+
+if (
+    guardarBorrador &&
+    formCrearRifa
+) {
+
+    guardarBorrador.addEventListener(
+        "click",
+        function() {
+
+            let inputAccion =
+                formCrearRifa.querySelector(
+                    "input[name='accion']"
+                );
+
+
+            /* SI NO EXISTE */
+
+            if (!inputAccion) {
+
+                inputAccion =
+                    document.createElement(
+                        "input"
+                    );
+
+
+                inputAccion.type =
+                    "hidden";
+
+                inputAccion.name =
+                    "accion";
+
+                formCrearRifa.appendChild(
+                    inputAccion
+                );
+
+            }
+
+
+            inputAccion.value =
+                "borrador";
+
+
+            formCrearRifa.submit();
 
         }
     );

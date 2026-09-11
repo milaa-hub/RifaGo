@@ -680,25 +680,23 @@ if ($usuario_logueado) {
 
                                     <!-- ELIMINAR -->
 
-                                    <form
-                                        action="../acciones/eliminar_borrador.php"
+                                    <form 
+                                        action="../acciones/eliminar_borrador.php" 
                                         method="POST"
-                                        onsubmit="return confirmarEliminarBorrador();"
+                                        class="delete-draft-form"
                                     >
 
-                                        <input
-                                            type="hidden"
-                                            name="id_rifa"
+                                        <input 
+                                            type="hidden" 
+                                            name="id_rifa" 
                                             value="<?= $rifa['id_rifa'] ?>"
                                         >
 
-                                        <button
-                                            type="submit"
+                                        <button 
+                                            type="button"
                                             class="delete-draft-button"
                                         >
-
                                             Eliminar
-
                                         </button>
 
                                     </form>
@@ -709,6 +707,8 @@ if ($usuario_logueado) {
                             </div>
 
                         </article>
+
+                        
 
                     <?php endforeach; ?>
 
@@ -806,6 +806,61 @@ if ($usuario_logueado) {
 
     </main>
 
+    <!-- =========================================
+     MODAL ELIMINAR BORRADOR
+    ========================================= -->
+
+    <div
+        class="delete-modal"
+        id="deleteModal"
+    >
+
+        <div class="delete-modal-content">
+
+
+            <div class="delete-modal-icon">
+                🗑
+            </div>
+
+
+            <h2>
+                ¿Eliminar borrador?
+            </h2>
+
+
+            <p>
+                ¿Estás segura de que querés eliminar este borrador?
+                Esta acción no se puede deshacer.
+            </p>
+
+
+            <div class="delete-modal-buttons">
+
+
+                <button
+                    type="button"
+                    class="cancel-delete-button"
+                    id="cancelDelete"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="confirm-delete-button"
+                    id="confirmDelete"
+                >
+                    Sí, eliminar
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+</div>
 
 
     <!-- ==========================================
@@ -900,8 +955,267 @@ if ($usuario_logueado) {
 
 </div>
 
+<script>
 
-<script src="../assets/js/mis_rifas.js"></script>
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        /* =========================================
+           TABS
+        ========================================= */
+
+        const tabs =
+            document.querySelectorAll(".tab");
+
+
+        const contents =
+            document.querySelectorAll(".tab-content");
+
+
+        tabs.forEach(
+            function(tab) {
+
+
+                tab.addEventListener(
+                    "click",
+                    function() {
+
+
+                        const tabSeleccionada =
+                            tab.dataset.tab;
+
+
+                        /* QUITAR ACTIVE DE TABS */
+
+                        tabs.forEach(
+                            function(item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        /* OCULTAR CONTENIDOS */
+
+                        contents.forEach(
+                            function(content) {
+
+                                content.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        /* ACTIVAR TAB */
+
+                        tab.classList.add(
+                            "active"
+                        );
+
+
+                        /* MOSTRAR CONTENIDO */
+
+                        const contenido =
+                            document.getElementById(
+                                tabSeleccionada
+                            );
+
+
+                        if (contenido) {
+
+                            contenido.classList.add(
+                                "active"
+                            );
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =========================================
+           MODAL ELIMINAR BORRADOR
+        ========================================= */
+
+        const deleteModal =
+            document.getElementById(
+                "deleteModal"
+            );
+
+
+        const cancelDelete =
+            document.getElementById(
+                "cancelDelete"
+            );
+
+
+        const confirmDelete =
+            document.getElementById(
+                "confirmDelete"
+            );
+
+
+        const deleteButtons =
+            document.querySelectorAll(
+                ".delete-draft-button"
+            );
+
+
+        let formAEliminar = null;
+
+
+
+        /* =========================================
+           ABRIR MODAL
+        ========================================= */
+
+        deleteButtons.forEach(
+            function(button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+
+                        console.log(
+                            "Botón eliminar presionado"
+                        );
+
+
+                        formAEliminar =
+                            button.closest(
+                                ".delete-draft-form"
+                            );
+
+
+                        if (deleteModal) {
+
+                            deleteModal.classList.add(
+                                "active"
+                            );
+
+                        }
+
+
+                    }
+                );
+
+
+            }
+        );
+
+
+
+        /* =========================================
+           CANCELAR
+        ========================================= */
+
+        if (cancelDelete) {
+
+
+            cancelDelete.addEventListener(
+                "click",
+                function() {
+
+
+                    deleteModal.classList.remove(
+                        "active"
+                    );
+
+
+                    formAEliminar = null;
+
+
+                }
+            );
+
+
+        }
+
+
+
+        /* =========================================
+           CONFIRMAR ELIMINACIÓN
+        ========================================= */
+
+        if (confirmDelete) {
+
+
+            confirmDelete.addEventListener(
+                "click",
+                function() {
+
+
+                    if (formAEliminar) {
+
+
+                        formAEliminar.submit();
+
+
+                    }
+
+
+                }
+            );
+
+
+        }
+
+
+
+        /* =========================================
+           CERRAR AL TOCAR AFUERA
+        ========================================= */
+
+        if (deleteModal) {
+
+
+            deleteModal.addEventListener(
+                "click",
+                function(event) {
+
+
+                    if (
+                        event.target === deleteModal
+                    ) {
+
+
+                        deleteModal.classList.remove(
+                            "active"
+                        );
+
+
+                        formAEliminar = null;
+
+
+                    }
+
+
+                }
+            );
+
+
+        }
+
+
+    }
+);
+
+</script>
 
 </body>
 
