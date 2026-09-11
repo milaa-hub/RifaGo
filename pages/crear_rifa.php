@@ -22,6 +22,7 @@ $descripcion = "";
 $precio_numero = "";
 $cantidad_numeros = "";
 $fecha_sorteo = "";
+$hora_sorteo = "";
 $metodo_sorteo = "Automatico";
 
 $ruta_imagen = "";
@@ -52,6 +53,7 @@ if (
             precio_numero,
             cantidad_numeros,
             fecha_sorteo,
+            hora_sorteo,
             estado
         FROM rifas
         WHERE id_rifa = ?
@@ -83,6 +85,7 @@ if (
         $precio_numero = $rifa["precio_numero"] ?? "";
         $cantidad_numeros = $rifa["cantidad_numeros"] ?? "";
         $fecha_sorteo = $rifa["fecha_sorteo"] ?? "";
+        $hora_sorteo = $rifa["hora_sorteo"] ?? "";
         $ruta_imagen = $rifa["imagen"] ?? "";
 
 
@@ -128,6 +131,8 @@ if (
     $cantidad_numeros = $_POST["cantidad_numeros"] ?? "";
 
     $fecha_sorteo = $_POST["fecha_sorteo"] ?? "";
+
+    $hora_sorteo = $_POST["hora_sorteo"] ?? "";
 
     $metodo_sorteo = $_POST["metodo_sorteo"] ?? "Automatico";
 
@@ -372,6 +377,7 @@ if (
                         precio_numero = NULLIF(?, ''),
                         cantidad_numeros = NULLIF(?, ''),
                         fecha_sorteo = NULLIF(?, ''),
+                        hora_sorteo = NULLIF(?, ''),
                         estado = ?
                     WHERE id_rifa = ?
                     AND id_usuario = ?
@@ -380,7 +386,7 @@ if (
 
 
                 $consulta->bind_param(
-                    "ssssssssii",
+                    "sssssssssii",
                     $nombre_premio,
                     $descripcion,
                     $nombre_premio,
@@ -388,6 +394,7 @@ if (
                     $precio_numero,
                     $cantidad_numeros,
                     $fecha_sorteo,
+                    $hora_sorteo,
                     $estado,
                     $id_borrador,
                     $id_usuario
@@ -426,14 +433,15 @@ if (
                         precio_numero,
                         cantidad_numeros,
                         fecha_sorteo,
+                        hora_sorteo,
                         estado
                     )
-                    VALUES (?, ?, ?, ?, ?, NULLIF(?, ''), NULLIF(?, ''), NULLIF(?, ''), ?)
+                    VALUES (?, ?, ?, ?, ?, NULLIF(?, ''), NULLIF(?, ''), NULLIF(?, ''), NULLIF(?, ''), ?)
                 ");
 
 
                 $consulta->bind_param(
-                    "issssssss",
+                    "isssssssss",
                     $id_usuario,
                     $nombre_premio,
                     $descripcion,
@@ -442,6 +450,7 @@ if (
                     $precio_numero,
                     $cantidad_numeros,
                     $fecha_sorteo,
+                    $hora_sorteo,
                     $estado
                 );
 
@@ -519,7 +528,8 @@ if (
             empty($descripcion) ||
             empty($precio_numero) ||
             empty($cantidad_numeros) ||
-            empty($fecha_sorteo)
+            empty($fecha_sorteo) ||
+            empty($hora_sorteo)
         ) {
 
             $error =
@@ -646,6 +656,7 @@ if (
                             precio_numero = ?,
                             cantidad_numeros = ?,
                             fecha_sorteo = ?,
+                            hora_sorteo = ?,
                             estado = ?
                         WHERE id_rifa = ?
                         AND id_usuario = ?
@@ -654,7 +665,8 @@ if (
 
 
                     $consulta_rifa->bind_param(
-                        "ssssdissii",
+                        "issssdissss",
+                        $id_usuario,
                         $nombre_premio,
                         $descripcion,
                         $nombre_premio,
@@ -662,9 +674,8 @@ if (
                         $precio_numero,
                         $cantidad_numeros,
                         $fecha_sorteo,
-                        $estado_rifa,
-                        $id_borrador,
-                        $id_usuario
+                        $hora_sorteo,
+                        $estado_rifa
                     );
 
 
@@ -700,14 +711,15 @@ if (
                             precio_numero,
                             cantidad_numeros,
                             fecha_sorteo,
+                            hora_sorteo,
                             estado
                         )
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ");
 
 
                     $consulta_rifa->bind_param(
-                        "issssdiss",
+                        "issssdisss",
                         $id_usuario,
                         $nombre_premio,
                         $descripcion,
@@ -716,6 +728,7 @@ if (
                         $precio_numero,
                         $cantidad_numeros,
                         $fecha_sorteo,
+                        $hora_sorteo,
                         $estado_rifa
                     );
 
@@ -1495,6 +1508,35 @@ if (
                                 required
                             >
 
+
+                        </div>
+
+                        <!-- HORA -->
+
+                        <div class="form-group">
+
+                            <label for="hora_sorteo">
+
+                                Hora del sorteo
+
+                                <span>
+                                    *
+                                </span>
+
+                            </label>
+
+
+                            <input
+                                type="time"
+                                id="hora_sorteo"
+                                name="hora_sorteo"
+                                value="<?= htmlspecialchars(
+                                    !empty($hora_sorteo)
+                                        ? substr($hora_sorteo, 0, 5)
+                                        : ""
+                                ) ?>"
+                                required
+                            >
 
                         </div>
 

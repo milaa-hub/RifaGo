@@ -1,9 +1,4 @@
-// ==================================================
-// ELEMENTOS
-// ==================================================
-
 const buscador = document.getElementById("buscador");
-const rifas = document.querySelectorAll(".raffle-card");
 const categorias = document.querySelectorAll(".category");
 
 const btnFiltro = document.getElementById("btnFiltro");
@@ -19,9 +14,6 @@ const btnCrearRifa = document.getElementById("btnCrearRifa");
 // BUSCADOR
 // ==================================================
 
-// El buscador NO filtra las tarjetas del index.
-// Al presionar Enter, busca en busqueda.php.
-
 if (buscador) {
 
     buscador.addEventListener("keydown", function (event) {
@@ -35,7 +27,7 @@ if (buscador) {
             if (texto !== "") {
 
                 window.location.href =
-                    "busqueda.php?buscar=" +
+                    "pages/busqueda.php?busqueda=" +
                     encodeURIComponent(texto);
 
             }
@@ -51,35 +43,31 @@ if (buscador) {
 // CATEGORÍAS
 // ==================================================
 
-// Al tocar una categoría se realiza la búsqueda
-// correspondiente en busqueda.php.
-
 categorias.forEach(function (categoria) {
 
-    categoria.addEventListener("click", function (event) {
+    categoria.addEventListener("click", function () {
 
         const categoriaSeleccionada =
             categoria.dataset.categoria;
 
-        // Si es un enlace <a>, dejamos que funcione
-        // con su href normalmente.
-        if (categoria.tagName.toLowerCase() === "a") {
-            return;
-        }
 
         if (
-            categoriaSeleccionada &&
-            categoriaSeleccionada !== "todas"
+            categoriaSeleccionada === "todas"
         ) {
 
             window.location.href =
-                "busqueda.php?buscar=" +
-                encodeURIComponent(categoriaSeleccionada);
+                "pages/busqueda.php";
 
-        } else {
+            return;
+
+        }
+
+
+        if (categoriaSeleccionada) {
 
             window.location.href =
-                "busqueda.php";
+                "pages/busqueda.php?busqueda=" +
+                encodeURIComponent(categoriaSeleccionada);
 
         }
 
@@ -91,9 +79,6 @@ categorias.forEach(function (categoria) {
 // ==================================================
 // BOTÓN DE FILTRO
 // ==================================================
-
-// Este botón solamente abre y cierra
-// el panel de filtros.
 
 if (btnFiltro && filterPanel) {
 
@@ -110,9 +95,6 @@ if (btnFiltro && filterPanel) {
 // FILTROS
 // ==================================================
 
-// Estos botones corresponden a:
-// Todas / Disponibles / Próximas
-
 filtros.forEach(function (filtro) {
 
     filtro.addEventListener("click", function () {
@@ -120,24 +102,27 @@ filtros.forEach(function (filtro) {
         const tipoFiltro =
             filtro.dataset.filtro;
 
+
         if (tipoFiltro === "todas") {
 
             window.location.href =
-                "busqueda.php";
+                "pages/busqueda.php";
 
         }
+
 
         if (tipoFiltro === "disponibles") {
 
             window.location.href =
-                "busqueda.php?disponibilidad=disponibles";
+                "pages/busqueda.php?disponibilidad=disponibles";
 
         }
+
 
         if (tipoFiltro === "proximas") {
 
             window.location.href =
-                "busqueda.php?disponibilidad=proximas";
+                "pages/busqueda.php?disponibilidad=proximas";
 
         }
 

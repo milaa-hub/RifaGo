@@ -11,6 +11,8 @@ $usuario_logueado = isset($_SESSION['id_usuario']);
 
 $busqueda = $_GET['busqueda'] ?? '';
 
+$categoria = $_GET['categoria'] ?? '';
+
 $precio_min = $_GET['precio_min'] ?? '';
 $precio_max = $_GET['precio_max'] ?? '';
 
