@@ -56,22 +56,57 @@
 
 }
 
-/*BACK BUTTON*/
-.back-button {
-    width: 40px;
-    height: 40px;
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.header .back-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
 
     border-radius: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: transparent;
 
-    font-size: 23px;
+    box-shadow: none;
+
+    text-decoration: none;
+
+    font-size: 1.5rem;
+
+    font-weight: 400;
+
+    line-height: 1;
 
     color: var(--color-secundario);
 
-    transition: 0.2s;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.header .back-button:hover {
+
+    background-color: #f0f4fa;
+
+    transform: translateX(-2px);
+
 }
 
 /* =========================================
@@ -167,6 +202,24 @@
 
 }
 
+.notifications-list .notification-item {
+
+    text-decoration: none !important;
+
+    color: inherit !important;
+
+}
+
+
+.notifications-list .notification-item h2,
+
+.notifications-list .notification-item p,
+
+.notifications-list .notification-item span {
+
+    text-decoration: none !important;
+
+}
 
 /* =========================================
    HOVER

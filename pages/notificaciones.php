@@ -82,7 +82,9 @@ if (
 
     $sql = "
 
-        SELECT enlace
+        SELECT 
+            enlace,
+            id_rifa
 
         FROM notificaciones
 
@@ -150,7 +152,7 @@ if (
             if (
 
                 !empty(
-                    $notificacion["enlace"]
+                    $notificacion["id_rifa"]
                 )
 
             ) {
@@ -158,10 +160,27 @@ if (
 
                 header(
 
+                    "Location: participaciones.php?id="
+                    . intval(
+                        $notificacion["id_rifa"]
+                    )
+
+                );
+
+                exit;
+
+            }
+
+            if (
+
+                !empty(
+                    $notificacion["enlace"]
+                )
+
+            ) {
+                header(
                     "Location: "
-
                     . $notificacion["enlace"]
-
                 );
 
                 exit;
@@ -235,7 +254,7 @@ $notificaciones = obtenerNotificaciones(
 
     <link
         rel="stylesheet"
-        href="../assets/css/notificaciones.css"
+        href="../assets/css/notificaciones.css?=v2"
     >
 
 </head>
