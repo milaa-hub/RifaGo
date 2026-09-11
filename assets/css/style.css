@@ -237,6 +237,70 @@ h3 {
     top: -0.75rem;
 }
 
+/* =====================================
+   USUARIO + NOTIFICACIONES
+===================================== */
+
+.header-user-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+/* =====================================
+   CAMPANITA
+===================================== */
+
+.notification-button {
+
+    /*position: relative;*/
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    /*color: inherit;*/
+    color: #555;
+
+    text-decoration: none;
+
+    font-size: 19px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.notification-button:hover {
+
+    /*background: rgba(0, 0, 0, 0.06);*/
+    background: #f2f2f2;
+
+    transform: translateY(-2px);
+
+}
+
+
+.notification-button:active {
+
+    transform: scale(0.95);
+
+}
 
 .user-icon {
 
@@ -685,6 +749,8 @@ h3 {
     font-weight: 600;
 
     cursor: pointer;
+
+    text-decoration: none;
 }
 
 

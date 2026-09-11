@@ -184,8 +184,12 @@ function escapar($texto)
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css?=v3"
+        href="assets/css/style.css?=v2"
     >
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+>
 
 
     <link
@@ -224,6 +228,23 @@ function escapar($texto)
 
         </div>
 
+    
+        <div class="header-user-actions">
+
+        <!-- CAMPANITA -->
+
+        <a
+            href="pages/notificaciones.php"
+            class="notification-button"
+            aria-label="Notificaciones"
+        >
+
+            <i class="fa-solid fa-bell"></i>
+
+        </a>
+
+
+        <!-- ICONO USUARIO -->
 
         <div class="user-icon">
 
@@ -250,6 +271,8 @@ function escapar($texto)
             <?php endif; ?>
 
         </div>
+
+    </div>
 
     </header>
 
@@ -576,9 +599,8 @@ function escapar($texto)
                 <a
                     href="pages/rifas.php"
                     class="see-more"
-                    style=text-decoration: none;
                 >
-                    Ver todas
+                    Ver todas 
                 </a>
 
             </div>

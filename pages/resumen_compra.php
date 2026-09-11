@@ -177,7 +177,7 @@ $total = count($numeros) * $rifa['precio_numero'];
             <?php if (!empty($rifa['imagen'])): ?>
 
                 <img
-                    src="<?= htmlspecialchars($rifa['imagen']) ?>"
+                    src="../<?= htmlspecialchars($rifa['imagen']) ?>"
                     alt="Premio"
                 >
 

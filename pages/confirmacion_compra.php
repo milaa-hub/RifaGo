@@ -138,7 +138,7 @@ $total =
 
 
     <a
-        href="../pages/participaciones.php"
+        href="participaciones.php"
         class="btn-primary full-button"
     >
         Ver mis participaciones

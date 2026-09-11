@@ -1,0 +1,484 @@
+/* =========================================
+   PÁGINA
+========================================= */
+
+.notifications-page {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding:
+        var(--espacio-lg)
+        var(--espacio-lg)
+        60px;
+
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.notifications-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--espacio-md);
+
+    margin-bottom: var(--espacio-lg);
+
+}
+
+
+.notifications-title h1 {
+
+    font-size: 1.7rem;
+
+    color: var(--color-texto);
+
+    margin-bottom: 6px;
+
+}
+
+
+.notifications-title p {
+
+    color: var(--color-texto-secundario);
+
+    font-size: 0.9rem;
+
+}
+
+/*BACK BUTTON*/
+.back-button {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+
+    color: var(--color-secundario);
+
+    transition: 0.2s;
+}
+
+/* =========================================
+   BOTÓN MARCAR LEÍDAS
+========================================= */
+
+.mark-read-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--color-secundario);
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+}
+
+
+.mark-read-button:hover {
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================
+   LISTA NOTIFICACIONES
+========================================= */
+
+.notifications-list {
+
+    width: 100%;
+
+    background-color: var(--color-blanco);
+
+    border:
+        1px solid var(--color-borde);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   NOTIFICACIÓN
+========================================= */
+
+.notification-item {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    position: relative;
+
+    padding: 20px;
+
+    text-decoration: none;
+
+    color: inherit;
+
+    border-bottom:
+        1px solid var(--color-borde);
+
+    transition:
+        background-color 0.2s ease;
+
+}
+
+
+.notification-item:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.notification-item:hover {
+
+    background-color:
+        rgba(0, 0, 0, 0.02);
+
+}
+
+
+/* =========================================
+   NOTIFICACIÓN NO LEÍDA
+========================================= */
+
+.notification-item.no-leida {
+
+    background-color: #f7faff;
+
+}
+
+
+.notification-item.no-leida:hover {
+
+    background-color: #f0f6ff;
+
+}
+
+
+/* =========================================
+   NOTIFICACIÓN LEÍDA
+========================================= */
+
+.notification-item.leida {
+
+    opacity: 0.75;
+
+}
+
+
+/* =========================================
+   ICONO
+========================================= */
+
+.notification-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #e9f0fb;
+
+}
+
+
+.notification-icon i {
+
+    font-size: 1.1rem;
+
+    color: var(--color-secundario);
+
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.notification-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.notification-content h2 {
+
+    font-size: 0.95rem;
+
+    color: var(--color-texto);
+
+    margin-bottom: 6px;
+
+}
+
+
+.notification-item.no-leida
+.notification-content h2 {
+
+    font-weight: 700;
+
+}
+
+
+.notification-content p {
+
+    color: var(--color-texto-secundario);
+
+    font-size: 0.88rem;
+
+    line-height: 1.5;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================
+   FECHA
+========================================= */
+
+.notification-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--color-texto-secundario);
+
+    font-size: 0.78rem;
+
+}
+
+
+.notification-date i {
+
+    font-size: 0.75rem;
+
+}
+
+
+/* =========================================
+   INDICADOR NO LEÍDA
+========================================= */
+
+.notification-unread {
+
+    width: 9px;
+
+    height: 9px;
+
+    min-width: 9px;
+
+    border-radius: 50%;
+
+    background-color: var(--color-secundario);
+
+}
+
+
+/* =========================================
+   ESTADO VACÍO
+========================================= */
+
+.empty-notifications {
+
+    min-height: 420px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        var(--espacio-lg);
+
+}
+
+
+.empty-notifications-icon {
+
+    width: 72px;
+
+    height: 72px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #e9f0fb;
+
+    margin-bottom: 20px;
+
+}
+
+
+.empty-notifications-icon i {
+
+    font-size: 1.8rem;
+
+    color: var(--color-secundario);
+
+}
+
+
+.empty-notifications h2 {
+
+    font-size: 1.1rem;
+
+    color: var(--color-texto);
+
+    margin-bottom: 10px;
+
+}
+
+
+.empty-notifications p {
+
+    max-width: 400px;
+
+    color: var(--color-texto-secundario);
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+
+    .notifications-page {
+
+        padding:
+            var(--espacio-md)
+            var(--espacio-md)
+            40px;
+
+    }
+
+
+    .notifications-title {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .mark-read-button {
+
+        padding: 0;
+
+    }
+
+
+    .notification-item {
+
+        align-items: flex-start;
+
+        padding: 16px;
+
+        gap: 12px;
+
+    }
+
+
+    .notification-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+        min-width: 42px;
+
+    }
+
+
+    .notification-unread {
+
+        margin-top: 5px;
+
+    }
+
+
+    .empty-notifications {
+
+        min-height: 350px;
+
+    }
+
+
+}
+
