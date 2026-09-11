@@ -824,7 +824,7 @@ if (
 
     <link
         rel="stylesheet"
-        href="../assets/css/style.css"
+        href="../assets/css/style.css?=v2"
     >
 
 
@@ -1132,34 +1132,12 @@ if (
 
                         <div class="form-group">
 
-
-                            <label for="imagen">
-
+                            <label class="field-label">
                                 Imagen del premio
-
                             </label>
 
 
-                            <?php if (!empty($ruta_imagen)): ?>
-
-                                <div class="current-image">
-
-                                    <img
-                                        src="<?= htmlspecialchars($ruta_imagen) ?>"
-                                        alt="Imagen actual"
-                                    >
-
-                                    <small>
-                                        Imagen actual
-                                    </small>
-
-                                </div>
-
-                            <?php endif; ?>
-
-
                             <div class="image-upload">
-
 
                                 <input
                                     type="file"
@@ -1169,46 +1147,92 @@ if (
                                 >
 
 
+                                <!-- ESTADO VACÍO -->
+
                                 <label
                                     for="imagen"
                                     class="upload-box"
+                                    id="uploadBox"
                                 >
 
-                                    <span class="upload-icon">
+                                    <div class="upload-icon">
                                         +
-                                    </span>
+                                    </div>
 
-                                    <strong>
-                                        <?= !empty($ruta_imagen)
-                                            ? "Cambiar imagen"
-                                            : "Agregar imagen"
-                                        ?>
-                                    </strong>
+                                    <div class="upload-content">
 
-                                    <small>
-                                        JPG, PNG o WEBP
-                                    </small>
+                                        <strong id="uploadText">
+                                            Agregar imagen
+                                        </strong>
+
+                                        <small>
+                                            JPG, PNG o WEBP
+                                        </small>
+
+                                    </div>
 
                                 </label>
 
 
+                                <!-- VISTA PREVIA -->
+
+                                <div
+                                    class="image-preview-container"
+                                    id="imagePreviewContainer"
+                                >
+
+                                    <img
+                                        id="imagePreview"
+                                        src="<?= !empty($ruta_imagen) ? htmlspecialchars($ruta_imagen) : '' ?>"
+                                        alt="Vista previa"
+                                    >
+
+
+                                    <div class="image-preview-overlay">
+
+                                        <label
+                                            for="imagen"
+                                            class="change-image-btn"
+                                        >
+                                            Cambiar imagen
+                                        </label>
+
+
+                                        <button
+                                            type="button"
+                                            class="remove-image-btn"
+                                            id="removeImage"
+                                        >
+                                            ×
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- NOMBRE ARCHIVO -->
+
+                                <div
+                                    class="selected-image-name"
+                                    id="imageName"
+                                >
+                                </div>
+
+
                             </div>
 
+                            <!-- CONTINUAR -->
+
+                            <button
+                                type="button"
+                                class="primary-button next-button"
+                                id="ir-configuracion"
+                            >
+                                Continuar
+                            </button>
 
                         </div>
-
-
-
-                        <!-- CONTINUAR -->
-
-                        <button
-                            type="button"
-                            class="primary-button next-button"
-                            id="ir-configuracion"
-                        >
-                            Continuar
-                        </button>
-
 
                     </div>
 
@@ -1273,8 +1297,7 @@ if (
 
                             <div class="input-prefix">
 
-
-                                <span>
+                                <span class="input-icon">
                                     $
                                 </span>
 
@@ -1402,42 +1425,6 @@ if (
                         </div>
 
 
-
-                        <!-- MÉTODO -->
-
-                        <div class="form-group">
-
-
-                            <label for="metodo_sorteo">
-
-                                Método de sorteo
-
-                            </label>
-
-
-                            <select
-                                id="metodo_sorteo"
-                                name="metodo_sorteo"
-                            >
-
-
-                                <option value="Automatico">
-                                    Automático
-                                </option>
-
-
-                                <option value="Manual">
-                                    Manual
-                                </option>
-
-
-                            </select>
-
-
-                        </div>
-
-
-
                         <!-- RESUMEN -->
 
                         <div class="config-summary">
@@ -1488,37 +1475,13 @@ if (
 
                         <!-- BOTONES -->
 
-                        <div class="form-buttons">
-
-
-                            <button
-                                type="button"
-                                class="secondary-button"
-                                id="volver-datos"
-                            >
-                                Volver
-                            </button>
-
-
-                            <!-- GUARDAR BORRADOR -->
-
-                            <button
-                                type="submit"
-                                name="accion"
-                                value="borrador"
-                                class="secondary-button"
-                            >
-                                Guardar borrador
-                            </button>
-
-
-                            <!-- PUBLICAR -->
+                             <!-- PUBLICAR -->
 
                             <button
                                 type="submit"
                                 name="accion"
                                 value="publicar"
-                                class="primary-button"
+                                class="primary-button next-button"
                             >
                                 Publicar rifa
                             </button>
