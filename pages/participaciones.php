@@ -697,7 +697,7 @@ if ($usuario_logueado) {
 
 
                                 <a
-                                    href="detalle_rifa.php?id=<?= $participacion['id_rifa'] ?>"
+                                    href="resultado_participacion.php?id=<?= $participacion['id_rifa'] ?>"
                                     class="primary-button participation-button"
                                 >
                                     Ver detalle

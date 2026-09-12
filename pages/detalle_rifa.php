@@ -90,6 +90,15 @@ $rifa =
     $resultado->fetch_assoc();
 
 
+if (
+    $rifa["estado"] !== "activa"
+) {
+
+    header("Location: ../index.php");
+    exit;
+
+}
+
 $consulta->close();
 
 

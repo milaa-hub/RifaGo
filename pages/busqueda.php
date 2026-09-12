@@ -30,7 +30,7 @@ $fecha_hasta = $_GET['fecha_hasta'] ?? '';
 $sql = "
     SELECT *
     FROM rifas
-    WHERE 1=1
+    WHERE estado = 'activa'
 ";
 
 

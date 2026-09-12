@@ -278,7 +278,12 @@ function escapar($texto)
 
         <!-- ICONO USUARIO -->
 
-        <div class="user-icon">
+        <a
+        href="pages/perfil.php" 
+        class="user-icon"
+        aria-label="Perfil de usuario"
+        style="text-decoration: none;"
+        >
 
             <?php if ($usuario_logueado): ?>
 
@@ -302,7 +307,7 @@ function escapar($texto)
 
             <?php endif; ?>
 
-        </div>
+            </a>
 
     </div>
 

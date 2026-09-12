@@ -1,0 +1,1076 @@
+/* =========================================
+   RIFAGO
+   RESULTADOS
+   ========================================= */
+
+
+/* =========================================
+   IMPORTAR FUENTE
+========================================= */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
+);
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    /* COLORES PRINCIPALES */
+
+    --color-primario: #ff6b6b;
+    --color-primario-dark: #ee5a5a;
+
+    --color-secundario: #1f3a8a;
+    --color-secundario-dark: #172d6d;
+
+    --color-acento: #14b8a6;
+
+
+    /* FONDOS */
+
+    --color-fondo: #f8fafc;
+
+    --color-blanco: #ffffff;
+
+    --color-fondo-suave: #f1f5f9;
+
+
+    /* TEXTOS */
+
+    --color-texto: #111827;
+
+    --color-texto-suave: #6b7280;
+
+
+    /* BORDES */
+
+    --color-borde: #e5e7eb;
+
+
+    /* SOMBRAS */
+
+    --sombra-suave:
+        0 4px 18px
+        rgba(31, 58, 138, 0.06);
+
+
+    --sombra-hover:
+        0 10px 30px
+        rgba(31, 58, 138, 0.10);
+
+
+    /* RADIOS */
+
+    --radio: 16px;
+
+    --radio-sm: 12px;
+
+
+    /* FUENTE */
+
+    --fuente-principal:
+        "Poppins",
+        sans-serif;
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    background:
+        var(--color-fondo);
+
+    color:
+        var(--color-texto);
+
+    font-family:
+        var(--fuente-principal);
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+/* =========================================
+   APP
+========================================= */
+
+.app {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.resultado-header {
+
+    width: 100%;
+
+    min-height: 72px;
+
+    padding:
+        0 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background:
+        var(--color-blanco);
+
+    border-bottom:
+        1px solid
+        var(--color-borde);
+
+}
+
+
+/* =========================================
+   BOTÓN VOLVER
+========================================= */
+
+.back-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        var(--color-fondo-suave);
+
+    color:
+        var(--color-secundario);
+
+    text-decoration: none;
+
+    font-size: 1.8rem;
+
+    transition:
+        0.2s;
+
+}
+
+
+.back-button:hover {
+
+    background:
+        #e8edf5;
+
+    transform:
+        translateX(-2px);
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    font-size: 1.7rem;
+
+    font-weight: 700;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.logo-blue {
+
+    color:
+        var(--color-secundario);
+
+}
+
+
+.logo-red {
+
+    color:
+        var(--color-primario);
+
+}
+
+
+.logo sup {
+
+    color:
+        var(--color-primario);
+
+    font-size: 0.7rem;
+
+    position: relative;
+
+    top: -0.8rem;
+
+}
+
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.resultado-container {
+
+    width: 100%;
+
+    max-width: 1180px;
+
+    margin:
+        0 auto;
+
+    padding:
+        32px 24px
+        60px;
+
+}
+
+
+/* =========================================
+   ESTADO
+========================================= */
+
+.resultado-status {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        14px 20px;
+
+    margin-bottom:
+        28px;
+
+    border-radius:
+        var(--radio-sm);
+
+    background:
+        rgba(20, 184, 166, 0.10);
+
+    color:
+        var(--color-secundario);
+
+    font-weight: 600;
+
+    font-size: 0.95rem;
+
+}
+
+
+.resultado-status::first-letter {
+
+    color:
+        var(--color-acento);
+
+}
+
+
+/* =========================================
+   IMAGEN
+========================================= */
+
+.resultado-image {
+
+    width: 100%;
+
+    height: 360px;
+
+    overflow: hidden;
+
+    border-radius:
+        var(--radio);
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+.resultado-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.empty-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-texto-suave);
+
+    background:
+        var(--color-fondo-suave);
+
+}
+
+
+/* =========================================
+   INFORMACIÓN PRINCIPAL
+========================================= */
+
+.resultado-info {
+
+    text-align: center;
+
+    padding:
+        24px 16px
+        30px;
+
+}
+
+
+.resultado-info h2 {
+
+    margin-bottom:
+        10px;
+
+    color:
+        var(--color-texto);
+
+    font-size:
+        1.6rem;
+
+    font-weight: 700;
+
+}
+
+
+.premio {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color:
+        var(--color-secundario);
+
+    font-size:
+        1rem;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================
+   GANADOR
+========================================= */
+
+.ganador-card {
+
+    width: 100%;
+
+    padding:
+        32px 28px;
+
+    margin-bottom:
+        24px;
+
+    text-align: center;
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+.ganador-icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    margin:
+        0 auto 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 107, 107, 0.10);
+
+    font-size:
+        2rem;
+
+}
+
+
+.ganador-card h2 {
+
+    margin-bottom:
+        12px;
+
+    color:
+        var(--color-secundario);
+
+    font-size:
+        1.4rem;
+
+}
+
+
+.ganador-nombre {
+
+    margin-bottom:
+        8px;
+
+    color:
+        var(--color-texto);
+
+    font-size:
+        1.15rem;
+
+    font-weight: 700;
+
+}
+
+
+.ganador-numero {
+
+    color:
+        var(--color-texto-suave);
+
+    font-size:
+        0.95rem;
+
+}
+
+
+/* =========================================
+   DATOS DEL SORTEO
+========================================= */
+
+.datos-sorteo {
+
+    width: 100%;
+
+    padding:
+        28px;
+
+    margin-bottom:
+        24px;
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+.datos-sorteo h2 {
+
+    margin-bottom:
+        16px;
+
+    color:
+        var(--color-secundario);
+
+    font-size:
+        1.25rem;
+
+    font-weight: 700;
+
+}
+
+
+.dato {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 56px;
+
+    padding:
+        14px 4px;
+
+    border-bottom:
+        1px solid
+        var(--color-borde);
+
+}
+
+
+.dato:last-child {
+
+    border-bottom:
+        none;
+
+}
+
+
+.dato span {
+
+    color:
+        var(--color-texto-suave);
+
+    font-size:
+        0.95rem;
+
+}
+
+
+.dato strong {
+
+    color:
+        var(--color-texto);
+
+    font-size:
+        0.95rem;
+
+    font-weight: 600;
+
+    text-align: right;
+
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.descripcion-rifa {
+
+    width: 100%;
+
+    padding:
+        28px;
+
+    margin-bottom:
+        24px;
+
+    background:
+        var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius:
+        var(--radio);
+
+    box-shadow:
+        var(--sombra-suave);
+
+}
+
+
+.descripcion-rifa h2 {
+
+    margin-bottom:
+        14px;
+
+    color:
+        var(--color-secundario);
+
+    font-size:
+        1.25rem;
+
+}
+
+
+.descripcion-rifa p {
+
+    color:
+        var(--color-texto-suave);
+
+    line-height:
+        1.7;
+
+    font-size:
+        0.95rem;
+
+}
+
+
+/* =========================================
+   BOTÓN VOLVER
+========================================= */
+
+.volver-button {
+
+    width: 100%;
+
+    display: block;
+
+    padding:
+        15px 20px;
+
+    margin-top:
+        8px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border-radius:
+        10px;
+
+    background:
+        var(--color-primario);
+
+    color:
+        var(--color-blanco);
+
+    font-weight: 600;
+
+    transition:
+        0.2s;
+
+}
+
+
+.volver-button:hover {
+
+    background:
+        var(--color-primario-dark);
+
+    box-shadow:
+        0 8px 20px
+        rgba(255, 107, 107, 0.25);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================
+   ESCRITORIO
+========================================= */
+
+@media screen and (min-width: 768px) {
+
+
+    /* HEADER */
+
+    .resultado-header {
+
+        padding:
+            0 8%;
+
+    }
+
+
+    /* GRID PRINCIPAL */
+
+    .resultado-container {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            24px;
+
+        align-items:
+            start;
+
+    }
+
+
+    /* ESTADO */
+
+    .resultado-status {
+
+        grid-column:
+            1 / -1;
+
+        margin-bottom:
+            0;
+
+    }
+
+
+    /* =====================================
+       BLOQUE SUPERIOR
+    ====================================== */
+
+    .resultado-image {
+
+        height:
+            400px;
+
+        margin-bottom:
+            0;
+
+    }
+
+
+    .resultado-info {
+
+        height:
+            400px;
+
+        padding:
+            50px 40px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background:
+            var(--color-blanco);
+
+        border:
+            1px solid
+            var(--color-borde);
+
+        border-radius:
+            var(--radio);
+
+        box-shadow:
+            var(--sombra-suave);
+
+    }
+
+
+    .resultado-info h2 {
+
+        font-size:
+            2rem;
+
+    }
+
+
+    .premio {
+
+        font-size:
+            1.1rem;
+
+    }
+
+
+    /* =====================================
+       SEGUNDO BLOQUE
+    ====================================== */
+
+    .ganador-card {
+
+        min-height:
+            300px;
+
+        margin-bottom:
+            0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+    }
+
+
+    .datos-sorteo {
+
+        min-height:
+            300px;
+
+        margin-bottom:
+            0;
+
+    }
+
+
+    /* =====================================
+       DESCRIPCIÓN
+    ====================================== */
+
+    .descripcion-rifa {
+
+        grid-column:
+            1 / -1;
+
+        margin-bottom:
+            0;
+
+    }
+
+
+    /* =====================================
+       BOTÓN
+    ====================================== */
+
+    .volver-button {
+
+        width: 100%;
+
+        grid-column:
+            1 / 2;
+
+        margin-top:
+            0;
+
+        justify-self:
+            stretch;
+
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media screen and (max-width: 767px) {
+
+
+    /* HEADER */
+
+    .resultado-header {
+
+        min-height:
+            64px;
+
+        padding:
+            0 18px;
+
+    }
+
+
+    .back-button {
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+        font-size:
+            1.5rem;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            1.5rem;
+
+    }
+
+
+    /* CONTENEDOR */
+
+    .resultado-container {
+
+        padding:
+            24px 16px
+            40px;
+
+    }
+
+
+    /* ESTADO */
+
+    .resultado-status {
+
+        margin-bottom:
+            20px;
+
+        font-size:
+            0.9rem;
+
+    }
+
+
+    /* IMAGEN */
+
+    .resultado-image {
+
+        height:
+            280px;
+
+    }
+
+
+    /* INFO */
+
+    .resultado-info {
+
+        padding:
+            22px 10px
+            26px;
+
+    }
+
+
+    .resultado-info h2 {
+
+        font-size:
+            1.35rem;
+
+    }
+
+
+    /* TARJETAS */
+
+    .ganador-card,
+
+    .datos-sorteo,
+
+    .descripcion-rifa {
+
+        padding:
+            22px;
+
+    }
+
+
+    /* DATOS */
+
+    .dato {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        justify-content:
+            center;
+
+        gap:
+            6px;
+
+        padding:
+            14px 0;
+
+    }
+
+
+    .dato strong {
+
+        text-align:
+            left;
+
+    }
+
+}
