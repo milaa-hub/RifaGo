@@ -328,28 +328,36 @@ $notificaciones = obtenerNotificaciones(
 
 
         <!-- ICONO USUARIO -->
+        <a
+            href="perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
+        >
 
-        <div class="user-icon">
+            <?php if ($usuario_logueado): ?>
 
-            <span>
+                <span>
 
-                <?= strtoupper(
+                    <?= strtoupper(
+                        substr(
+                            $_SESSION['nombre'] ?? 'U',
+                            0,
+                            2
+                        )
+                    ) ?>
 
-                    substr(
+                </span>
 
-                        $_SESSION["nombre"] ?? "U",
+            <?php else: ?>
 
-                        0,
+                <span>
+                    ?
+                </span>
 
-                        2
+            <?php endif; ?>
 
-                    )
-
-                ) ?>
-
-            </span>
-
-        </div>
+        </a>
 
 
     </header>

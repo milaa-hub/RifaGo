@@ -191,8 +191,12 @@ $resultado = mysqli_query(
 
         </a>
 
-
-        <div class="user-icon">
+        <a
+            href="perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
+        >
 
             <?php if ($usuario_logueado): ?>
 
@@ -216,7 +220,7 @@ $resultado = mysqli_query(
 
             <?php endif; ?>
 
-        </div>
+        </a>
 
 
 

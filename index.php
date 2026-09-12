@@ -279,14 +279,14 @@ function escapar($texto)
         <!-- ICONO USUARIO -->
 
         <a
-        href="pages/perfil.php" 
-        class="user-icon"
-        aria-label="Perfil de usuario"
-        style="text-decoration: none;"
+            href="pages/perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
         >
 
             <?php if ($usuario_logueado): ?>
-
+ 
                 <span>
 
                     <?= strtoupper(
@@ -307,7 +307,7 @@ function escapar($texto)
 
             <?php endif; ?>
 
-            </a>
+        </a>
 
     </div>
 

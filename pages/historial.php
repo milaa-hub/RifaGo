@@ -120,14 +120,6 @@ $resultado = $stmt->get_result();
 
         </a>
 
-        <a href="perfil.php" class="user-icon">
-
-            <span>
-                <?php echo $iniciales; ?>
-            </span>
-
-        </a>
-
     </header>
 
 
@@ -171,7 +163,7 @@ $resultado = $stmt->get_result();
                             <?php if (!empty($registro['imagen'])): ?>
 
                                 <img
-                                    src="<?php echo htmlspecialchars($registro['imagen']); ?>"
+                                    src="../<?php echo htmlspecialchars($registro['imagen']); ?>"
                                     alt="Rifa"
                                 >
 

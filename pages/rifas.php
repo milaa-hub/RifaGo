@@ -96,7 +96,12 @@ $resultado = $consulta->get_result();
         </a>
 
 
-        <div class="user-icon">
+        <a
+            href="perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
+        >
 
             <?php if ($usuario_logueado): ?>
 
@@ -120,7 +125,7 @@ $resultado = $consulta->get_result();
 
             <?php endif; ?>
 
-        </div>
+        </a>
 
 
 

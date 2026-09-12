@@ -223,11 +223,17 @@ if ($usuario_logueado) {
         </div>
 
 
-        <div class="user-icon">
+        <a
+            href="perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
+        >
 
             <?php if ($usuario_logueado): ?>
 
                 <span>
+
                     <?= strtoupper(
                         substr(
                             $_SESSION['nombre'] ?? 'U',
@@ -235,15 +241,18 @@ if ($usuario_logueado) {
                             2
                         )
                     ) ?>
+
                 </span>
 
             <?php else: ?>
 
-                <span>?</span>
+                <span>
+                    ?
+                </span>
 
             <?php endif; ?>
 
-        </div>
+        </a>
 
     </header>
 

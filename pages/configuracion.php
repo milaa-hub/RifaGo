@@ -88,14 +88,6 @@ $iniciales =
 
         </a>
 
-        <a href="perfil.php" class="user-icon">
-
-            <span>
-                <?php echo $iniciales; ?>
-            </span>
-
-        </a>
-
     </header>
 
 

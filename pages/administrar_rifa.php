@@ -355,19 +355,36 @@ if (
         </div>
 
 
-        <div class="header-user">
+        <a
+            href="perfil.php" 
+            class="user-icon"
+            aria-label="Perfil de usuario"
+            style="text-decoration: none;"
+        >
 
-            <?php
-            echo strtoupper(
-                substr(
-                    $_SESSION["nombre"] ?? "U",
-                    0,
-                    2
-                )
-            );
-            ?>
+            <?php if ($usuario_logueado): ?>
 
-        </div>
+                <span>
+
+                    <?= strtoupper(
+                        substr(
+                            $_SESSION['nombre'] ?? 'U',
+                            0,
+                            2
+                        )
+                    ) ?>
+
+                </span>
+
+            <?php else: ?>
+
+                <span>
+                    ?
+                </span>
+
+            <?php endif; ?>
+
+        </a>
 
     </header>
 

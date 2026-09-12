@@ -288,7 +288,7 @@ $rifas_usuario =
 
         <?php else: ?>
 
-            <a
+            <a 
                 href="../login.php"
                 class="user-icon"
             >
