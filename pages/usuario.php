@@ -317,7 +317,7 @@ $rifas_usuario =
             href="javascript:history.back()"
             class="back-link"
         >
-            ← Volver
+            ‹ Volver
         </a>
 
 

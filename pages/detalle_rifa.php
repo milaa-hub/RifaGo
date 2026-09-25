@@ -283,7 +283,7 @@ if ($total_numeros > 0) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/detalle_rifa.css"
+        href="../assets/css/detalle_rifa.css?=v2"
     >
 
 </head>
@@ -296,18 +296,27 @@ if ($total_numeros > 0) {
          HEADER
     =============================== -->
 
-    <header class="main-header">
+    <header class="header detalle-header">
 
-        <a href="../index.php" class="main-logo">
+
+        <a
+            href="../index.php"
+            class="back-button"
+            id="btnVolverCrear"
+        >
+            ‹
+        </a>
+
+
+        <div class="logo">
 
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
-        </a>
+        </div>
 
 
-        <a href="rifas.php" class="back-link">
-            ← Volver
-        </a>
+        <div class="header-space"></div>
+
 
     </header>
 

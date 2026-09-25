@@ -290,7 +290,7 @@ $numeros_texto =
 
     <link
         rel="stylesheet"
-        href="../assets/css/resultado.css"
+        href="../assets/css/resultado.css?=v2"
     >
 
 
@@ -326,35 +326,31 @@ $numeros_texto =
          HEADER
     ====================================== -->
 
-    <header class="resultado-header">
+    <header class="header resultado-header">
 
 
         <a
-            href="participaciones.php"
+            href="../index.php"
             class="back-button"
+            id="btnVolverCrear"
         >
-            ←
+            ‹
         </a>
 
 
         <div class="logo">
 
-            <span class="logo-blue">
-                Rifa
-            </span>
-
-            <span class="logo-red">
-                Go
-            </span>
-
-            <sup>
-                +
-            </sup>
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
         </div>
 
 
+        <div class="header-space"></div>
+
+
     </header>
+
+
 
 
 

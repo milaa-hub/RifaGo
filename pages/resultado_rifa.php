@@ -172,7 +172,7 @@ if (!empty($rifa["fecha_sorteo"])) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/resultado.css"
+        href="../assets/css/resultado.css?=v2"
     >
 
 </head>

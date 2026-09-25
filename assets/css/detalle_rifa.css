@@ -61,7 +61,7 @@ a {
    HEADER
 ================================================== */
 
-.main-header {
+.detalle-header {
     width: 100%;
 
     height: 74px;
@@ -90,7 +90,7 @@ a {
    LOGO
 ================================================== */
 
-.main-logo {
+.logo {
     font-size: 29px;
 
     font-weight: 700;
@@ -101,17 +101,17 @@ a {
 }
 
 
-.main-logo .logo-blue {
+.logo .logo-blue {
     color: var(--color-secundario);
 }
 
 
-.main-logo .logo-red {
+.logo .logo-red {
     color: var(--color-primario);
 }
 
 
-.main-logo sup {
+.logo sup {
     color: var(--color-primario);
 
     font-size: 10px;
@@ -128,25 +128,34 @@ a {
    VOLVER
 ================================================== */
 
-.back-link {
+.back-button {
+    width: 42px;
+    height: 42px;
+
     display: flex;
-
     align-items: center;
+    justify-content: center;
 
-    gap: 6px;
+    border-radius: 50%;
 
-    color: var(--color-secundario);
+    background: #f1f5f9;
 
-    font-size: 12px;
+    color: #111827;
 
-    font-weight: 600;
+    text-decoration: none;
+
+    font-size: 30px;
+    line-height: 1;
 
     transition: 0.2s;
 }
 
+.back-button:hover {
+    background: #e2e8f0;
+}
 
-.back-link:hover {
-    color: var(--color-primario);
+.header-space {
+    width: 42px;
 }
 
 

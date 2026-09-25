@@ -15,7 +15,7 @@ $id_usuario = $_SESSION['id_usuario'];
    DATOS DEL USUARIO
 ========================================== */
 
-$sql = "SELECT nombre, apellido, email, telefono, rol
+$sql = "SELECT nombre, apellido, email, telefono
         FROM usuarios
         WHERE id_usuario = ?";
 
@@ -98,7 +98,7 @@ $iniciales =
             href="perfil.php"
             class="back-link"
         >
-            ← Volver al perfil
+            ‹ Volver al perfil
         </a>
 
 

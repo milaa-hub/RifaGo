@@ -14,6 +14,7 @@ if (!isset($_SESSION["id_usuario"])) {
 }
 
 $id_usuario = $_SESSION["id_usuario"];
+$usuario_logueado = true;
 
 
 // ==================================================
@@ -319,11 +320,7 @@ if (
 
     <link
         rel="stylesheet"
-        href="../assets/css/administrar_rifa.css"
-    >
-    <link
-        rel="stylesheet"
-        href="../assets/css/bottom-nav.css"
+        href="../assets/css/administrar_rifa.css?=v2"
     >
 
 </head>
@@ -344,7 +341,7 @@ if (
             href="mis_rifas.php"
             class="back-button"
         >
-            ←
+            ‹
         </a>
 
 
@@ -863,6 +860,111 @@ if (
 
         </section>
 
+    
+        <?php if (
+            !empty($rifa["numero_ganador"]) &&
+            (
+                $estado_rifa === "finalizada" ||
+                $estado_rifa === "finalizado"
+            )
+        ): ?>
+
+            <?php
+
+            $consulta_ganador_admin = $conexion->prepare("
+                SELECT
+                    u.nombre,
+                    u.apellido
+                FROM participaciones p
+
+                INNER JOIN usuarios u
+                    ON p.id_usuario = u.id_usuario
+
+                INNER JOIN numeros_rifa nr
+                    ON p.id_numero = nr.id_numero
+
+                WHERE nr.id_rifa = ?
+                AND nr.numero = ?
+
+                ORDER BY p.id_participacion DESC
+
+                LIMIT 1
+            ");
+
+            $consulta_ganador_admin->bind_param(
+                "ii",
+                $id_rifa,
+                $rifa["numero_ganador"]
+            );
+
+            $consulta_ganador_admin->execute();
+
+            $resultado_ganador_admin =
+                $consulta_ganador_admin->get_result();
+
+            $ganador_admin =
+                $resultado_ganador_admin->fetch_assoc();
+
+            $consulta_ganador_admin->close();
+
+            ?>
+
+            <section class="winner-card">
+
+                <div class="winner-icon">
+                    ★
+                </div>
+
+                <div class="winner-info">
+
+                    <span>
+                        RIFA FINALIZADA
+                    </span>
+
+                    <h2>
+                        ¡Sorteo realizado!
+                    </h2>
+
+                    <?php if ($ganador_admin): ?>
+
+                        <p>
+                            Ganador:
+                            <strong>
+                                <?= htmlspecialchars(
+                                    $ganador_admin["nombre"]
+                                ) ?>
+
+                                <?= htmlspecialchars(
+                                    $ganador_admin["apellido"]
+                                ) ?>
+                            </strong>
+                        </p>
+
+                    <?php endif; ?>
+
+                    <p>
+                        Número ganador:
+                        <strong>
+                            #<?= htmlspecialchars(
+                                $rifa["numero_ganador"]
+                            ) ?>
+                        </strong>
+                    </p>
+
+                </div>
+
+                <a
+                    href="resultado_rifa.php?id=<?= $id_rifa ?>"
+                    class="primary-button"
+                >
+                    Ver resultado
+                </a>
+
+            </section>
+
+        <?php endif; ?>
+
+
 
 
         <!-- =====================================
@@ -870,14 +972,6 @@ if (
         ====================================== -->
 
         <section class="admin-actions">
-
-            <a
-                href="crear_rifa.php?id=<?= $id_rifa ?>"
-                class="primary-button"
-            >
-                Editar rifa
-            </a>
-
 
             <button
                 type="button"
@@ -887,62 +981,45 @@ if (
                 Compartir rifa
             </button>
 
+            <?php
+            $hoy = date("Y-m-d");
+            $fecha_sorteo = !empty($rifa["fecha_sorteo"])
+                ? date("Y-m-d", strtotime($rifa["fecha_sorteo"]))
+                : null;
+
+            $puede_sortear = ($fecha_sorteo === $hoy);
+            ?>
+
+            <?php if ($puede_sortear): ?>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="btnSortear"
+                >
+                    Realizar sorteo
+                </button>
+
+            <?php else: ?>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    disabled
+                >
+                    Sorteo disponible el
+                    <?= $fecha_sorteo
+                        ? date("d/m/Y", strtotime($rifa["fecha_sorteo"]))
+                        : "día indicado"
+                    ?>
+                </button>
+
+            <?php endif; ?>
+
         </section>
 
 
     </main>
-
-
-    <!-- ==========================================
-         NAVEGACIÓN
-    =========================================== -->
-
-    <nav class="bottom-nav">
-
-        <a
-            href="../index.php"
-            class="nav-item"
-        >
-            <span class="nav-icon">⌂</span>
-            <span>Inicio</span>
-        </a>
-
-
-        <a
-            href="mis_rifas.php"
-            class="nav-item active"
-        >
-            <span class="nav-icon">▤</span>
-            <span>Mis rifas</span>
-        </a>
-
-
-        <button
-            class="create-button"
-            onclick="window.location.href='crear_rifa.php'"
-        >
-            +
-        </button>
-
-
-        <a
-            href="participaciones.php"
-            class="nav-item"
-        >
-            <span class="nav-icon">♧</span>
-            <span>Participaciones</span>
-        </a>
-
-
-        <a
-            href="perfil.php"
-            class="nav-item"
-        >
-            <span class="nav-icon">♙</span>
-            <span>Perfil</span>
-        </a>
-
-    </nav>
 
 </div>
 
@@ -988,6 +1065,31 @@ if (btnCompartir) {
 
 }
 
+const btnSortear =
+    document.getElementById("btnSortear");
+
+if (btnSortear) {
+
+    btnSortear.addEventListener(
+        "click",
+        function () {
+
+            const confirmar = confirm(
+                "¿Querés realizar el sorteo?\n\n" +
+                "Se seleccionará aleatoriamente uno de los números participantes."
+            );
+
+            if (confirmar) {
+
+                window.location.href =
+                    "../acciones/sortear_rifa.php?id=<?= $id_rifa ?>";
+
+            }
+
+        }
+    );
+
+}
 </script>
 
 

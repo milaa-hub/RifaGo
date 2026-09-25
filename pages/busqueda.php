@@ -164,7 +164,7 @@ $resultado = mysqli_query(
 
     <title>Resultados de búsqueda</title>
 
-    <link rel="stylesheet" href="../assets/css/busqueda.css">
+    <link rel="stylesheet" href="../assets/css/busqueda.css?=v2">
 
 </head>
 
@@ -182,7 +182,7 @@ $resultado = mysqli_query(
             class="back-button"
             style="text-decoration: none;"
         >
-            ←
+            ‹
         </a>
 
         <a href="../index.php" class="raffles-logo" style="text-decoration: none;">

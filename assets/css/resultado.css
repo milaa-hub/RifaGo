@@ -159,6 +159,8 @@ img {
     display: flex;
 
     align-items: center;
+    
+    justify-content: space-between;
 
     gap: 20px;
 
@@ -263,6 +265,9 @@ img {
 
 }
 
+.header-space {
+    width: 42px;
+}
 
 /* =========================================
    CONTENEDOR PRINCIPAL

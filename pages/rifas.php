@@ -70,7 +70,7 @@ $resultado = $consulta->get_result();
 
     <link
         rel="stylesheet"
-        href="../assets/css/rifas.css?v=2"
+        href="../assets/css/rifas.css?v=3"
     >
     <link
         rel="stylesheet"
@@ -87,46 +87,26 @@ $resultado = $consulta->get_result();
          HEADER
     =========================================== -->
 
-    <header class="raffles-header">
-
-        <a href="../index.php" class="raffles-logo">
-
-            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
-
-        </a>
+    <header class="header rifas-header">
 
 
         <a
-            href="perfil.php" 
-            class="user-icon"
-            aria-label="Perfil de usuario"
-            style="text-decoration: none;"
+            href="../index.php"
+            class="back-button"
+            id="btnVolverCrear"
         >
-
-            <?php if ($usuario_logueado): ?>
-
-                <span>
-
-                    <?= strtoupper(
-                        substr(
-                            $_SESSION['nombre'] ?? 'U',
-                            0,
-                            2
-                        )
-                    ) ?>
-
-                </span>
-
-            <?php else: ?>
-
-                <span>
-                    ?
-                </span>
-
-            <?php endif; ?>
-
+            ‹
         </a>
 
+
+        <div class="logo">
+
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
+
+        </div>
+
+
+        <div class="header-space"></div>
 
 
     </header>
