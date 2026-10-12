@@ -129,7 +129,7 @@ if ($usuario_logueado && $usuario) {
             <!-- USUARIO LOGUEADO -->
 
             <a
-                href="usuario.php?id=<?php echo $id_usuario; ?>"
+                href="usuario.php?id=<?php echo $id_usuario; ?>" 
                 class="user-icon"
                 style="text-decoration: none;"
             >

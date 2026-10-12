@@ -164,7 +164,7 @@ $resultado = mysqli_query(
 
     <title>Resultados de búsqueda</title>
 
-    <link rel="stylesheet" href="../assets/css/busqueda.css?=v2">
+    <link rel="stylesheet" href="../assets/css/busqueda.css">
 
 </head>
 

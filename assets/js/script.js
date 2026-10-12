@@ -14,6 +14,10 @@ const btnCrearRifa = document.getElementById("btnCrearRifa");
 // BUSCADOR
 // ==================================================
 
+// ==================================================
+// BUSCADOR
+// ==================================================
+
 if (buscador) {
 
     buscador.addEventListener("keydown", function (event) {
@@ -22,15 +26,12 @@ if (buscador) {
 
             event.preventDefault();
 
-            const texto = buscador.value.trim();
+            const texto =
+                this.value.trim();
 
-            if (texto !== "") {
-
-                window.location.href =
-                    "pages/busqueda.php?busqueda=" +
-                    encodeURIComponent(texto);
-
-            }
+            window.location.href =
+                "pages/busqueda.php?busqueda=" +
+                encodeURIComponent(texto);
 
         }
 
@@ -48,12 +49,12 @@ categorias.forEach(function (categoria) {
     categoria.addEventListener("click", function () {
 
         const categoriaSeleccionada =
-            categoria.dataset.categoria;
+            this.dataset.categoria;
 
 
-        if (
-            categoriaSeleccionada === "todas"
-        ) {
+        // TODAS
+
+        if (categoriaSeleccionada === "todas") {
 
             window.location.href =
                 "pages/busqueda.php";
@@ -63,13 +64,25 @@ categorias.forEach(function (categoria) {
         }
 
 
-        if (categoriaSeleccionada) {
+        // MÁS
+
+        if (categoriaSeleccionada === "mas") {
 
             window.location.href =
-                "pages/busqueda.php?busqueda=" +
-                encodeURIComponent(categoriaSeleccionada);
+                "pages/busqueda.php?categoria=mas";
+
+            return;
 
         }
+
+
+        // CATEGORÍAS NORMALES
+
+        window.location.href =
+            "pages/busqueda.php?categoria=" +
+            encodeURIComponent(
+                categoriaSeleccionada
+            );
 
     });
 
