@@ -200,7 +200,7 @@ function escapar($texto)
 
     <link
         rel="stylesheet"
-        href="assets/css/style.css?=v3"
+        href="assets/css/style.css?=v4"
     >
 
     <link

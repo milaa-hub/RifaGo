@@ -77,26 +77,32 @@ $iniciales =
 
     <!-- HEADER -->
 
-    <header class="header">
+    <header class="header rifas-header">
 
-        <a href="../index.php" class="logo">
+
+        <a
+            href="perfil.php"
+            class="back-button"
+            id="btnVolverCrear"
+        >
+            ‹
+        </a>
+
+
+        <div class="logo">
 
             <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
 
-        </a>
+        </div>
+
+
+        <div class="header-space"></div>
+
 
     </header>
 
 
     <main class="main-content">
-
-        <a
-            href="perfil.php"
-            class="back-link"
-        >
-            ← Volver al perfil
-        </a>
-
 
         <section class="page-title">
 
@@ -173,52 +179,6 @@ $iniciales =
         </div>
 
     </main>
-
-
-    <!-- NAV -->
-
-    <nav class="bottom-nav">
-
-        <a href="../index.php" class="nav-item">
-
-            <span class="nav-icon">⌂</span>
-
-            <span>Inicio</span>
-
-        </a>
-
-        <a href="mis_rifas.php" class="nav-item">
-
-            <span class="nav-icon">▤</span>
-
-            <span>Mis rifas</span>
-
-        </a>
-
-        <button
-            class="create-button"
-            onclick="window.location.href='crear_rifa.php'"
-        >
-            <span>+</span>
-        </button>
-
-        <a href="participaciones.php" class="nav-item">
-
-            <span class="nav-icon">♧</span>
-
-            <span>Participaciones</span>
-
-        </a>
-
-        <a href="perfil.php" class="nav-item active">
-
-            <span class="nav-icon">♙</span>
-
-            <span>Perfil</span>
-
-        </a>
-
-    </nav>
 
 </div>
 
