@@ -11,7 +11,14 @@
 
     --color-acento: #18b8a6;
 
+    --color-fondo: #f8fafc;
+    --color-fondo-app: #eef1f5;
     --color-blanco: #ffffff;
+
+    --color-texto: #111827;
+    --color-texto-suave: #6b7280;
+
+    --color-borde: #e8ebf0;
 }
 
 

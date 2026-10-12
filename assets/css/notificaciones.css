@@ -1,7 +1,39 @@
+.root {    
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
+
+    --color-acento: #18b8a6;
+
+    --color-fondo: #f8fafc;
+    --color-fondo-app: #eef1f5;
+    --color-blanco: #ffffff;
+
+    --color-texto: #111827;
+    --color-texto-suave: #6b7280;
+
+    --color-borde: #e8ebf0;
+}
 /* =========================================
    PÁGINA
 ========================================= */
 
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    background-color: var(--color-blanco);
+
+    color: var(--color-texto);
+
+    font-family: "Poppins", sans-serif;
+
+}
 .notifications-page {
 
     width: 100%;

@@ -21,34 +21,22 @@
 
     /* COLORES PRINCIPALES */
 
-    --color-primario: #ff6b6b;
-    --color-primario-dark: #ee5a5a;
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
 
-    --color-secundario: #1f3a8a;
-    --color-secundario-dark: #172d6d;
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
 
-    --color-acento: #14b8a6;
-
-
-    /* FONDOS */
+    --color-acento: #18b8a6;
 
     --color-fondo: #f8fafc;
-
+    --color-fondo-app: #eef1f5;
     --color-blanco: #ffffff;
 
-    --color-fondo-suave: #f1f5f9;
-
-
-    /* TEXTOS */
-
     --color-texto: #111827;
-
     --color-texto-suave: #6b7280;
 
-
-    /* BORDES */
-
-    --color-borde: #e5e7eb;
+    --color-borde: #e8ebf0;
 
 
     /* SOMBRAS */
@@ -110,7 +98,7 @@ body {
     min-height: 100vh;
 
     background:
-        var(--color-fondo);
+        var(--color-blanco);
 
     color:
         var(--color-texto);

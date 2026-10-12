@@ -283,7 +283,7 @@ if ($total_numeros > 0) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/detalle_rifa.css?=v2"
+        href="../assets/css/detalle_rifa.css?=v3"
     >
 
 </head>

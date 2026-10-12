@@ -3,21 +3,22 @@
 ================================================== */
 
 :root {
-    --color-primario: #ff6666;
+    --color-primario: #ff5b5b;
     --color-primario-dark: #f34d4d;
 
-    --color-secundario: #1f3a8a;
-    --color-secundario-dark: #123f8a;
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
 
-    --color-acento: #14b8a6;
+    --color-acento: #18b8a6;
+
+    --color-fondo: #f8fafc;
+    --color-fondo-app: #eef1f5;
+    --color-blanco: #ffffff;
 
     --color-texto: #111827;
     --color-texto-suave: #6b7280;
 
-    --color-fondo: #f8fafc;
-    --color-blanco: #ffffff;
-
-    --color-borde: #e5e7eb;
+    --color-borde: #e8ebf0;
 
     --sombra:
         0 8px 25px rgba(15, 23, 42, 0.07);
@@ -38,7 +39,7 @@
 body {
     font-family: "Poppins", sans-serif;
 
-    background: var(--color-fondo);
+    background: var(--color-blanco);
 
     color: var(--color-texto);
 

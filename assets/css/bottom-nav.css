@@ -1,140 +1,96 @@
-/* =========================================================
-   RIFAGO - BOTTOM NAVIGATION
-   ARCHIVO INDEPENDIENTE
-   ========================================================= */
+```css
+/* =========================================
+   RIFAGO - NAVEGACIÓN INFERIOR
+   RESPONSIVE: CELULAR, TABLET Y COMPUTADORA
+   ========================================= */
 
-.user-icon {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px;
 
-    border-radius: 50% !important;
-    background-color: #e9f0fb !important;
-
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-
-    color: var(--color-secundario) !important;
-    font-size: 0.9rem;
-    font-weight: 600;
-
-    box-sizing: border-box;
-    flex-shrink: 0;
-}
-/* =========================================================
+/* =========================================
    CONTENEDOR
-   ========================================================= */
+   ========================================= */
 
 .bottom-nav {
-    position: fixed !important;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-
-    width: 100% !important;
-    max-width: none !important;
-
+    width: 100%;
+    max-width: 430px;
     height: 76px;
 
-    margin: 0 !important;
-    padding:
-        5px
-        8px
-        calc(8px + env(safe-area-inset-bottom));
+    margin: 0;
+    padding: 5px 8px calc(8px + env(safe-area-inset-bottom));
 
     display: flex;
-
     align-items: center;
-    justify-content: space-evenly;
-
+    justify-content: space-around;
     gap: 0;
 
-    background-color:
-        rgba(255, 255, 255, 0.98);
+    box-sizing: border-box;
 
-    border-top:
-        1px solid #e8ebf0;
+    background-color: rgba(255, 255, 255, 0.98);
+    border-top: 1px solid var(--color-borde, #e8ebf0);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.04);
 
-    box-shadow:
-        0 -4px 15px rgba(0, 0, 0, 0.04);
-
-    z-index: 9999 !important;
-
-    /*
-     * Evita que estilos de .app o páginas
-     * modifiquen el ancho.
-     */
-    transform: none !important;
+    z-index: 9999;
 }
 
 
-/* =========================================================
-   ITEMS
-   ========================================================= */
+/* =========================================
+   ELEMENTOS DE NAVEGACIÓN
+   ========================================= */
 
 .bottom-nav .nav-item {
+    flex: 1 1 0;
     width: 20%;
-    max-width: 120px;
     min-width: 0;
-
+    max-width: 120px;
     height: 60px;
+
+    padding: 4px 2px;
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
-
     gap: 3px;
 
-    padding: 4px;
-
-    border: none;
-
-    background: transparent;
+    box-sizing: border-box;
 
     color: #7d8795;
-
-    font-family:
-        "Poppins",
-        sans-serif;
-
+    font-family: "Poppins", sans-serif;
     font-size: 10px;
     font-weight: 500;
-
+    text-align: center;
     text-decoration: none;
 
-    text-align: center;
+    background: transparent;
+    border: none;
 
     cursor: pointer;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 
-/* =========================================================
-   ITEM ACTIVO
-   ========================================================= */
+/* =========================================
+   ELEMENTO ACTIVO
+   ========================================= */
 
 .bottom-nav .nav-item.active {
-    color: #123f8a;
+    color: var(--color-secundario, #123f8a);
 }
 
 
-/* =========================================================
+/* =========================================
    ICONOS
-   ========================================================= */
+   ========================================= */
 
 .bottom-nav .nav-icon {
     width: 24px;
     height: 24px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -145,157 +101,155 @@
 }
 
 
-/* =========================================================
+/* =========================================
    BOTÓN CREAR
-   ========================================================= */
+   ========================================= */
 
 .bottom-nav .create-button {
-    width: 54px !important;
-    height: 54px !important;
-
-    min-width: 54px !important;
+    width: 51px;
+    height: 51px;
+    min-width: 51px;
 
     flex-shrink: 0;
 
-    display: flex;
+    margin: 0 3px;
+    padding: 0;
 
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    margin:
-        0
-        4px;
-
-    padding: 0;
+    box-sizing: border-box;
 
     border: none;
-
     border-radius: 50%;
 
-    background-color: #ff5b5b;
-
+    background-color: var(--color-primario, #ff6666);
     color: white;
 
-    font-family:
-        "Poppins",
-        sans-serif;
-
+    font-family: "Poppins", sans-serif;
     font-size: 30px;
     font-weight: 400;
-
     line-height: 1;
 
     cursor: pointer;
 
-    box-shadow:
-        0 6px 15px
-        rgba(255, 91, 91, 0.30);
+    box-shadow: 0 6px 15px rgba(255, 91, 91, 0.30);
 
     position: relative;
-
     z-index: 2;
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 
-/* =========================================================
+/* =========================================
    SIGNO +
-   ========================================================= */
+   ========================================= */
 
 .bottom-nav .create-button span {
     position: relative;
-
     top: -1px;
-
     line-height: 1;
 }
 
 
-/* =========================================================
-   HOVER
-   ========================================================= */
+/* =========================================
+   ICONO DE USUARIO
+   ========================================= */
 
-.bottom-nav .nav-item:hover {
-    color: #123f8a;
+.user-icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
 
-    transform: translateY(-1px);
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50% !important;
+    background-color: #e9f0fb !important;
+
+    color: var(--color-secundario, #123f8a) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-.bottom-nav .create-button:hover {
-    transform: translateY(-2px);
 
-    box-shadow:
-        0 8px 20px
-        rgba(255, 91, 91, 0.35);
+/* =========================================
+   HOVER: DISPOSITIVOS CON MOUSE
+   ========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .bottom-nav .nav-item:hover {
+        color: var(--color-secundario, #123f8a);
+        transform: translateY(-1px);
+    }
+
+    .bottom-nav .create-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 91, 91, 0.35);
+    }
 }
 
 
-/* =========================================================
-   TABLET
-   ========================================================= */
+/* =========================================
+   TABLETS
+   ========================================= */
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1100px) {
 
     .bottom-nav {
         height: 78px;
-
-        padding:
-            6px
-            20px
-            calc(6px + env(safe-area-inset-bottom));
+        max-width: 100%;
+        padding: 6px 20px calc(6px + env(safe-area-inset-bottom));
     }
 
     .bottom-nav .nav-item {
+        flex: 0 1 130px;
         width: 130px;
-
         max-width: 130px;
-
         font-size: 11px;
     }
 
     .bottom-nav .nav-icon {
         width: 26px;
         height: 26px;
-
         font-size: 22px;
     }
 
     .bottom-nav .create-button {
-        width: 58px !important;
-        height: 58px !important;
-
-        min-width: 58px !important;
-
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
         font-size: 32px;
     }
 }
 
 
-/* =========================================================
-   COMPUTADORA
-   ========================================================= */
+/* =========================================
+   COMPUTADORAS
+   ========================================= */
 
 @media (min-width: 1101px) {
 
     .bottom-nav {
         height: 82px;
+        max-width: 100%;
 
-        padding:
-            7px
-            30px
-            calc(7px + env(safe-area-inset-bottom));
+        padding: 7px 30px calc(7px + env(safe-area-inset-bottom));
 
         gap: 15px;
     }
 
     .bottom-nav .nav-item {
+        flex: 0 1 150px;
         width: 150px;
-
         max-width: 150px;
-
         font-size: 11px;
     }
 
@@ -304,52 +258,44 @@
     }
 
     .bottom-nav .create-button {
-        width: 62px !important;
-        height: 62px !important;
-
-        min-width: 62px !important;
-
+        width: 62px;
+        height: 62px;
+        min-width: 62px;
         font-size: 34px;
     }
 }
 
 
-/* =========================================================
-   CELULARES MUY CHICOS
-   ========================================================= */
+/* =========================================
+   CELULARES PEQUEÑOS
+   ========================================= */
 
 @media (max-width: 360px) {
 
     .bottom-nav {
         height: 70px;
 
-        padding:
-            4px
-            4px
-            calc(5px + env(safe-area-inset-bottom));
+        padding: 4px 4px calc(5px + env(safe-area-inset-bottom));
     }
 
     .bottom-nav .nav-item {
         height: 58px;
-
+        padding: 3px 1px;
         font-size: 8px;
     }
 
     .bottom-nav .nav-icon {
         width: 21px;
         height: 21px;
-
         font-size: 18px;
     }
 
     .bottom-nav .create-button {
-        width: 48px !important;
-        height: 48px !important;
-
-        min-width: 48px !important;
-
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
         margin: 0 2px;
-
         font-size: 27px;
     }
 }
+```

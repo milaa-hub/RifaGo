@@ -185,6 +185,10 @@ if ($usuario_logueado) {
         href="../assets/css/style.css?=v2"
     >
 
+    <link
+        rel="stylesheet"
+        href="../assets/css/bottom-nav.css?=v2"
+    >
 
     <link
         rel="preconnect"

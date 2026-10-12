@@ -202,6 +202,12 @@ function escapar($texto)
         rel="stylesheet"
         href="assets/css/style.css?=v3"
     >
+
+    <link
+        rel="stylesheet"
+        href="assets/css/bottom-nav.css?=v2"
+    >
+
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"

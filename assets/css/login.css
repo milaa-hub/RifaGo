@@ -9,18 +9,22 @@
    ========================================== */
 
 :root {
-    --color-primario: #173f8f;
-    --color-secundario: #ff6267;
-    --color-secundario-hover: #f65359;
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
+
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
+
+    --color-acento: #18b8a6;
 
     --color-fondo: #f8fafc;
+    --color-fondo-app: #eef1f5;
     --color-blanco: #ffffff;
 
     --color-texto: #111827;
-    --color-texto-secundario: #64748b;
-    --color-borde: #e2e8f0;
+    --color-texto-suave: #6b7280;
 
-    --color-input: #eaf1ff;
+    --color-borde: #e8ebf0;
 
     --radio-card: 22px;
     --radio-input: 10px;
@@ -51,7 +55,7 @@ body {
 
     font-family: 'Poppins', sans-serif;
 
-    background-color: var(--color-fondo);
+    background-color: var(--color-blanco);
     color: var(--color-texto);
 }
 
@@ -70,7 +74,7 @@ body {
 
     padding: 28px 15px 35px;
 
-    background-color: var(--color-fondo);
+    background-color: var(--color-blanco);
 }
 
 

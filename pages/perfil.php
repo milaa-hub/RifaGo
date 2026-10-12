@@ -92,6 +92,11 @@ if ($usuario_logueado && $usuario) {
 
     <link rel="stylesheet" href="../assets/css/style.css?=v2">
 
+    <link
+        rel="stylesheet"
+        href="../assets/css/bottom-nav.css?=v2"
+    >
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

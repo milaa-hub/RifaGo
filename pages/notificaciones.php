@@ -296,7 +296,7 @@ $notificaciones = obtenerNotificaciones(
 
     <link
         rel="stylesheet"
-        href="../assets/css/notificaciones.css?=v2"
+        href="../assets/css/notificaciones.css?=v4"
     >
 
 </head>

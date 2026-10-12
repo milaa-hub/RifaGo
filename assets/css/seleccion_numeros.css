@@ -3,20 +3,22 @@
 ========================================== */
 
 :root {
-    --azul: #1F3A8A;
-    --azul-oscuro: #123F8A;
+    --color-primario: #ff5b5b;
+    --color-primario-dark: #f34d4d;
 
-    --coral: #FF6666;
-    --coral-oscuro: #F34D4D;
+    --color-secundario: #123f8a;
+    --color-secundario-dark: #0d326d;
 
-    --turquesa: #18B8A6;
+    --color-acento: #18b8a6;
 
-    --texto: #111827;
-    --gris: #777777;
-    --borde: #E5E7EB;
+    --color-fondo: #f8fafc;
+    --color-fondo-app: #eef1f5;
+    --color-blanco: #ffffff;
 
-    --fondo: #F8FAFC;
-    --blanco: #FFFFFF;
+    --color-texto: #111827;
+    --color-texto-suave: #6b7280;
+
+    --color-borde: #e8ebf0;
 }
 
 
@@ -32,7 +34,7 @@ body {
 
     font-family: "Poppins", sans-serif;
 
-    background: var(--fondo);
+    background: var(--color-blanco);
 
     color: var(--texto);
 
@@ -86,7 +88,7 @@ body {
 
     font-size: 20px;
 
-    color: var(--texto);
+    color: var(--color-texto);
 
 }
 
@@ -95,7 +97,7 @@ body {
 
     margin-top: 3px;
 
-    color: var(--gris);
+    color: var(--color-texto-suave);
 
     font-size: 12px;
 
@@ -146,7 +148,7 @@ body {
 
 
 .legend.selected {
-    background: var(--turquesa);
+    background: var(--color-acento);
 }
 
 
@@ -156,7 +158,7 @@ body {
 
 
 .legend.unavailable {
-    background: var(--coral);
+    background: var(--color-primario);
 }
 
 
@@ -224,11 +226,11 @@ body {
 
     background: var(--blanco);
 
-    border: 1px solid var(--borde);
+    border: 1px solid var(--color-borde);
 
     border-radius: 9px;
 
-    color: var(--azul);
+    color: var(--color-secundario);
 
     font-size: 13px;
 
@@ -245,7 +247,7 @@ body {
 
 .number-item:not(.number-disabled):hover span {
 
-    border-color: var(--turquesa);
+    border-color: var(--color-acento);
 
     transform: translateY(-1px);
 
@@ -258,9 +260,9 @@ body {
 
 .number-item input:checked + span {
 
-    background: var(--turquesa);
+    background: var(--color-acento);
 
-    border-color: var(--turquesa);
+    border-color: var(--color-acento);
 
     color: white;
 
@@ -280,9 +282,9 @@ body {
 
 .number-item.number-disabled span {
 
-    background: var(--coral);
+    background: var(--color-primario);
 
-    border-color: var(--coral);
+    border-color: var(--color-primario);
 
     color: white;
 
@@ -310,13 +312,13 @@ body {
 
     text-align: center;
 
-    background: white;
+    background: var(--color-blanco);
 
-    border: 1px solid var(--borde);
+    border: 1px solid var(--color-borde);
 
     border-radius: 14px;
 
-    color: var(--gris);
+    color: var(--color-texto-suave);
 
     font-size: 13px;
 
@@ -339,9 +341,9 @@ body {
 
     z-index: 20;
 
-    background: white;
+    background: var(--color-blanco);
 
-    border-top: 1px solid var(--borde);
+    border-top: 1px solid var(--color-borde);
 
     padding: 14px 20px;
 
@@ -361,14 +363,14 @@ body {
 
     font-size: 11px;
 
-    color: var(--gris);
+    color: var(--color-texto-suave);
 
 }
 
 
 .selection-bottom span {
 
-    color: var(--azul);
+    color: var(--color-secundario);
 
     font-weight: 600;
 
@@ -383,7 +385,7 @@ body {
 
     font-size: 17px;
 
-    color: var(--texto);
+    color: var(--color-texto);
 
 }
 
@@ -392,7 +394,7 @@ body {
 
     border: none;
 
-    background: var(--coral);
+    background: var(--color-primario);
 
     color: white;
 
@@ -413,7 +415,7 @@ body {
 
 .btn-primary:hover {
 
-    background: var(--coral-oscuro);
+    background: var(--color-primario-dark);
 
 }
 

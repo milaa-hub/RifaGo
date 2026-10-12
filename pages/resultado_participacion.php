@@ -290,7 +290,7 @@ $numeros_texto =
 
     <link
         rel="stylesheet"
-        href="../assets/css/resultado.css?=v2"
+        href="../assets/css/resultado.css?=v3"
     >
 
 

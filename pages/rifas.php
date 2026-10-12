@@ -70,11 +70,11 @@ $resultado = $consulta->get_result();
 
     <link
         rel="stylesheet"
-        href="../assets/css/rifas.css?v=3"
+        href="../assets/css/rifas.css?v=4"
     >
     <link
         rel="stylesheet"
-        href="../assets/css/bottom-nav.css"
+        href="../assets/css/bottom-nav.css?=v2"
     >
 
 </head>
