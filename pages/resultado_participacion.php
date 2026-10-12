@@ -290,7 +290,7 @@ $numeros_texto =
 
     <link
         rel="stylesheet"
-        href="../assets/css/resultado.css?=v3"
+        href="../assets/css/resultado.css?=v4"
     >
 
 
@@ -738,14 +738,17 @@ $numeros_texto =
              VOLVER
         ====================================== -->
 
-        <a
-            href="participaciones.php"
-            class="volver-button"
-        >
+        <div class="volver-container">
+            <a
+                href="mis_rifas.php"
+                class="volver-button"
+            >
 
-            Volver a participaciones
+                Volver a mis rifas
 
-        </a>
+            </a>
+        </div>
+
 
 
     </main>

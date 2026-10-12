@@ -172,7 +172,7 @@ if (!empty($rifa["fecha_sorteo"])) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/resultado.css?=v3"
+        href="../assets/css/resultado.css?=v4"
     >
 
 </head>
@@ -534,16 +534,16 @@ if (!empty($rifa["fecha_sorteo"])) {
         <!-- =====================================
              VOLVER
         ====================================== -->
+        <div class="volver-container">
+            <a
+                href="mis_rifas.php"
+                class="volver-button"
+            >
 
-        <a
-            href="mis_rifas.php"
-            class="volver-button"
-        >
+                Volver a mis rifas
 
-            Volver a mis rifas
-
-        </a>
-
+            </a>
+        </div>
 
     </main>
 

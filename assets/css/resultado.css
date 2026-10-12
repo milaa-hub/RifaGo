@@ -697,54 +697,31 @@ img {
 /* =========================================
    BOTÓN VOLVER
 ========================================= */
+.volver-container {
+    width: 100%;
+    box-sizing: border-box;
+}
 
 .volver-button {
-
     width: 100%;
-
+    box-sizing: border-box;
     display: block;
-
-    padding:
-        15px 20px;
-
-    margin-top:
-        8px;
-
+    padding: 15px 20px;
+    margin-top: 8px;
     text-align: center;
-
     text-decoration: none;
-
-    border-radius:
-        10px;
-
-    background:
-        var(--color-primario);
-
-    color:
-        var(--color-blanco);
-
+    border-radius: 10px;
+    background: var(--color-primario);
+    color: var(--color-blanco);
     font-weight: 600;
-
-    transition:
-        0.2s;
-
+    transition: 0.2s;
+    
 }
-
 
 .volver-button:hover {
-
-    background:
-        var(--color-primario-dark);
-
-    box-shadow:
-        0 8px 20px
-        rgba(255, 107, 107, 0.25);
-
-    transform:
-        translateY(-1px);
-
+    background: var(--color-primario-dark);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
 }
-
 
 /* =========================================
    ESCRITORIO
@@ -907,22 +884,22 @@ img {
 
 
     /* =====================================
-       BOTÓN
-    ====================================== */
+    BOTÓN
+    ===================================== */
+
+    .volver-container {
+        grid-column: 1 / -1;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0;
+    }
 
     .volver-button {
-
         width: 100%;
-
-        grid-column:
-            1 / 2;
-
-        margin-top:
-            0;
-
-        justify-self:
-            stretch;
-
+        box-sizing: border-box;
+        display: block;
+        margin-top: 0;
+        justify-self: stretch;
     }
 
 }
