@@ -209,6 +209,11 @@ function escapar($texto)
     >
 
     <link
+        rel="stylesheet"
+        href="assets/css/nav.css"
+    >
+
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 >
@@ -318,6 +323,60 @@ function escapar($texto)
     </div>
 
     </header>
+
+    
+    <!-- HEADER EXCLUSIVO PARA COMPUTADORAS -->
+    <header class="rifago-pc-header">
+        <a href="index.php" class="rifago-pc-logo">
+            <span>Rifa</span><span class="rifago-pc-logo-red">Go</span><sup>+</sup>
+        </a>
+
+        <nav class="rifago-pc-nav" aria-label="Navegación de escritorio">
+            <a href="index.php" data-page="index.php">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="pages/mis_rifas.php" data-page="mis_rifas.php">
+                <i class="fa-solid fa-list"></i>
+                <span>Mis rifas</span>
+            </a>
+
+            <a href="pages/crear_rifa.php" class="rifago-pc-create">
+                <i class="fa-solid fa-plus"></i>
+                <span>Crear rifa</span>
+            </a>
+
+            <a href="pages/participaciones.php" data-page="participaciones.php">
+                <i class="fa-solid fa-ticket"></i>
+                <span>Participaciones</span>
+            </a>
+
+            <a href="pages/perfil.php" data-page="perfil.php">
+                <i class="fa-solid fa-user"></i>
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <div class="rifago-pc-actions">
+            <a href="pages/notificaciones.php"
+            class="rifago-pc-notifications"
+            aria-label="Notificaciones">
+                <i class="fa-solid fa-bell"></i>
+                <?php if ($usuario_logueado && $notificaciones_no_leidas > 0): ?>
+                    <span class="rifago-pc-notification-dot"></span>
+                <?php endif; ?>
+            </a>
+
+            <a href="pages/perfil.php" class="rifago-pc-avatar"
+            aria-label="Perfil de usuario">
+                <?= $usuario_logueado
+                    ? htmlspecialchars(strtoupper(substr($_SESSION['nombre'] ?? 'U', 0, 2)))
+                    : '?' ?>
+            </a>
+        </div>
+    </header>
+
 
 
 
@@ -1010,7 +1069,7 @@ function escapar($texto)
 </div>
 
 
-<script src="assets/js/script.js"></script>
+<script src="assets/js/script.js?=v2"></script>
 
 </body>
 

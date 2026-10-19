@@ -182,3 +182,19 @@ if (btnCrearRifa) {
     });
 
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.php';
+
+    document.querySelectorAll('.rifago-pc-nav a[data-page]').forEach(function (link) {
+        const isActive = link.dataset.page === currentPage;
+        link.classList.toggle('active', isActive);
+
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+});

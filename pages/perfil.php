@@ -90,11 +90,16 @@ if ($usuario_logueado && $usuario) {
 
     <title>Perfil - RifaGo</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css?=v2">
+    <link rel="stylesheet" href="../assets/css/style.css?=v5">
 
     <link
         rel="stylesheet"
         href="../assets/css/bottom-nav.css?=v2"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/nav.css"
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,6 +169,83 @@ if ($usuario_logueado && $usuario) {
         <?php endif; ?>
 
     </header>
+
+     <!-- HEADER EXCLUSIVO PARA COMPUTADORAS -->
+    <header class="rifago-desktop-header">
+
+        <!-- Logo original de Rifago -->
+        <a href="../index.php" class="rifago-desktop-logo">
+            <span class="logo-blue">Rifa</span><span class="logo-red">Go</span><sup>+</sup>
+        </a>
+
+        <!-- Navegación de escritorio -->
+        <nav class="rifago-desktop-nav" aria-label="Navegación principal">
+
+            <a href="../index.php" class="desktop-nav-item">
+                <span class="desktop-icon">⌂</span>
+                Inicio
+            </a>
+
+            <a href="mis_rifas.php" class="desktop-nav-item">
+                <span class="desktop-icon">▤</span>
+                Mis rifas
+            </a>
+
+            <a href="crear_rifa.php" class="rifago-desktop-create">
+                <span class="desktop-plus">+</span>
+                Crear rifa
+            </a>
+
+            <a href="participaciones.php"class="desktop-nav-item">
+                <span class="desktop-icon">♧</span>
+                Participaciones
+            </a>
+
+            <a href="perfil.php" class="rifago-desktop-link active">
+                <span class="desktop-icon">♙</span>
+                Perfil
+            </a>
+
+        </nav>
+
+        <!-- Acciones de usuario -->
+        <div class="rifago-desktop-actions">
+
+            <a href="notificaciones.php"
+            class="rifago-desktop-notification"
+            aria-label="Notificaciones">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <?php if (
+                    $usuario_logueado &&
+                    $notificaciones_no_leidas > 0
+                ): ?>
+                    <span class="notification-badge"></span>
+                <?php endif; ?>
+
+            </a>
+
+            <a href="perfil.php"
+            class="rifago-desktop-user"
+            aria-label="Perfil de usuario">
+
+                <?php if ($usuario_logueado): ?>
+                    <?= htmlspecialchars(
+                        strtoupper(substr($_SESSION['nombre'] ?? 'U', 0, 2)),
+                        ENT_QUOTES,
+                        'UTF-8'
+                    ) ?>
+                <?php else: ?>
+                    ?
+                <?php endif; ?>
+
+            </a>
+
+        </div>
+
+    </header>
+
 
 
     <!-- ==========================================
@@ -544,6 +626,20 @@ function crearRifa() {
     <?php endif; ?>
 
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname.split('/').pop()
+        || 'index.php';
+
+    document.querySelectorAll(
+        '.rifago-desktop-header .desktop-nav a'
+    ).forEach(function (link) {
+        const linkPage = link.getAttribute('href').split('/').pop();
+
+        link.classList.toggle('active', linkPage === currentPage);
+    });
+});
 
 </script>
 
