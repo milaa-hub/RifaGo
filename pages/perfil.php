@@ -99,7 +99,7 @@ if ($usuario_logueado && $usuario) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/nav.css"
+        href="../assets/css/top-nav.css"
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,21 +210,6 @@ if ($usuario_logueado && $usuario) {
 
         <!-- Acciones de usuario -->
         <div class="rifago-desktop-actions">
-
-            <a href="notificaciones.php"
-            class="rifago-desktop-notification"
-            aria-label="Notificaciones">
-
-                <i class="fa-solid fa-bell"></i>
-
-                <?php if (
-                    $usuario_logueado &&
-                    $notificaciones_no_leidas > 0
-                ): ?>
-                    <span class="notification-badge"></span>
-                <?php endif; ?>
-
-            </a>
 
             <a href="perfil.php"
             class="rifago-desktop-user"

@@ -106,7 +106,7 @@ if ($usuario_logueado) {
 
     <link
         rel="stylesheet"
-        href="../assets/css/style.css?=v2"
+        href="../assets/css/style.css?=v5"
     >
 
     <link
@@ -116,7 +116,7 @@ if ($usuario_logueado) {
     
     <link
         rel="stylesheet"
-        href="../assets/css/nav.css"
+        href="../assets/css/top-nav.css"
     >
 
     <link
@@ -228,21 +228,6 @@ if ($usuario_logueado) {
 
         <!-- Acciones de usuario -->
         <div class="rifago-desktop-actions">
-
-            <a href="notificaciones.php"
-            class="rifago-desktop-notification"
-            aria-label="Notificaciones">
-
-                <i class="fa-solid fa-bell"></i>
-
-                <?php if (
-                    $usuario_logueado &&
-                    $notificaciones_no_leidas > 0
-                ): ?>
-                    <span class="notification-badge"></span>
-                <?php endif; ?>
-
-            </a>
 
             <a href="perfil.php"
             class="rifago-desktop-user"

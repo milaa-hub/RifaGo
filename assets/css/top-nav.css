@@ -1,0 +1,198 @@
+
+/* ===== HEADER RIFAGO PARA COMPUTADORAS ===== */
+
+.rifago-desktop-header {
+    display: none;
+}
+
+@media (min-width: 1101px) {
+    .rifago-desktop-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 100;
+
+        width: 100%;
+        height: 77px;
+        padding: 0 26px;
+        box-sizing: border-box;
+
+        background: #fff;
+        border-bottom: 1px solid #e2e8f0;
+        gap: 24px;
+    }
+
+    /* Logo */
+    .rifago-desktop-header .rifago-desktop-logo {
+        display: inline-flex;
+        align-items: baseline;
+        flex-shrink: 0;
+        text-decoration: none;
+        font-size: 29px;
+        font-weight: 800;
+        letter-spacing: -1.2px;
+        color: #19468f;
+    }
+
+    .rifago-desktop-header .logo-blue {
+        color: #19468f;
+    }
+
+    .rifago-desktop-header .logo-red {
+        color: #ff595e;
+    }
+
+    .rifago-desktop-header .rifago-desktop-logo sup {
+        color: #ff595e;
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    /* Menú centrado */
+    .rifago-desktop-header .rifago-desktop-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex: 1;
+    }
+
+    .rifago-desktop-header .desktop-nav-item,
+    .rifago-desktop-header .rifago-desktop-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        height: 46px;
+        padding: 0 15px;
+        border-radius: 13px;
+
+        color: #64748b;
+        background: transparent;
+        text-decoration: none;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background .2s, color .2s;
+    }
+
+    .rifago-desktop-header .desktop-nav-item:hover,
+    .rifago-desktop-header .rifago-desktop-link:hover {
+        background: #f1f5f9;
+        color: #19468f;
+    }
+
+    /* Sección activa */
+    .rifago-desktop-header .desktop-nav-item.active,
+    .rifago-desktop-header .rifago-desktop-link.active {
+        color: #19468f;
+        background: #edf3ff;
+    }
+
+    /* Botón Crear rifa */
+    .rifago-desktop-header .rifago-desktop-create {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        height: 46px;
+        padding: 0 17px;
+        border-radius: 12px;
+
+        background: #ff595e;
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 700;
+
+        box-shadow: 0 4px 10px rgba(255, 89, 94, .16);
+        transition: background .2s, transform .2s;
+    }
+
+    .rifago-desktop-header .rifago-desktop-create:hover {
+        background: #f4474e;
+        transform: translateY(-1px);
+    }
+
+    .rifago-desktop-header .desktop-plus {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .rifago-desktop-header .desktop-icon {
+        font-size: 16px;
+        line-height: 1;
+    }
+
+    /* Notificaciones y avatar */
+    .rifago-desktop-header .rifago-desktop-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 18px;
+        flex-shrink: 0;
+    }
+
+    .rifago-desktop-header .rifago-desktop-notifications {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        color: #64748b;
+        text-decoration: none;
+        border-radius: 50%;
+    }
+
+    .rifago-desktop-header .rifago-desktop-notifications:hover {
+        background: #f1f5f9;
+    }
+
+    .rifago-desktop-header .rifago-desktop-notification-dot {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ff595e;
+        border: 2px solid #fff;
+    }
+
+    .rifago-desktop-header .rifago-desktop-user {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #edf3ff;
+        color: #19468f;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .rifago-desktop-header .rifago-desktop-user:hover {
+        background: #e0eaff;
+    }
+
+    /* Ocultar header original y bottom nav solo en escritorio */
+    header.header,
+    nav.bottom-nav {
+        display: none !important;
+    }
+}
+
+/* Móvil y tablet: conservar el diseño original */
+@media (max-width: 1100px) {
+    .rifago-desktop-header {
+        display: none !important;
+    }
+}
