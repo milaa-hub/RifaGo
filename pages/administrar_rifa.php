@@ -2,6 +2,10 @@
 
 require_once "../conexion.php";
 session_start();
+if (empty($_SESSION["csrf_sorteo"])) {
+    $_SESSION["csrf_sorteo"] = bin2hex(random_bytes(32));
+}
+
 
 
 // ==================================================
@@ -995,26 +999,30 @@ if (
                 <button
                     type="button"
                     class="primary-button"
-                    id="btnSortear"
+                    id="btn-sortear"
+                    data-id-rifa="<?= (int) $rifa['id_rifa'] ?>"
+                    data-csrf="<?= htmlspecialchars(
+                    $_SESSION["csrf_sorteo"],
+                    ENT_QUOTES,
+                    "UTF-8"
+                ) ?>"
                 >
                     Realizar sorteo
                 </button>
 
             <?php else: ?>
 
-                <button
-                    type="button"
-                    class="primary-button"
-                    disabled
-                >
+                <button type="button" class="primary-button" disabled>
                     Sorteo disponible el
-                    <?= $fecha_sorteo
+                    <?= !empty($rifa["fecha_sorteo"])
                         ? date("d/m/Y", strtotime($rifa["fecha_sorteo"]))
                         : "día indicado"
                     ?>
                 </button>
 
             <?php endif; ?>
+
+            <p id="estado-sorteo" role="status" aria-live="polite"></p>
 
         </section>
 
@@ -1065,33 +1073,9 @@ if (btnCompartir) {
 
 }
 
-const btnSortear =
-    document.getElementById("btnSortear");
-
-if (btnSortear) {
-
-    btnSortear.addEventListener(
-        "click",
-        function () {
-
-            const confirmar = confirm(
-                "¿Querés realizar el sorteo?\n\n" +
-                "Se seleccionará aleatoriamente uno de los números participantes."
-            );
-
-            if (confirmar) {
-
-                window.location.href =
-                    "../acciones/sortear_rifa.php?id=<?= $id_rifa ?>";
-
-            }
-
-        }
-    );
-
-}
 </script>
 
+<script src="../assets/js/quiniela.js?v=6" defer></script>
 
 </body>
 

@@ -79,6 +79,14 @@ if ($resultado->num_rows === 0) {
 
 $rifa = $resultado->fetch_assoc();
 
+if (
+    !isset($_SESSION["id_usuario"]) ||
+    (int) $rifa["id_usuario"] !== (int) $_SESSION["id_usuario"]
+) {
+    header("Location: mis_rifas.php");
+    exit;
+}
+
 
 $consulta->close();
 

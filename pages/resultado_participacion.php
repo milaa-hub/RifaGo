@@ -223,14 +223,14 @@ if (
 ) {
 
     if (
+        $rifa["numero_ganador"] !== null &&
         in_array(
-            $rifa["numero_ganador"],
-            $numeros_usuario
+            (int) $rifa["numero_ganador"],
+            array_map("intval", $numeros_usuario),
+            true
         )
     ) {
-
         $gano = true;
-
     }
 
 }
